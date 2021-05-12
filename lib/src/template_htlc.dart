@@ -12,8 +12,8 @@ import 'package:dart_algorand/src/template.dart';
 ///     1. To receiver if hash_function(arg_0) = hash_value
 ///     2. To owner if txn.FirstValid > expiry_round
 class HTLC extends Template {
-  String owner, receiver, hash_function, hash_image;
-  int expiry_round, max_fee;
+  String? owner, receiver, hash_function, hash_image;
+  int? expiry_round, max_fee;
 
   /// owner: an address that can receive the asset after the expiry
   ///     round

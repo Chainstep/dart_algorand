@@ -44,7 +44,7 @@ Uint8List decode_address(String a) {
 
 /// Encode a byte address into a string composed of the encoded bytes and the
 /// checksum.
-String encode_address(Uint8List addr_bytes) {
+String? encode_address(Uint8List? addr_bytes) {
   if (addr_bytes == null) {
     return null;
   }

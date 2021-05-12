@@ -15,9 +15,9 @@ class _$AssetListSerializer implements StructuredSerializer<AssetList> {
   final String wireName = 'AssetList';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, AssetList object,
+  Iterable<Object?> serialize(Serializers serializers, AssetList object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.assets != null) {
       result
         ..add('assets')
@@ -28,13 +28,13 @@ class _$AssetListSerializer implements StructuredSerializer<AssetList> {
   }
 
   @override
-  AssetList deserialize(Serializers serializers, Iterable<Object> serialized,
+  AssetList deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = AssetListBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
@@ -52,9 +52,9 @@ class _$AssetListSerializer implements StructuredSerializer<AssetList> {
 
 class _$AssetList extends AssetList {
   @override
-  final BuiltList<Asset> assets;
+  final BuiltList<Asset>? assets;
 
-  factory _$AssetList([void Function(AssetListBuilder) updates]) =>
+  factory _$AssetList([void Function(AssetListBuilder)? updates]) =>
       (AssetListBuilder()..update(updates)).build();
 
   _$AssetList._({this.assets}) : super._();
@@ -85,9 +85,9 @@ class _$AssetList extends AssetList {
 }
 
 class AssetListBuilder implements Builder<AssetList, AssetListBuilder> {
-  _$AssetList _$v;
+  _$AssetList? _$v;
 
-  ListBuilder<Asset> _assets;
+  ListBuilder<Asset>? _assets;
   ListBuilder<Asset> get assets => _$this._assets ??= ListBuilder<Asset>();
   set assets(ListBuilder<Asset> assets) => _$this._assets = assets;
 
@@ -95,7 +95,7 @@ class AssetListBuilder implements Builder<AssetList, AssetListBuilder> {
 
   AssetListBuilder get _$this {
     if (_$v != null) {
-      _assets = _$v.assets?.toBuilder();
+      _assets = _$v!.assets?.toBuilder();
       _$v = null;
     }
     return this;
@@ -110,7 +110,7 @@ class AssetListBuilder implements Builder<AssetList, AssetListBuilder> {
   }
 
   @override
-  void update(void Function(AssetListBuilder) updates) {
+  void update(void Function(AssetListBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -120,7 +120,7 @@ class AssetListBuilder implements Builder<AssetList, AssetListBuilder> {
     try {
       _$result = _$v ?? _$AssetList._(assets: _assets?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'assets';
         _assets?.build();

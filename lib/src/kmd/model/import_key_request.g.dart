@@ -17,9 +17,9 @@ class _$ImportKeyRequestSerializer
   final String wireName = 'ImportKeyRequest';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ImportKeyRequest object,
+  Iterable<Object?> serialize(Serializers serializers, ImportKeyRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.privateKey != null) {
       result
         ..add('private_key')
@@ -37,23 +37,23 @@ class _$ImportKeyRequestSerializer
 
   @override
   ImportKeyRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = ImportKeyRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'private_key':
           result.privateKey = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -64,12 +64,12 @@ class _$ImportKeyRequestSerializer
 
 class _$ImportKeyRequest extends ImportKeyRequest {
   @override
-  final String privateKey;
+  final String? privateKey;
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
 
   factory _$ImportKeyRequest(
-          [void Function(ImportKeyRequestBuilder) updates]) =>
+          [void Function(ImportKeyRequestBuilder)? updates]) =>
       (ImportKeyRequestBuilder()..update(updates)).build();
 
   _$ImportKeyRequest._({this.privateKey, this.walletHandleToken}) : super._();
@@ -106,23 +106,23 @@ class _$ImportKeyRequest extends ImportKeyRequest {
 
 class ImportKeyRequestBuilder
     implements Builder<ImportKeyRequest, ImportKeyRequestBuilder> {
-  _$ImportKeyRequest _$v;
+  _$ImportKeyRequest? _$v;
 
-  String _privateKey;
-  String get privateKey => _$this._privateKey;
-  set privateKey(String privateKey) => _$this._privateKey = privateKey;
+  String? _privateKey;
+  String? get privateKey => _$this._privateKey;
+  set privateKey(String? privateKey) => _$this._privateKey = privateKey;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
   ImportKeyRequestBuilder();
 
   ImportKeyRequestBuilder get _$this {
     if (_$v != null) {
-      _privateKey = _$v.privateKey;
-      _walletHandleToken = _$v.walletHandleToken;
+      _privateKey = _$v!.privateKey;
+      _walletHandleToken = _$v!.walletHandleToken;
       _$v = null;
     }
     return this;
@@ -137,7 +137,7 @@ class ImportKeyRequestBuilder
   }
 
   @override
-  void update(void Function(ImportKeyRequestBuilder) updates) {
+  void update(void Function(ImportKeyRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

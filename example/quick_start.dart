@@ -8,7 +8,7 @@ void main() {
   print('Address: ${account.address}');
 
   // check if the address is valid
-  if (is_valid_address(account.address)) {
+  if (is_valid_address(account.address!)) {
     print('The address is valid!');
   } else {
     print('The address is invalid.');

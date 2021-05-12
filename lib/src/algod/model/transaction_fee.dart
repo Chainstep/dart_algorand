@@ -8,12 +8,12 @@ abstract class TransactionFee
   /* Fee is transaction fee Fee is in units of micro-Algos per byte. Fee may fall to zero but transactions must still have a fee of at least MinTxnFee for the current network protocol. */
   @nullable
   @BuiltValueField(wireName: r'fee')
-  int get fee;
+  int? get fee;
 
   // Boilerplate code needed to wire-up generated code
   TransactionFee._();
 
-  factory TransactionFee([updates(TransactionFeeBuilder b)]) = _$TransactionFee;
+  factory TransactionFee([updates(TransactionFeeBuilder b)?]) = _$TransactionFee;
   static Serializer<TransactionFee> get serializer =>
       _$transactionFeeSerializer;
 }

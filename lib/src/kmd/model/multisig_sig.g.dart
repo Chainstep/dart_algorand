@@ -15,9 +15,9 @@ class _$MultisigSigSerializer implements StructuredSerializer<MultisigSig> {
   final String wireName = 'MultisigSig';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, MultisigSig object,
+  Iterable<Object?> serialize(Serializers serializers, MultisigSig object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.subsigs != null) {
       result
         ..add('subsig')
@@ -41,13 +41,13 @@ class _$MultisigSigSerializer implements StructuredSerializer<MultisigSig> {
   }
 
   @override
-  MultisigSig deserialize(Serializers serializers, Iterable<Object> serialized,
+  MultisigSig deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = MultisigSigBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
@@ -59,11 +59,11 @@ class _$MultisigSigSerializer implements StructuredSerializer<MultisigSig> {
           break;
         case 'thr':
           result.threshold = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'v':
           result.version = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -74,13 +74,13 @@ class _$MultisigSigSerializer implements StructuredSerializer<MultisigSig> {
 
 class _$MultisigSig extends MultisigSig {
   @override
-  final BuiltList<MultisigSubsig> subsigs;
+  final BuiltList<MultisigSubsig>? subsigs;
   @override
-  final int threshold;
+  final int? threshold;
   @override
-  final int version;
+  final int? version;
 
-  factory _$MultisigSig([void Function(MultisigSigBuilder) updates]) =>
+  factory _$MultisigSig([void Function(MultisigSigBuilder)? updates]) =>
       (MultisigSigBuilder()..update(updates)).build();
 
   _$MultisigSig._({this.subsigs, this.threshold, this.version}) : super._();
@@ -118,35 +118,35 @@ class _$MultisigSig extends MultisigSig {
 }
 
 class MultisigSigBuilder implements Builder<MultisigSig, MultisigSigBuilder> {
-  _$MultisigSig _$v;
+  _$MultisigSig? _$v;
 
-  ListBuilder<MultisigSubsig> _subsigs;
+  ListBuilder<MultisigSubsig>? _subsigs;
   ListBuilder<MultisigSubsig> get subsigs =>
       _$this._subsigs ??= ListBuilder<MultisigSubsig>();
   set subsigs(ListBuilder<MultisigSubsig> subsigs) => _$this._subsigs = subsigs;
 
-  int _threshold;
-  int get threshold => _$this._threshold;
-  set threshold(int threshold) => _$this._threshold = threshold;
+  int? _threshold;
+  int? get threshold => _$this._threshold;
+  set threshold(int? threshold) => _$this._threshold = threshold;
 
-  int _version;
-  int get version => _$this._version;
-  set version(int version) => _$this._version = version;
+  int? _version;
+  int? get version => _$this._version;
+  set version(int? version) => _$this._version = version;
 
   MultisigSigBuilder();
 
   MultisigSigBuilder get _$this {
     if (_$v != null) {
-      _subsigs = _$v.subsigs?.toBuilder();
-      _threshold = _$v.threshold;
-      _version = _$v.version;
+      _subsigs = _$v!.subsigs?.toBuilder();
+      _threshold = _$v!.threshold;
+      _version = _$v!.version;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(MultisigSig other) {
+  void replace(MultisigSig? other) {
     if (other == null) {
       throw ArgumentError.notNull('other');
     }
@@ -154,7 +154,7 @@ class MultisigSigBuilder implements Builder<MultisigSig, MultisigSigBuilder> {
   }
 
   @override
-  void update(void Function(MultisigSigBuilder) updates) {
+  void update(void Function(MultisigSigBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -168,7 +168,7 @@ class MultisigSigBuilder implements Builder<MultisigSig, MultisigSigBuilder> {
               threshold: threshold,
               version: version);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'subsigs';
         _subsigs?.build();

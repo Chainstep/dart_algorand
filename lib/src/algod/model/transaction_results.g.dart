@@ -17,9 +17,9 @@ class _$TransactionResultsSerializer
   final String wireName = 'TransactionResults';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, TransactionResults object,
+  Iterable<Object?> serialize(Serializers serializers, TransactionResults object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.createdasset != null) {
       result
         ..add('createdasset')
@@ -31,19 +31,19 @@ class _$TransactionResultsSerializer
 
   @override
   TransactionResults deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = TransactionResultsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'createdasset':
           result.createdasset = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -54,10 +54,10 @@ class _$TransactionResultsSerializer
 
 class _$TransactionResults extends TransactionResults {
   @override
-  final int createdasset;
+  final int? createdasset;
 
   factory _$TransactionResults(
-          [void Function(TransactionResultsBuilder) updates]) =>
+          [void Function(TransactionResultsBuilder)? updates]) =>
       (TransactionResultsBuilder()..update(updates)).build();
 
   _$TransactionResults._({this.createdasset}) : super._();
@@ -92,24 +92,24 @@ class _$TransactionResults extends TransactionResults {
 
 class TransactionResultsBuilder
     implements Builder<TransactionResults, TransactionResultsBuilder> {
-  _$TransactionResults _$v;
+  _$TransactionResults? _$v;
 
-  int _createdasset;
-  int get createdasset => _$this._createdasset;
-  set createdasset(int createdasset) => _$this._createdasset = createdasset;
+  int? _createdasset;
+  int? get createdasset => _$this._createdasset;
+  set createdasset(int? createdasset) => _$this._createdasset = createdasset;
 
   TransactionResultsBuilder();
 
   TransactionResultsBuilder get _$this {
     if (_$v != null) {
-      _createdasset = _$v.createdasset;
+      _createdasset = _$v!.createdasset;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(TransactionResults other) {
+  void replace(TransactionResults? other) {
     if (other == null) {
       throw ArgumentError.notNull('other');
     }
@@ -117,7 +117,7 @@ class TransactionResultsBuilder
   }
 
   @override
-  void update(void Function(TransactionResultsBuilder) updates) {
+  void update(void Function(TransactionResultsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

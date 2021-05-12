@@ -20,10 +20,10 @@ class _$ImportMultisigRequestSerializer
   final String wireName = 'ImportMultisigRequest';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, ImportMultisigRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.multisigVersion != null) {
       result
         ..add('multisig_version')
@@ -53,19 +53,19 @@ class _$ImportMultisigRequestSerializer
 
   @override
   ImportMultisigRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = ImportMultisigRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'multisig_version':
           result.multisigVersion = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'pks':
           result.pks.replace(serializers.deserialize(value,
@@ -74,11 +74,11 @@ class _$ImportMultisigRequestSerializer
           break;
         case 'threshold':
           result.threshold = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -89,16 +89,16 @@ class _$ImportMultisigRequestSerializer
 
 class _$ImportMultisigRequest extends ImportMultisigRequest {
   @override
-  final int multisigVersion;
+  final int? multisigVersion;
   @override
-  final BuiltList<String> pks;
+  final BuiltList<String>? pks;
   @override
-  final int threshold;
+  final int? threshold;
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
 
   factory _$ImportMultisigRequest(
-          [void Function(ImportMultisigRequestBuilder) updates]) =>
+          [void Function(ImportMultisigRequestBuilder)? updates]) =>
       (ImportMultisigRequestBuilder()..update(updates)).build();
 
   _$ImportMultisigRequest._(
@@ -145,34 +145,34 @@ class _$ImportMultisigRequest extends ImportMultisigRequest {
 
 class ImportMultisigRequestBuilder
     implements Builder<ImportMultisigRequest, ImportMultisigRequestBuilder> {
-  _$ImportMultisigRequest _$v;
+  _$ImportMultisigRequest? _$v;
 
-  int _multisigVersion;
-  int get multisigVersion => _$this._multisigVersion;
-  set multisigVersion(int multisigVersion) =>
+  int? _multisigVersion;
+  int? get multisigVersion => _$this._multisigVersion;
+  set multisigVersion(int? multisigVersion) =>
       _$this._multisigVersion = multisigVersion;
 
-  ListBuilder<String> _pks;
+  ListBuilder<String>? _pks;
   ListBuilder<String> get pks => _$this._pks ??= ListBuilder<String>();
   set pks(ListBuilder<String> pks) => _$this._pks = pks;
 
-  int _threshold;
-  int get threshold => _$this._threshold;
-  set threshold(int threshold) => _$this._threshold = threshold;
+  int? _threshold;
+  int? get threshold => _$this._threshold;
+  set threshold(int? threshold) => _$this._threshold = threshold;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
   ImportMultisigRequestBuilder();
 
   ImportMultisigRequestBuilder get _$this {
     if (_$v != null) {
-      _multisigVersion = _$v.multisigVersion;
-      _pks = _$v.pks?.toBuilder();
-      _threshold = _$v.threshold;
-      _walletHandleToken = _$v.walletHandleToken;
+      _multisigVersion = _$v!.multisigVersion;
+      _pks = _$v!.pks?.toBuilder();
+      _threshold = _$v!.threshold;
+      _walletHandleToken = _$v!.walletHandleToken;
       _$v = null;
     }
     return this;
@@ -187,7 +187,7 @@ class ImportMultisigRequestBuilder
   }
 
   @override
-  void update(void Function(ImportMultisigRequestBuilder) updates) {
+  void update(void Function(ImportMultisigRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -202,7 +202,7 @@ class ImportMultisigRequestBuilder
               threshold: threshold,
               walletHandleToken: walletHandleToken);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'pks';
         _pks?.build();

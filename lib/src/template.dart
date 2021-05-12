@@ -6,7 +6,7 @@ import 'package:dart_algorand/src/logic.dart';
 
 abstract class Template {
   /// Return the address of the contract.
-  String get_address() {
+  String? get_address() {
     return get_program_address(get_program());
   }
 
@@ -28,13 +28,13 @@ int put_uvarint(List<int> buf, int x) {
 }
 
 Uint8List inject(
-    {Uint8List orig,
-    List<int> offsets,
-    List<dynamic> values,
-    List<ValueType> values_types}) {
+    {required Uint8List orig,
+    required List<int> offsets,
+    required List<dynamic> values,
+    List<ValueType>? values_types}) {
   // make sure we have enough values
   assert(
-      offsets.length == values.length && values.length == values_types.length);
+      offsets.length == values.length && values.length == values_types!.length);
 
   var res = orig.toList();
 
@@ -47,7 +47,7 @@ Uint8List inject(
 
   for (var i = 0; i < offsets.length; i++) {
     var val = values[i];
-    final val_type = values_types[i];
+    final val_type = values_types![i];
     var dec_len = 0;
 
     switch (val_type) {
@@ -55,13 +55,13 @@ Uint8List inject(
         {
           final buf = <int>[];
           dec_len = put_uvarint(buf, val) - 1;
-          res = replace(res, buf, offsets[i], 1);
+          res = replace(res, buf, offsets[i], 1) as List<int>;
         }
         break;
 
       case ValueType.address:
         {
-          res = replace(res, decode_address(val), offsets[i], 32);
+          res = replace(res, decode_address(val), offsets[i], 32) as List<int>;
         }
         break;
 
@@ -70,7 +70,7 @@ Uint8List inject(
           final value = base64Decode(val).toList();
           final buf = <int>[];
           dec_len = put_uvarint(buf, value.length) + value.length - 2;
-          res = replace(res, buf + value, offsets[i], 2);
+          res = replace(res, buf + value, offsets[i], 2) as List<int>;
         }
     }
 

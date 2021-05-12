@@ -9,24 +9,24 @@ abstract class CreateWalletRequest
   /* MasterDerivationKey is used to derive ed25519 keys for use in wallets */
   @nullable
   @BuiltValueField(wireName: r'master_derivation_key')
-  String get masterDerivationKey;
+  String? get masterDerivationKey;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_driver_name')
-  String get walletDriverName;
+  String? get walletDriverName;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_name')
-  String get walletName;
+  String? get walletName;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_password')
-  String get walletPassword;
+  String? get walletPassword;
 
   // Boilerplate code needed to wire-up generated code
   CreateWalletRequest._();
 
-  factory CreateWalletRequest([Function(CreateWalletRequestBuilder) b]) =
+  factory CreateWalletRequest([Function(CreateWalletRequestBuilder)? b]) =
       _$CreateWalletRequest;
 
   static Serializer<CreateWalletRequest> get serializer =>

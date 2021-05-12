@@ -10,21 +10,21 @@ abstract class APIV1POSTWalletRenameResponse
             APIV1POSTWalletRenameResponseBuilder> {
   @nullable
   @BuiltValueField(wireName: r'error')
-  bool get error;
+  bool? get error;
 
   @nullable
   @BuiltValueField(wireName: r'message')
-  String get message;
+  String? get message;
 
   @nullable
   @BuiltValueField(wireName: r'wallet')
-  APIV1Wallet get wallet;
+  APIV1Wallet? get wallet;
 
   // Boilerplate code needed to wire-up generated code
   APIV1POSTWalletRenameResponse._();
 
   factory APIV1POSTWalletRenameResponse(
-          [updates(APIV1POSTWalletRenameResponseBuilder b)]) =
+          [updates(APIV1POSTWalletRenameResponseBuilder b)?]) =
       _$APIV1POSTWalletRenameResponse;
 
   static Serializer<APIV1POSTWalletRenameResponse> get serializer =>

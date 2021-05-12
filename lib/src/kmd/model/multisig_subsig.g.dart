@@ -17,9 +17,9 @@ class _$MultisigSubsigSerializer
   final String wireName = 'MultisigSubsig';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, MultisigSubsig object,
+  Iterable<Object?> serialize(Serializers serializers, MultisigSubsig object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.key != null) {
       result
         ..add('pk')
@@ -37,23 +37,23 @@ class _$MultisigSubsigSerializer
 
   @override
   MultisigSubsig deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = MultisigSubsigBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'pk':
           result.key = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 's':
           result.sig = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -64,11 +64,11 @@ class _$MultisigSubsigSerializer
 
 class _$MultisigSubsig extends MultisigSubsig {
   @override
-  final String key;
+  final String? key;
   @override
-  final String sig;
+  final String? sig;
 
-  factory _$MultisigSubsig([void Function(MultisigSubsigBuilder) updates]) =>
+  factory _$MultisigSubsig([void Function(MultisigSubsigBuilder)? updates]) =>
       (MultisigSubsigBuilder()..update(updates)).build();
 
   _$MultisigSubsig._({this.key, this.sig}) : super._();
@@ -102,22 +102,22 @@ class _$MultisigSubsig extends MultisigSubsig {
 
 class MultisigSubsigBuilder
     implements Builder<MultisigSubsig, MultisigSubsigBuilder> {
-  _$MultisigSubsig _$v;
+  _$MultisigSubsig? _$v;
 
-  String _key;
-  String get key => _$this._key;
-  set key(String key) => _$this._key = key;
+  String? _key;
+  String? get key => _$this._key;
+  set key(String? key) => _$this._key = key;
 
-  String _sig;
-  String get sig => _$this._sig;
-  set sig(String sig) => _$this._sig = sig;
+  String? _sig;
+  String? get sig => _$this._sig;
+  set sig(String? sig) => _$this._sig = sig;
 
   MultisigSubsigBuilder();
 
   MultisigSubsigBuilder get _$this {
     if (_$v != null) {
-      _key = _$v.key;
-      _sig = _$v.sig;
+      _key = _$v!.key;
+      _sig = _$v!.sig;
       _$v = null;
     }
     return this;
@@ -132,7 +132,7 @@ class MultisigSubsigBuilder
   }
 
   @override
-  void update(void Function(MultisigSubsigBuilder) updates) {
+  void update(void Function(MultisigSubsigBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

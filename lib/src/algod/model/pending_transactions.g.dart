@@ -20,10 +20,10 @@ class _$PendingTransactionsSerializer
   final String wireName = 'PendingTransactions';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, PendingTransactions object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.totalTxns != null) {
       result
         ..add('totalTxns')
@@ -41,24 +41,24 @@ class _$PendingTransactionsSerializer
 
   @override
   PendingTransactions deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = PendingTransactionsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'totalTxns':
           result.totalTxns = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'truncatedTxns':
           result.truncatedTxns.replace(serializers.deserialize(value,
                   specifiedType: const FullType(TransactionList))
-              as TransactionList);
+              as TransactionList?);
           break;
       }
     }
@@ -69,12 +69,12 @@ class _$PendingTransactionsSerializer
 
 class _$PendingTransactions extends PendingTransactions {
   @override
-  final int totalTxns;
+  final int? totalTxns;
   @override
-  final TransactionList truncatedTxns;
+  final TransactionList? truncatedTxns;
 
   factory _$PendingTransactions(
-          [void Function(PendingTransactionsBuilder) updates]) =>
+          [void Function(PendingTransactionsBuilder)? updates]) =>
       (PendingTransactionsBuilder()..update(updates)).build();
 
   _$PendingTransactions._({this.totalTxns, this.truncatedTxns}) : super._();
@@ -112,13 +112,13 @@ class _$PendingTransactions extends PendingTransactions {
 
 class PendingTransactionsBuilder
     implements Builder<PendingTransactions, PendingTransactionsBuilder> {
-  _$PendingTransactions _$v;
+  _$PendingTransactions? _$v;
 
-  int _totalTxns;
-  int get totalTxns => _$this._totalTxns;
-  set totalTxns(int totalTxns) => _$this._totalTxns = totalTxns;
+  int? _totalTxns;
+  int? get totalTxns => _$this._totalTxns;
+  set totalTxns(int? totalTxns) => _$this._totalTxns = totalTxns;
 
-  TransactionListBuilder _truncatedTxns;
+  TransactionListBuilder? _truncatedTxns;
   TransactionListBuilder get truncatedTxns =>
       _$this._truncatedTxns ??= TransactionListBuilder();
   set truncatedTxns(TransactionListBuilder truncatedTxns) =>
@@ -128,8 +128,8 @@ class PendingTransactionsBuilder
 
   PendingTransactionsBuilder get _$this {
     if (_$v != null) {
-      _totalTxns = _$v.totalTxns;
-      _truncatedTxns = _$v.truncatedTxns?.toBuilder();
+      _totalTxns = _$v!.totalTxns;
+      _truncatedTxns = _$v!.truncatedTxns?.toBuilder();
       _$v = null;
     }
     return this;
@@ -144,7 +144,7 @@ class PendingTransactionsBuilder
   }
 
   @override
-  void update(void Function(PendingTransactionsBuilder) updates) {
+  void update(void Function(PendingTransactionsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -156,7 +156,7 @@ class PendingTransactionsBuilder
           _$PendingTransactions._(
               totalTxns: totalTxns, truncatedTxns: _truncatedTxns?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'truncatedTxns';
         _truncatedTxns?.build();

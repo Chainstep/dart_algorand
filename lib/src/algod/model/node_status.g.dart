@@ -15,9 +15,9 @@ class _$NodeStatusSerializer implements StructuredSerializer<NodeStatus> {
   final String wireName = 'NodeStatus';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, NodeStatus object,
+  Iterable<Object?> serialize(Serializers serializers, NodeStatus object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.catchupTime != null) {
       result
         ..add('catchupTime')
@@ -70,47 +70,47 @@ class _$NodeStatusSerializer implements StructuredSerializer<NodeStatus> {
   }
 
   @override
-  NodeStatus deserialize(Serializers serializers, Iterable<Object> serialized,
+  NodeStatus deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = NodeStatusBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'catchupTime':
           result.catchupTime = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'hasSyncedSinceStartup':
           result.hasSyncedSinceStartup = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'lastConsensusVersion':
           result.lastConsensusVersion = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'lastRound':
           result.lastRound = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'nextConsensusVersion':
           result.nextConsensusVersion = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'nextConsensusVersionRound':
           result.nextConsensusVersionRound = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'nextConsensusVersionSupported':
           result.nextConsensusVersionSupported = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'timeSinceLastRound':
           result.timeSinceLastRound = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -121,23 +121,23 @@ class _$NodeStatusSerializer implements StructuredSerializer<NodeStatus> {
 
 class _$NodeStatus extends NodeStatus {
   @override
-  final int catchupTime;
+  final int? catchupTime;
   @override
-  final bool hasSyncedSinceStartup;
+  final bool? hasSyncedSinceStartup;
   @override
-  final String lastConsensusVersion;
+  final String? lastConsensusVersion;
   @override
-  final int lastRound;
+  final int? lastRound;
   @override
-  final String nextConsensusVersion;
+  final String? nextConsensusVersion;
   @override
-  final int nextConsensusVersionRound;
+  final int? nextConsensusVersionRound;
   @override
-  final bool nextConsensusVersionSupported;
+  final bool? nextConsensusVersionSupported;
   @override
-  final int timeSinceLastRound;
+  final int? timeSinceLastRound;
 
-  factory _$NodeStatus([void Function(NodeStatusBuilder) updates]) =>
+  factory _$NodeStatus([void Function(NodeStatusBuilder)? updates]) =>
       (NodeStatusBuilder()..update(updates)).build();
 
   _$NodeStatus._(
@@ -206,59 +206,59 @@ class _$NodeStatus extends NodeStatus {
 }
 
 class NodeStatusBuilder implements Builder<NodeStatus, NodeStatusBuilder> {
-  _$NodeStatus _$v;
+  _$NodeStatus? _$v;
 
-  int _catchupTime;
-  int get catchupTime => _$this._catchupTime;
-  set catchupTime(int catchupTime) => _$this._catchupTime = catchupTime;
+  int? _catchupTime;
+  int? get catchupTime => _$this._catchupTime;
+  set catchupTime(int? catchupTime) => _$this._catchupTime = catchupTime;
 
-  bool _hasSyncedSinceStartup;
-  bool get hasSyncedSinceStartup => _$this._hasSyncedSinceStartup;
-  set hasSyncedSinceStartup(bool hasSyncedSinceStartup) =>
+  bool? _hasSyncedSinceStartup;
+  bool? get hasSyncedSinceStartup => _$this._hasSyncedSinceStartup;
+  set hasSyncedSinceStartup(bool? hasSyncedSinceStartup) =>
       _$this._hasSyncedSinceStartup = hasSyncedSinceStartup;
 
-  String _lastConsensusVersion;
-  String get lastConsensusVersion => _$this._lastConsensusVersion;
-  set lastConsensusVersion(String lastConsensusVersion) =>
+  String? _lastConsensusVersion;
+  String? get lastConsensusVersion => _$this._lastConsensusVersion;
+  set lastConsensusVersion(String? lastConsensusVersion) =>
       _$this._lastConsensusVersion = lastConsensusVersion;
 
-  int _lastRound;
-  int get lastRound => _$this._lastRound;
-  set lastRound(int lastRound) => _$this._lastRound = lastRound;
+  int? _lastRound;
+  int? get lastRound => _$this._lastRound;
+  set lastRound(int? lastRound) => _$this._lastRound = lastRound;
 
-  String _nextConsensusVersion;
-  String get nextConsensusVersion => _$this._nextConsensusVersion;
-  set nextConsensusVersion(String nextConsensusVersion) =>
+  String? _nextConsensusVersion;
+  String? get nextConsensusVersion => _$this._nextConsensusVersion;
+  set nextConsensusVersion(String? nextConsensusVersion) =>
       _$this._nextConsensusVersion = nextConsensusVersion;
 
-  int _nextConsensusVersionRound;
-  int get nextConsensusVersionRound => _$this._nextConsensusVersionRound;
-  set nextConsensusVersionRound(int nextConsensusVersionRound) =>
+  int? _nextConsensusVersionRound;
+  int? get nextConsensusVersionRound => _$this._nextConsensusVersionRound;
+  set nextConsensusVersionRound(int? nextConsensusVersionRound) =>
       _$this._nextConsensusVersionRound = nextConsensusVersionRound;
 
-  bool _nextConsensusVersionSupported;
-  bool get nextConsensusVersionSupported =>
+  bool? _nextConsensusVersionSupported;
+  bool? get nextConsensusVersionSupported =>
       _$this._nextConsensusVersionSupported;
-  set nextConsensusVersionSupported(bool nextConsensusVersionSupported) =>
+  set nextConsensusVersionSupported(bool? nextConsensusVersionSupported) =>
       _$this._nextConsensusVersionSupported = nextConsensusVersionSupported;
 
-  int _timeSinceLastRound;
-  int get timeSinceLastRound => _$this._timeSinceLastRound;
-  set timeSinceLastRound(int timeSinceLastRound) =>
+  int? _timeSinceLastRound;
+  int? get timeSinceLastRound => _$this._timeSinceLastRound;
+  set timeSinceLastRound(int? timeSinceLastRound) =>
       _$this._timeSinceLastRound = timeSinceLastRound;
 
   NodeStatusBuilder();
 
   NodeStatusBuilder get _$this {
     if (_$v != null) {
-      _catchupTime = _$v.catchupTime;
-      _hasSyncedSinceStartup = _$v.hasSyncedSinceStartup;
-      _lastConsensusVersion = _$v.lastConsensusVersion;
-      _lastRound = _$v.lastRound;
-      _nextConsensusVersion = _$v.nextConsensusVersion;
-      _nextConsensusVersionRound = _$v.nextConsensusVersionRound;
-      _nextConsensusVersionSupported = _$v.nextConsensusVersionSupported;
-      _timeSinceLastRound = _$v.timeSinceLastRound;
+      _catchupTime = _$v!.catchupTime;
+      _hasSyncedSinceStartup = _$v!.hasSyncedSinceStartup;
+      _lastConsensusVersion = _$v!.lastConsensusVersion;
+      _lastRound = _$v!.lastRound;
+      _nextConsensusVersion = _$v!.nextConsensusVersion;
+      _nextConsensusVersionRound = _$v!.nextConsensusVersionRound;
+      _nextConsensusVersionSupported = _$v!.nextConsensusVersionSupported;
+      _timeSinceLastRound = _$v!.timeSinceLastRound;
       _$v = null;
     }
     return this;
@@ -273,7 +273,7 @@ class NodeStatusBuilder implements Builder<NodeStatus, NodeStatusBuilder> {
   }
 
   @override
-  void update(void Function(NodeStatusBuilder) updates) {
+  void update(void Function(NodeStatusBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

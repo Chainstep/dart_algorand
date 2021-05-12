@@ -7,20 +7,20 @@ abstract class DeleteMultisigRequest
     implements Built<DeleteMultisigRequest, DeleteMultisigRequestBuilder> {
   @nullable
   @BuiltValueField(wireName: r'address')
-  String get address;
+  String? get address;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_handle_token')
-  String get walletHandleToken;
+  String? get walletHandleToken;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_password')
-  String get walletPassword;
+  String? get walletPassword;
 
   // Boilerplate code needed to wire-up generated code
   DeleteMultisigRequest._();
 
-  factory DeleteMultisigRequest([updates(DeleteMultisigRequestBuilder b)]) =
+  factory DeleteMultisigRequest([updates(DeleteMultisigRequestBuilder b)?]) =
       _$DeleteMultisigRequest;
   static Serializer<DeleteMultisigRequest> get serializer =>
       _$deleteMultisigRequestSerializer;

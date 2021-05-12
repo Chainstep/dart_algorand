@@ -20,10 +20,10 @@ class _$ExportMasterKeyRequestSerializer
   final String wireName = 'ExportMasterKeyRequest';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, ExportMasterKeyRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.walletHandleToken != null) {
       result
         ..add('wallet_handle_token')
@@ -41,23 +41,23 @@ class _$ExportMasterKeyRequestSerializer
 
   @override
   ExportMasterKeyRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = ExportMasterKeyRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_password':
           result.walletPassword = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -68,12 +68,12 @@ class _$ExportMasterKeyRequestSerializer
 
 class _$ExportMasterKeyRequest extends ExportMasterKeyRequest {
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
   @override
-  final String walletPassword;
+  final String? walletPassword;
 
   factory _$ExportMasterKeyRequest(
-          [void Function(ExportMasterKeyRequestBuilder) updates]) =>
+          [void Function(ExportMasterKeyRequestBuilder)? updates]) =>
       (ExportMasterKeyRequestBuilder()..update(updates)).build();
 
   _$ExportMasterKeyRequest._({this.walletHandleToken, this.walletPassword})
@@ -113,24 +113,24 @@ class _$ExportMasterKeyRequest extends ExportMasterKeyRequest {
 
 class ExportMasterKeyRequestBuilder
     implements Builder<ExportMasterKeyRequest, ExportMasterKeyRequestBuilder> {
-  _$ExportMasterKeyRequest _$v;
+  _$ExportMasterKeyRequest? _$v;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
-  String _walletPassword;
-  String get walletPassword => _$this._walletPassword;
-  set walletPassword(String walletPassword) =>
+  String? _walletPassword;
+  String? get walletPassword => _$this._walletPassword;
+  set walletPassword(String? walletPassword) =>
       _$this._walletPassword = walletPassword;
 
   ExportMasterKeyRequestBuilder();
 
   ExportMasterKeyRequestBuilder get _$this {
     if (_$v != null) {
-      _walletHandleToken = _$v.walletHandleToken;
-      _walletPassword = _$v.walletPassword;
+      _walletHandleToken = _$v!.walletHandleToken;
+      _walletPassword = _$v!.walletPassword;
       _$v = null;
     }
     return this;
@@ -145,7 +145,7 @@ class ExportMasterKeyRequestBuilder
   }
 
   @override
-  void update(void Function(ExportMasterKeyRequestBuilder) updates) {
+  void update(void Function(ExportMasterKeyRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

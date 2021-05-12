@@ -12,12 +12,12 @@ Function eq = const ListEquality().equals;
 
 /// Represents a signed transaction.
 class MultisigTransaction implements SignedTransactionBase {
-  Transaction transaction;
-  Multisig multisig;
+  Transaction? transaction;
+  Multisig? multisig;
 
   ///  transaction: transaction that was signed
   ///  multisig: multisig account and signatures
-  MultisigTransaction({@required this.transaction, @required this.multisig});
+  MultisigTransaction({required this.transaction, required this.multisig});
 
   factory MultisigTransaction.undictify(Map<String, dynamic> m) {
     return MultisigTransaction(
@@ -37,28 +37,28 @@ class MultisigTransaction implements SignedTransactionBase {
   ///  transactions. To append a signature to a multisig transaction, just
   ///  use MultisigTransaction.sign()
   factory MultisigTransaction.merge(List<MultisigTransaction> part_stxs) {
-    String ref_addr;
+    String? ref_addr;
 
     for (var stx in part_stxs) {
-      ref_addr ??= stx.multisig.address();
-      if (stx.multisig.address() != ref_addr) {
+      ref_addr ??= stx.multisig!.address();
+      if (stx.multisig!.address() != ref_addr) {
         throw MergeKeysMismatchError();
       }
     }
 
-    MultisigTransaction msigstx;
+    MultisigTransaction? msigstx;
 
     for (var stx in part_stxs) {
       if (msigstx == null) {
         msigstx = stx;
       } else {
-        for (var s = 0; s < stx.multisig.subsigs.length; s += 1) {
-          if (stx.multisig.subsigs[s].signature != null) {
-            if (msigstx.multisig.subsigs[s].signature == null) {
-              msigstx.multisig.subsigs[s].signature =
-                  stx.multisig.subsigs[s].signature;
-            } else if (!eq(msigstx.multisig.subsigs[s].signature,
-                stx.multisig.subsigs[s].signature)) {
+        for (var s = 0; s < stx.multisig!.subsigs.length; s += 1) {
+          if (stx.multisig!.subsigs[s].signature != null) {
+            if (msigstx.multisig!.subsigs[s].signature == null) {
+              msigstx.multisig!.subsigs[s].signature =
+                  stx.multisig!.subsigs[s].signature;
+            } else if (!eq(msigstx.multisig!.subsigs[s].signature,
+                stx.multisig!.subsigs[s].signature)) {
               throw DuplicateSigMismatchError();
             }
           }
@@ -66,7 +66,7 @@ class MultisigTransaction implements SignedTransactionBase {
       }
     }
 
-    return msigstx;
+    return msigstx!;
   }
 
   /// Sign the multisig transaction with [private_key]
@@ -77,18 +77,18 @@ class MultisigTransaction implements SignedTransactionBase {
   ///            can use Multisig.get_multisig_account() to get a new multisig
   ///            object with the same addresses.
   void sign(String private_key) {
-    multisig.validate();
-    final addr = multisig.address();
+    multisig!.validate();
+    final addr = multisig!.address();
 
-    if (transaction.sender != addr) {
+    if (transaction!.sender != addr) {
       throw BadTxnSenderError();
     }
 
     var index = -1;
     final public_key = base64Decode(private_key).sublist(KEY_LEN_BYTES);
 
-    for (var s = 0; s < multisig.subsigs.length; s += 1) {
-      if (eq(multisig.subsigs[s].public_key, public_key)) {
+    for (var s = 0; s < multisig!.subsigs.length; s += 1) {
+      if (eq(multisig!.subsigs[s].public_key, public_key)) {
         index = s;
         break;
       }
@@ -98,17 +98,17 @@ class MultisigTransaction implements SignedTransactionBase {
       throw InvalidSecretKeyError();
     }
 
-    final sig = transaction.raw_sign(private_key);
-    multisig.subsigs[index].signature = sig;
+    final sig = transaction!.raw_sign(private_key);
+    multisig!.subsigs[index].signature = sig;
   }
 
   SplayTreeMap<String, dynamic> dictify() {
     final m = SplayTreeMap<String, dynamic>();
 
     if (multisig != null) {
-      m['msig'] = multisig.dictify();
+      m['msig'] = multisig!.dictify();
     }
-    m['txn'] = transaction.dictify();
+    m['txn'] = transaction!.dictify();
 
     return m;
   }
@@ -116,19 +116,19 @@ class MultisigTransaction implements SignedTransactionBase {
 
 /// Represents a multisig account and signatures.
 class Multisig {
-  int version;
-  int threshold;
+  int? version;
+  int? threshold;
   List<MultisigSubsig> subsigs = [];
 
   /// version: currently, the version is 1
   /// threshold: how many signatures are necessary
   /// addresses: addresses in the multisig account
   Multisig(
-      {@required this.version,
-      @required this.threshold,
-      @required List<String> addresses}) {
+      {required this.version,
+      required this.threshold,
+      required List<String?> addresses}) {
     for (var a in addresses) {
-      subsigs.add(MultisigSubsig(public_key: decode_address(a)));
+      subsigs.add(MultisigSubsig(public_key: decode_address(a!)));
     }
   }
 
@@ -164,7 +164,7 @@ class Multisig {
       throw UnknownMsigVersionError();
     }
 
-    if (threshold <= 0 || subsigs.isEmpty || threshold > subsigs.length) {
+    if (threshold! <= 0 || subsigs.isEmpty || threshold! > subsigs.length) {
       throw InvalidThresholdError();
     }
 
@@ -174,13 +174,13 @@ class Multisig {
   }
 
   /// Return the multisig account address.
-  String address() {
+  String? address() {
     var msig_bytes = Utf8Encoder().convert(MSIG_ADDR_PREFIX) +
-        Uint8List.fromList([version]) +
-        Uint8List.fromList([threshold]);
+        Uint8List.fromList([version!]) +
+        Uint8List.fromList([threshold!]);
 
     for (var s in subsigs) {
-      msig_bytes += s.public_key;
+      msig_bytes += s.public_key!;
     }
 
     final addr = checksum(Uint8List.fromList(msig_bytes));
@@ -202,7 +202,7 @@ class Multisig {
         if (s.signature != null) s
     ].length;
 
-    if (counter < threshold) {
+    if (counter < threshold!) {
       return false;
     }
 
@@ -211,10 +211,10 @@ class Multisig {
 
     for (var subsig in subsigs) {
       if (subsig.signature != null) {
-        verify_key = VerifyKey(subsig.public_key);
+        verify_key = VerifyKey(subsig.public_key!);
         try {
           verify_key.verify(
-              signature: Signature(subsig.signature), message: message);
+              signature: Signature(subsig.signature!), message: message);
           verified_count += 1;
         } catch (e) {
           return false;
@@ -222,7 +222,7 @@ class Multisig {
       }
     }
 
-    if (verified_count < threshold) {
+    if (verified_count < threshold!) {
       return false;
     }
 
@@ -242,16 +242,16 @@ class Multisig {
   }
 
   /// Return the base32 encoded addresses for the multisig account.
-  List<String> get_public_keys() {
+  List<String?> get_public_keys() {
     return [for (var s in subsigs) encode_address(s.public_key)];
   }
 }
 
 class MultisigSubsig {
-  Uint8List public_key;
-  Uint8List signature;
+  Uint8List? public_key;
+  Uint8List? signature;
 
-  MultisigSubsig({@required this.public_key, this.signature});
+  MultisigSubsig({required this.public_key, this.signature});
 
   factory MultisigSubsig.undictify(Map<String, dynamic> m) {
     return MultisigSubsig(
@@ -259,10 +259,10 @@ class MultisigSubsig {
   }
 
   Map<String, dynamic> json_dictify() {
-    final m = <String, dynamic>{'pk': base64Encode(public_key)};
+    final m = <String, dynamic>{'pk': base64Encode(public_key!)};
 
     if (signature != null) {
-      m['s'] = base64Encode(signature);
+      m['s'] = base64Encode(signature!);
     }
 
     return m;

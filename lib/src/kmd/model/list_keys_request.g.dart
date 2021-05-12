@@ -17,9 +17,9 @@ class _$ListKeysRequestSerializer
   final String wireName = 'ListKeysRequest';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ListKeysRequest object,
+  Iterable<Object?> serialize(Serializers serializers, ListKeysRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.walletHandleToken != null) {
       result
         ..add('wallet_handle_token')
@@ -31,19 +31,19 @@ class _$ListKeysRequestSerializer
 
   @override
   ListKeysRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = ListKeysRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -54,9 +54,9 @@ class _$ListKeysRequestSerializer
 
 class _$ListKeysRequest extends ListKeysRequest {
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
 
-  factory _$ListKeysRequest([void Function(ListKeysRequestBuilder) updates]) =>
+  factory _$ListKeysRequest([void Function(ListKeysRequestBuilder)? updates]) =>
       (ListKeysRequestBuilder()..update(updates)).build();
 
   _$ListKeysRequest._({this.walletHandleToken}) : super._();
@@ -90,18 +90,18 @@ class _$ListKeysRequest extends ListKeysRequest {
 
 class ListKeysRequestBuilder
     implements Builder<ListKeysRequest, ListKeysRequestBuilder> {
-  _$ListKeysRequest _$v;
+  _$ListKeysRequest? _$v;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
   ListKeysRequestBuilder();
 
   ListKeysRequestBuilder get _$this {
     if (_$v != null) {
-      _walletHandleToken = _$v.walletHandleToken;
+      _walletHandleToken = _$v!.walletHandleToken;
       _$v = null;
     }
     return this;
@@ -116,7 +116,7 @@ class ListKeysRequestBuilder
   }
 
   @override
-  void update(void Function(ListKeysRequestBuilder) updates) {
+  void update(void Function(ListKeysRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

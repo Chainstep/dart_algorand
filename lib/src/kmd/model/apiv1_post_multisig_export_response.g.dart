@@ -21,10 +21,10 @@ class _$APIV1POSTMultisigExportResponseSerializer
   final String wireName = 'APIV1POSTMultisigExportResponse';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, APIV1POSTMultisigExportResponse object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.error != null) {
       result
         ..add('error')
@@ -60,27 +60,27 @@ class _$APIV1POSTMultisigExportResponseSerializer
 
   @override
   APIV1POSTMultisigExportResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1POSTMultisigExportResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'error':
           result.error = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'multisig_version':
           result.multisigVersion = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'pks':
           result.pks.replace(serializers.deserialize(value,
@@ -89,7 +89,7 @@ class _$APIV1POSTMultisigExportResponseSerializer
           break;
         case 'threshold':
           result.threshold = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -101,18 +101,18 @@ class _$APIV1POSTMultisigExportResponseSerializer
 class _$APIV1POSTMultisigExportResponse
     extends APIV1POSTMultisigExportResponse {
   @override
-  final bool error;
+  final bool? error;
   @override
-  final String message;
+  final String? message;
   @override
-  final int multisigVersion;
+  final int? multisigVersion;
   @override
-  final BuiltList<String> pks;
+  final BuiltList<String>? pks;
   @override
-  final int threshold;
+  final int? threshold;
 
   factory _$APIV1POSTMultisigExportResponse(
-          [void Function(APIV1POSTMultisigExportResponseBuilder) updates]) =>
+          [void Function(APIV1POSTMultisigExportResponseBuilder)? updates]) =>
       (APIV1POSTMultisigExportResponseBuilder()..update(updates)).build();
 
   _$APIV1POSTMultisigExportResponse._(
@@ -169,38 +169,38 @@ class APIV1POSTMultisigExportResponseBuilder
     implements
         Builder<APIV1POSTMultisigExportResponse,
             APIV1POSTMultisigExportResponseBuilder> {
-  _$APIV1POSTMultisigExportResponse _$v;
+  _$APIV1POSTMultisigExportResponse? _$v;
 
-  bool _error;
-  bool get error => _$this._error;
-  set error(bool error) => _$this._error = error;
+  bool? _error;
+  bool? get error => _$this._error;
+  set error(bool? error) => _$this._error = error;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
-  int _multisigVersion;
-  int get multisigVersion => _$this._multisigVersion;
-  set multisigVersion(int multisigVersion) =>
+  int? _multisigVersion;
+  int? get multisigVersion => _$this._multisigVersion;
+  set multisigVersion(int? multisigVersion) =>
       _$this._multisigVersion = multisigVersion;
 
-  ListBuilder<String> _pks;
+  ListBuilder<String>? _pks;
   ListBuilder<String> get pks => _$this._pks ??= ListBuilder<String>();
   set pks(ListBuilder<String> pks) => _$this._pks = pks;
 
-  int _threshold;
-  int get threshold => _$this._threshold;
-  set threshold(int threshold) => _$this._threshold = threshold;
+  int? _threshold;
+  int? get threshold => _$this._threshold;
+  set threshold(int? threshold) => _$this._threshold = threshold;
 
   APIV1POSTMultisigExportResponseBuilder();
 
   APIV1POSTMultisigExportResponseBuilder get _$this {
     if (_$v != null) {
-      _error = _$v.error;
-      _message = _$v.message;
-      _multisigVersion = _$v.multisigVersion;
-      _pks = _$v.pks?.toBuilder();
-      _threshold = _$v.threshold;
+      _error = _$v!.error;
+      _message = _$v!.message;
+      _multisigVersion = _$v!.multisigVersion;
+      _pks = _$v!.pks?.toBuilder();
+      _threshold = _$v!.threshold;
       _$v = null;
     }
     return this;
@@ -215,7 +215,7 @@ class APIV1POSTMultisigExportResponseBuilder
   }
 
   @override
-  void update(void Function(APIV1POSTMultisigExportResponseBuilder) updates) {
+  void update(void Function(APIV1POSTMultisigExportResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -231,7 +231,7 @@ class APIV1POSTMultisigExportResponseBuilder
               pks: _pks?.build(),
               threshold: threshold);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'pks';
         _pks?.build();

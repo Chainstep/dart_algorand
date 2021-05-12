@@ -16,9 +16,9 @@ class _$TransactionIDSerializer implements StructuredSerializer<TransactionID> {
   final String wireName = 'TransactionID';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, TransactionID object,
+  Iterable<Object?> serialize(Serializers serializers, TransactionID object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.txId != null) {
       result
         ..add('txId')
@@ -30,19 +30,19 @@ class _$TransactionIDSerializer implements StructuredSerializer<TransactionID> {
 
   @override
   TransactionID deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = TransactionIDBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'txId':
           result.txId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -53,9 +53,9 @@ class _$TransactionIDSerializer implements StructuredSerializer<TransactionID> {
 
 class _$TransactionID extends TransactionID {
   @override
-  final String txId;
+  final String? txId;
 
-  factory _$TransactionID([void Function(TransactionIDBuilder) updates]) =>
+  factory _$TransactionID([void Function(TransactionIDBuilder)? updates]) =>
       (TransactionIDBuilder()..update(updates)).build();
 
   _$TransactionID._({this.txId}) : super._();
@@ -87,17 +87,17 @@ class _$TransactionID extends TransactionID {
 
 class TransactionIDBuilder
     implements Builder<TransactionID, TransactionIDBuilder> {
-  _$TransactionID _$v;
+  _$TransactionID? _$v;
 
-  String _txId;
-  String get txId => _$this._txId;
-  set txId(String txId) => _$this._txId = txId;
+  String? _txId;
+  String? get txId => _$this._txId;
+  set txId(String? txId) => _$this._txId = txId;
 
   TransactionIDBuilder();
 
   TransactionIDBuilder get _$this {
     if (_$v != null) {
-      _txId = _$v.txId;
+      _txId = _$v!.txId;
       _$v = null;
     }
     return this;
@@ -112,7 +112,7 @@ class TransactionIDBuilder
   }
 
   @override
-  void update(void Function(TransactionIDBuilder) updates) {
+  void update(void Function(TransactionIDBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

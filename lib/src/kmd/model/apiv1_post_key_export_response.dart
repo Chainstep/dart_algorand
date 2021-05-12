@@ -8,21 +8,21 @@ abstract class APIV1POSTKeyExportResponse
         Built<APIV1POSTKeyExportResponse, APIV1POSTKeyExportResponseBuilder> {
   @nullable
   @BuiltValueField(wireName: r'error')
-  bool get error;
+  bool? get error;
 
   @nullable
   @BuiltValueField(wireName: r'message')
-  String get message;
+  String? get message;
 
   @nullable
   @BuiltValueField(wireName: r'private_key')
-  String get privateKey;
+  String? get privateKey;
 
   // Boilerplate code needed to wire-up generated code
   APIV1POSTKeyExportResponse._();
 
   factory APIV1POSTKeyExportResponse(
-          [Function(APIV1POSTKeyExportResponseBuilder) updates]) =
+          [Function(APIV1POSTKeyExportResponseBuilder)? updates]) =
       _$APIV1POSTKeyExportResponse;
 
   static Serializer<APIV1POSTKeyExportResponse> get serializer =>

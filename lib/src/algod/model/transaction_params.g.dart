@@ -17,9 +17,9 @@ class _$TransactionParamsSerializer
   final String wireName = 'TransactionParams';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, TransactionParams object,
+  Iterable<Object?> serialize(Serializers serializers, TransactionParams object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.consensusVersion != null) {
       result
         ..add('consensusVersion')
@@ -61,39 +61,39 @@ class _$TransactionParamsSerializer
 
   @override
   TransactionParams deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = TransactionParamsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'consensusVersion':
           result.consensusVersion = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'fee':
           result.fee = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'genesisID':
           result.genesisID = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'genesishashb64':
           result.genesishashb64 = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'lastRound':
           result.lastRound = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'minFee':
           result.minFee = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -104,20 +104,20 @@ class _$TransactionParamsSerializer
 
 class _$TransactionParams extends TransactionParams {
   @override
-  final String consensusVersion;
+  final String? consensusVersion;
   @override
-  final int fee;
+  final int? fee;
   @override
-  final String genesisID;
+  final String? genesisID;
   @override
-  final String genesishashb64;
+  final String? genesishashb64;
   @override
-  final int lastRound;
+  final int? lastRound;
   @override
-  final int minFee;
+  final int? minFee;
 
   factory _$TransactionParams(
-          [void Function(TransactionParamsBuilder) updates]) =>
+          [void Function(TransactionParamsBuilder)? updates]) =>
       (TransactionParamsBuilder()..update(updates)).build();
 
   _$TransactionParams._(
@@ -176,44 +176,44 @@ class _$TransactionParams extends TransactionParams {
 
 class TransactionParamsBuilder
     implements Builder<TransactionParams, TransactionParamsBuilder> {
-  _$TransactionParams _$v;
+  _$TransactionParams? _$v;
 
-  String _consensusVersion;
-  String get consensusVersion => _$this._consensusVersion;
-  set consensusVersion(String consensusVersion) =>
+  String? _consensusVersion;
+  String? get consensusVersion => _$this._consensusVersion;
+  set consensusVersion(String? consensusVersion) =>
       _$this._consensusVersion = consensusVersion;
 
-  int _fee;
-  int get fee => _$this._fee;
-  set fee(int fee) => _$this._fee = fee;
+  int? _fee;
+  int? get fee => _$this._fee;
+  set fee(int? fee) => _$this._fee = fee;
 
-  String _genesisID;
-  String get genesisID => _$this._genesisID;
-  set genesisID(String genesisID) => _$this._genesisID = genesisID;
+  String? _genesisID;
+  String? get genesisID => _$this._genesisID;
+  set genesisID(String? genesisID) => _$this._genesisID = genesisID;
 
-  String _genesishashb64;
-  String get genesishashb64 => _$this._genesishashb64;
-  set genesishashb64(String genesishashb64) =>
+  String? _genesishashb64;
+  String? get genesishashb64 => _$this._genesishashb64;
+  set genesishashb64(String? genesishashb64) =>
       _$this._genesishashb64 = genesishashb64;
 
-  int _lastRound;
-  int get lastRound => _$this._lastRound;
-  set lastRound(int lastRound) => _$this._lastRound = lastRound;
+  int? _lastRound;
+  int? get lastRound => _$this._lastRound;
+  set lastRound(int? lastRound) => _$this._lastRound = lastRound;
 
-  int _minFee;
-  int get minFee => _$this._minFee;
-  set minFee(int minFee) => _$this._minFee = minFee;
+  int? _minFee;
+  int? get minFee => _$this._minFee;
+  set minFee(int? minFee) => _$this._minFee = minFee;
 
   TransactionParamsBuilder();
 
   TransactionParamsBuilder get _$this {
     if (_$v != null) {
-      _consensusVersion = _$v.consensusVersion;
-      _fee = _$v.fee;
-      _genesisID = _$v.genesisID;
-      _genesishashb64 = _$v.genesishashb64;
-      _lastRound = _$v.lastRound;
-      _minFee = _$v.minFee;
+      _consensusVersion = _$v!.consensusVersion;
+      _fee = _$v!.fee;
+      _genesisID = _$v!.genesisID;
+      _genesishashb64 = _$v!.genesishashb64;
+      _lastRound = _$v!.lastRound;
+      _minFee = _$v!.minFee;
       _$v = null;
     }
     return this;
@@ -228,7 +228,7 @@ class TransactionParamsBuilder
   }
 
   @override
-  void update(void Function(TransactionParamsBuilder) updates) {
+  void update(void Function(TransactionParamsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

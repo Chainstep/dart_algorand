@@ -14,18 +14,18 @@ import 'error.dart';
 ///
 
 class AssetConfigTxn extends Transaction {
-  int total;
+  int? total;
   bool default_frozen;
-  String unit_name;
-  String asset_name;
-  String manager;
-  String reserve;
-  String freeze;
-  String clawback;
-  String url;
-  Uint8List metadata_hash;
-  int decimals;
-  int index;
+  String? unit_name;
+  String? asset_name;
+  String? manager;
+  String? reserve;
+  String? freeze;
+  String? clawback;
+  String? url;
+  Uint8List? metadata_hash;
+  int? decimals;
+  int? index;
 
   /// To create an asset, include the following:
   /// total, default_frozen, unit_name, asset_name,
@@ -94,14 +94,14 @@ class AssetConfigTxn extends Transaction {
   ///  base unit of the asset is in tenths. Must be between 0 and 19,
   ///  inclusive. Defaults to 0.
   AssetConfigTxn(
-      {@required String sender,
-      @required int fee,
-      @required int first_valid_round,
-      @required int last_valid_round,
-      Uint8List note,
-      String genesis_id,
-      @required String genesis_hash,
-      Uint8List lease,
+      {required String? sender,
+      required int? fee,
+      required int? first_valid_round,
+      required int? last_valid_round,
+      Uint8List? note,
+      String? genesis_id,
+      required String? genesis_hash,
+      Uint8List? lease,
       bool flat_fee = false,
       this.total,
       this.default_frozen = false,
@@ -131,8 +131,8 @@ class AssetConfigTxn extends Transaction {
     }
 
     this.fee = flat_fee
-        ? max(MIN_TXN_FEE, fee)
-        : max(estimate_size() * fee, MIN_TXN_FEE);
+        ? max(MIN_TXN_FEE, fee!)
+        : max(estimate_size() * fee!, MIN_TXN_FEE);
 
     if (strict_empty_address_check) {
       if (!(manager != null &&
@@ -144,13 +144,13 @@ class AssetConfigTxn extends Transaction {
     }
 
     if (decimals != null) {
-      if (decimals < 0 || decimals > MAX_ASSET_DECIMALS) {
+      if (decimals! < 0 || decimals! > MAX_ASSET_DECIMALS) {
         throw OutOfRangeDecimalsError();
       }
     }
 
     if (metadata_hash != null) {
-      if (metadata_hash.length != METADATA_LENGTH) {
+      if (metadata_hash!.length != METADATA_LENGTH) {
         throw WrongMetadataLengthError();
       }
     }
@@ -184,7 +184,7 @@ class AssetConfigTxn extends Transaction {
       }
 
       if (clawback != null) {
-        apar['c'] = decode_address(clawback);
+        apar['c'] = decode_address(clawback!);
       }
 
       if (decimals != null) {
@@ -196,15 +196,15 @@ class AssetConfigTxn extends Transaction {
       }
 
       if (freeze != null) {
-        apar['f'] = decode_address(freeze);
+        apar['f'] = decode_address(freeze!);
       }
 
       if (manager != null) {
-        apar['m'] = decode_address(manager);
+        apar['m'] = decode_address(manager!);
       }
 
       if (reserve != null) {
-        apar['r'] = decode_address(reserve);
+        apar['r'] = decode_address(reserve!);
       }
 
       if (total != null) {

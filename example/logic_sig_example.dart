@@ -1,5 +1,7 @@
+import 'dart:async';
 import 'dart:typed_data';
 
+import 'package:dart_algorand/algod.dart';
 import 'package:dart_algorand/dart_algorand.dart';
 
 import 'params.dart';
@@ -16,14 +18,14 @@ void main() async {
   final account1 = generate_account();
 
   // get suggested params
-  final params = await acl.transactionParams();
+  final params = await (acl.transactionParams() as FutureOr<TransactionParams>);
 
   // create transaction
   final txn = PaymentTxn(
       sender: sender,
       fee: params.fee,
       first_valid_round: params.lastRound,
-      last_valid_round: params.lastRound + 100,
+      last_valid_round: params.lastRound! + 100,
       genesis_hash: params.genesishashb64,
       receiver: account1.address,
       genesis_id: params.genesisID,
@@ -33,7 +35,7 @@ void main() async {
   // that means sender address must match to program hash
 
   final lstx = LogicSigTransaction(transaction: txn, lsig: lsig);
-  assert(lstx.verify());
+  assert(lstx.verify()!);
 
   // send them over the network
   // await acl.sendTransaction(lstx);

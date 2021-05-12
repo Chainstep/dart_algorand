@@ -17,9 +17,9 @@ class _$GenerateKeyRequestSerializer
   final String wireName = 'GenerateKeyRequest';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GenerateKeyRequest object,
+  Iterable<Object?> serialize(Serializers serializers, GenerateKeyRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.displayMnemonic != null) {
       result
         ..add('display_mnemonic')
@@ -37,23 +37,23 @@ class _$GenerateKeyRequestSerializer
 
   @override
   GenerateKeyRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = GenerateKeyRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'display_mnemonic':
           result.displayMnemonic = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -64,12 +64,12 @@ class _$GenerateKeyRequestSerializer
 
 class _$GenerateKeyRequest extends GenerateKeyRequest {
   @override
-  final bool displayMnemonic;
+  final bool? displayMnemonic;
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
 
   factory _$GenerateKeyRequest(
-          [void Function(GenerateKeyRequestBuilder) updates]) =>
+          [void Function(GenerateKeyRequestBuilder)? updates]) =>
       (GenerateKeyRequestBuilder()..update(updates)).build();
 
   _$GenerateKeyRequest._({this.displayMnemonic, this.walletHandleToken})
@@ -109,24 +109,24 @@ class _$GenerateKeyRequest extends GenerateKeyRequest {
 
 class GenerateKeyRequestBuilder
     implements Builder<GenerateKeyRequest, GenerateKeyRequestBuilder> {
-  _$GenerateKeyRequest _$v;
+  _$GenerateKeyRequest? _$v;
 
-  bool _displayMnemonic;
-  bool get displayMnemonic => _$this._displayMnemonic;
-  set displayMnemonic(bool displayMnemonic) =>
+  bool? _displayMnemonic;
+  bool? get displayMnemonic => _$this._displayMnemonic;
+  set displayMnemonic(bool? displayMnemonic) =>
       _$this._displayMnemonic = displayMnemonic;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
   GenerateKeyRequestBuilder();
 
   GenerateKeyRequestBuilder get _$this {
     if (_$v != null) {
-      _displayMnemonic = _$v.displayMnemonic;
-      _walletHandleToken = _$v.walletHandleToken;
+      _displayMnemonic = _$v!.displayMnemonic;
+      _walletHandleToken = _$v!.walletHandleToken;
       _$v = null;
     }
     return this;
@@ -141,7 +141,7 @@ class GenerateKeyRequestBuilder
   }
 
   @override
-  void update(void Function(GenerateKeyRequestBuilder) updates) {
+  void update(void Function(GenerateKeyRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

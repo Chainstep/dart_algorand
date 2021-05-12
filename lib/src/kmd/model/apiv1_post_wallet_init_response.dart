@@ -8,21 +8,21 @@ abstract class APIV1POSTWalletInitResponse
         Built<APIV1POSTWalletInitResponse, APIV1POSTWalletInitResponseBuilder> {
   @nullable
   @BuiltValueField(wireName: r'error')
-  bool get error;
+  bool? get error;
 
   @nullable
   @BuiltValueField(wireName: r'message')
-  String get message;
+  String? get message;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_handle_token')
-  String get walletHandleToken;
+  String? get walletHandleToken;
 
   // Boilerplate code needed to wire-up generated code
   APIV1POSTWalletInitResponse._();
 
   factory APIV1POSTWalletInitResponse(
-          [updates(APIV1POSTWalletInitResponseBuilder b)]) =
+          [updates(APIV1POSTWalletInitResponseBuilder b)?]) =
       _$APIV1POSTWalletInitResponse;
 
   static Serializer<APIV1POSTWalletInitResponse> get serializer =>

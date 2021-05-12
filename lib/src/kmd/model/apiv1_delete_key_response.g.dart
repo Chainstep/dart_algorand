@@ -20,10 +20,10 @@ class _$APIV1DELETEKeyResponseSerializer
   final String wireName = 'APIV1DELETEKeyResponse';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, APIV1DELETEKeyResponse object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.error != null) {
       result
         ..add('error')
@@ -41,23 +41,23 @@ class _$APIV1DELETEKeyResponseSerializer
 
   @override
   APIV1DELETEKeyResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1DELETEKeyResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'error':
           result.error = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -68,12 +68,12 @@ class _$APIV1DELETEKeyResponseSerializer
 
 class _$APIV1DELETEKeyResponse extends APIV1DELETEKeyResponse {
   @override
-  final bool error;
+  final bool? error;
   @override
-  final String message;
+  final String? message;
 
   factory _$APIV1DELETEKeyResponse(
-          [void Function(APIV1DELETEKeyResponseBuilder) updates]) =>
+          [void Function(APIV1DELETEKeyResponseBuilder)? updates]) =>
       (APIV1DELETEKeyResponseBuilder()..update(updates)).build();
 
   _$APIV1DELETEKeyResponse._({this.error, this.message}) : super._();
@@ -111,22 +111,22 @@ class _$APIV1DELETEKeyResponse extends APIV1DELETEKeyResponse {
 
 class APIV1DELETEKeyResponseBuilder
     implements Builder<APIV1DELETEKeyResponse, APIV1DELETEKeyResponseBuilder> {
-  _$APIV1DELETEKeyResponse _$v;
+  _$APIV1DELETEKeyResponse? _$v;
 
-  bool _error;
-  bool get error => _$this._error;
-  set error(bool error) => _$this._error = error;
+  bool? _error;
+  bool? get error => _$this._error;
+  set error(bool? error) => _$this._error = error;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
   APIV1DELETEKeyResponseBuilder();
 
   APIV1DELETEKeyResponseBuilder get _$this {
     if (_$v != null) {
-      _error = _$v.error;
-      _message = _$v.message;
+      _error = _$v!.error;
+      _message = _$v!.message;
       _$v = null;
     }
     return this;
@@ -141,7 +141,7 @@ class APIV1DELETEKeyResponseBuilder
   }
 
   @override
-  void update(void Function(APIV1DELETEKeyResponseBuilder) updates) {
+  void update(void Function(APIV1DELETEKeyResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

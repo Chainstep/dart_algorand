@@ -21,10 +21,10 @@ class _$APIV1POSTWalletInitResponseSerializer
   final String wireName = 'APIV1POSTWalletInitResponse';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, APIV1POSTWalletInitResponse object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.error != null) {
       result
         ..add('error')
@@ -48,27 +48,27 @@ class _$APIV1POSTWalletInitResponseSerializer
 
   @override
   APIV1POSTWalletInitResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1POSTWalletInitResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'error':
           result.error = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -79,14 +79,14 @@ class _$APIV1POSTWalletInitResponseSerializer
 
 class _$APIV1POSTWalletInitResponse extends APIV1POSTWalletInitResponse {
   @override
-  final bool error;
+  final bool? error;
   @override
-  final String message;
+  final String? message;
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
 
   factory _$APIV1POSTWalletInitResponse(
-          [void Function(APIV1POSTWalletInitResponseBuilder) updates]) =>
+          [void Function(APIV1POSTWalletInitResponseBuilder)? updates]) =>
       (APIV1POSTWalletInitResponseBuilder()..update(updates)).build();
 
   _$APIV1POSTWalletInitResponse._(
@@ -131,28 +131,28 @@ class APIV1POSTWalletInitResponseBuilder
     implements
         Builder<APIV1POSTWalletInitResponse,
             APIV1POSTWalletInitResponseBuilder> {
-  _$APIV1POSTWalletInitResponse _$v;
+  _$APIV1POSTWalletInitResponse? _$v;
 
-  bool _error;
-  bool get error => _$this._error;
-  set error(bool error) => _$this._error = error;
+  bool? _error;
+  bool? get error => _$this._error;
+  set error(bool? error) => _$this._error = error;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
   APIV1POSTWalletInitResponseBuilder();
 
   APIV1POSTWalletInitResponseBuilder get _$this {
     if (_$v != null) {
-      _error = _$v.error;
-      _message = _$v.message;
-      _walletHandleToken = _$v.walletHandleToken;
+      _error = _$v!.error;
+      _message = _$v!.message;
+      _walletHandleToken = _$v!.walletHandleToken;
       _$v = null;
     }
     return this;
@@ -167,7 +167,7 @@ class APIV1POSTWalletInitResponseBuilder
   }
 
   @override
-  void update(void Function(APIV1POSTWalletInitResponseBuilder) updates) {
+  void update(void Function(APIV1POSTWalletInitResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

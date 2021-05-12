@@ -47,8 +47,8 @@ import '../model/apiv1_post_wallet_release_response.dart';
 import '../model/list_keys_request.dart';
 
 class KmdApi {
-  final Dio _dio;
-  Serializers _serializers;
+  final Dio? _dio;
+  Serializers? _serializers;
 
   KmdApi(this._dio, this._serializers);
 
@@ -57,8 +57,8 @@ class KmdApi {
   /// Create a new wallet (collection of keys) with the given parameters.
   Future<Response<APIV1POSTWalletResponse>> createWallet(
     CreateWalletRequest createWalletRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/wallet';
 
@@ -71,12 +71,12 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         CreateWalletRequest.serializer, createWalletRequest);
     var jsoncreateWalletRequest = json.encode(serializedBody);
     bodyData = jsoncreateWalletRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -90,14 +90,14 @@ class KmdApi {
       cancelToken: cancelToken,
     )
         .then((response) {
-      var serializer = _serializers.serializerForType(APIV1POSTWalletResponse);
-      var data = _serializers.deserializeWith<APIV1POSTWalletResponse>(
-          serializer, response.data);
+      var serializer = _serializers!.serializerForType(APIV1POSTWalletResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTWalletResponse?>(
+          serializer as Serializer<APIV1POSTWalletResponse?>, response.data);
 
       return Response<APIV1POSTWalletResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -111,8 +111,8 @@ class KmdApi {
   /// Deletes the key with the passed public key from the wallet.
   Future<Response<APIV1DELETEKeyResponse>> deleteKey(
     DeleteKeyRequest deleteKeyRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/key';
 
@@ -125,12 +125,12 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         DeleteKeyRequest.serializer, deleteKeyRequest);
     var jsondeleteKeyRequest = json.encode(serializedBody);
     bodyData = jsondeleteKeyRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -144,14 +144,14 @@ class KmdApi {
       cancelToken: cancelToken,
     )
         .then((response) {
-      var serializer = _serializers.serializerForType(APIV1DELETEKeyResponse);
-      var data = _serializers.deserializeWith<APIV1DELETEKeyResponse>(
-          serializer, response.data);
+      var serializer = _serializers!.serializerForType(APIV1DELETEKeyResponse)!;
+      var data = _serializers!.deserializeWith<APIV1DELETEKeyResponse?>(
+          serializer as Serializer<APIV1DELETEKeyResponse?>, response.data);
 
       return Response<APIV1DELETEKeyResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -165,8 +165,8 @@ class KmdApi {
   /// Deletes multisig preimage information for the passed address from the wallet.
   Future<Response<APIV1DELETEMultisigResponse>> deleteMultisig(
     DeleteMultisigRequest deleteMultisigRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/multisig';
 
@@ -179,11 +179,11 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serialize(deleteMultisigRequest);
+    var serializedBody = _serializers!.serialize(deleteMultisigRequest);
     var jsondeleteMultisigRequest = json.encode(serializedBody);
     bodyData = jsondeleteMultisigRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -198,14 +198,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1DELETEMultisigResponse);
-      var data = _serializers.deserializeWith<APIV1DELETEMultisigResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1DELETEMultisigResponse)!;
+      var data = _serializers!.deserializeWith<APIV1DELETEMultisigResponse?>(
+          serializer as Serializer<APIV1DELETEMultisigResponse?>, response.data);
 
       return Response<APIV1DELETEMultisigResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -219,8 +219,8 @@ class KmdApi {
   /// Export the secret key associated with the passed public key.
   Future<Response<APIV1POSTKeyExportResponse>> exportKey(
     ExportKeyRequest exportKeyRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/key/export';
 
@@ -233,12 +233,12 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         ExportKeyRequest.serializer, exportKeyRequest);
     var jsonexportKeyRequest = json.encode(serializedBody);
     bodyData = jsonexportKeyRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -253,14 +253,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTKeyExportResponse);
-      var data = _serializers.deserializeWith<APIV1POSTKeyExportResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1POSTKeyExportResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTKeyExportResponse?>(
+          serializer as Serializer<APIV1POSTKeyExportResponse?>, response.data);
 
       return Response<APIV1POSTKeyExportResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -274,8 +274,8 @@ class KmdApi {
   /// Export the master derivation key from the wallet. This key is a master \&quot;backup\&quot; key for the underlying wallet. With it, you can regenerate all of the wallets that have been generated with this wallet&#39;s &#x60;POST /v1/key&#x60; endpoint. This key will not allow you to recover keys imported from other wallets, however.
   Future<Response<APIV1POSTMasterKeyExportResponse>> exportMasterKey(
     ExportMasterKeyRequest exportMasterKeyRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/master-key/export';
 
@@ -288,12 +288,12 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         ExportMasterKeyRequest.serializer, exportMasterKeyRequest);
     var jsonexportMasterKeyRequest = json.encode(serializedBody);
     bodyData = jsonexportMasterKeyRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -308,14 +308,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTMasterKeyExportResponse);
-      var data = _serializers.deserializeWith<APIV1POSTMasterKeyExportResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1POSTMasterKeyExportResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTMasterKeyExportResponse?>(
+          serializer as Serializer<APIV1POSTMasterKeyExportResponse?>, response.data);
 
       return Response<APIV1POSTMasterKeyExportResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -329,8 +329,8 @@ class KmdApi {
   /// Given a multisig address whose preimage this wallet stores, returns the information used to generate the address, including public keys, threshold, and multisig version.
   Future<Response<APIV1POSTMultisigExportResponse>> exportMultisig(
     ExportMultisigRequest exportMultisigRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/multisig/export';
 
@@ -343,12 +343,12 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         ExportMultisigRequest.serializer, exportMultisigRequest);
     var jsonexportMultisigRequest = json.encode(serializedBody);
     bodyData = jsonexportMultisigRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -363,14 +363,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTMultisigExportResponse);
-      var data = _serializers.deserializeWith<APIV1POSTMultisigExportResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1POSTMultisigExportResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTMultisigExportResponse?>(
+          serializer as Serializer<APIV1POSTMultisigExportResponse?>, response.data);
 
       return Response<APIV1POSTMultisigExportResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -384,8 +384,8 @@ class KmdApi {
   /// Generates the next key in the deterministic key sequence (as determined by the master derivation key) and adds it to the wallet, returning the public key.
   Future<Response<APIV1POSTKeyResponse>> generateKey(
     GenerateKeyRequest generateKeyRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/key';
 
@@ -398,12 +398,12 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         GenerateKeyRequest.serializer, generateKeyRequest);
     var jsongenerateKeyRequest = json.encode(serializedBody);
     bodyData = jsongenerateKeyRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -417,14 +417,14 @@ class KmdApi {
       cancelToken: cancelToken,
     )
         .then((response) {
-      var serializer = _serializers.serializerForType(APIV1POSTKeyResponse);
-      var data = _serializers.deserializeWith<APIV1POSTKeyResponse>(
-          serializer, response.data);
+      var serializer = _serializers!.serializerForType(APIV1POSTKeyResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTKeyResponse?>(
+          serializer as Serializer<APIV1POSTKeyResponse?>, response.data);
 
       return Response<APIV1POSTKeyResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -437,8 +437,8 @@ class KmdApi {
   ///
   ///
   Future<Response<VersionsResponse>> getVersion({
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/versions';
 
@@ -450,7 +450,7 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -463,14 +463,14 @@ class KmdApi {
       cancelToken: cancelToken,
     )
         .then((response) {
-      var serializer = _serializers.serializerForType(VersionsResponse);
-      var data = _serializers.deserializeWith<VersionsResponse>(
-          serializer, response.data);
+      var serializer = _serializers!.serializerForType(VersionsResponse)!;
+      var data = _serializers!.deserializeWith<VersionsResponse?>(
+          serializer as Serializer<VersionsResponse?>, response.data);
 
       return Response<VersionsResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -484,8 +484,8 @@ class KmdApi {
   /// Returns information about the wallet associated with the passed wallet handle token. Additionally returns expiration information about the token itself.
   Future<Response<APIV1POSTWalletInfoResponse>> getWalletInfo(
     WalletInfoRequest getWalletInfoRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/wallet/info';
 
@@ -498,12 +498,12 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         WalletInfoRequest.serializer, getWalletInfoRequest);
     var jsongetWalletInfoRequest = json.encode(serializedBody);
     bodyData = jsongetWalletInfoRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -518,14 +518,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTWalletInfoResponse);
-      var data = _serializers.deserializeWith<APIV1POSTWalletInfoResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1POSTWalletInfoResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTWalletInfoResponse?>(
+          serializer as Serializer<APIV1POSTWalletInfoResponse?>, response.data);
 
       return Response<APIV1POSTWalletInfoResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -539,8 +539,8 @@ class KmdApi {
   /// Import an externally generated key into the wallet. Note that if you wish to back up the imported key, you must do so by backing up the entire wallet database, because imported keys were not derived from the wallet&#39;s master derivation key.
   Future<Response<APIV1POSTKeyImportResponse>> importKey(
     ImportKeyRequest importKeyRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/key/import';
 
@@ -553,12 +553,12 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         ImportKeyRequest.serializer, importKeyRequest);
     var jsonimportKeyRequest = json.encode(serializedBody);
     bodyData = jsonimportKeyRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -573,14 +573,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTKeyImportResponse);
-      var data = _serializers.deserializeWith<APIV1POSTKeyImportResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1POSTKeyImportResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTKeyImportResponse?>(
+          serializer as Serializer<APIV1POSTKeyImportResponse?>, response.data);
 
       return Response<APIV1POSTKeyImportResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -594,8 +594,8 @@ class KmdApi {
   /// Generates a multisig account from the passed public keys array and multisig metadata, and stores all of this in the wallet.
   Future<Response<APIV1POSTMultisigImportResponse>> importMultisig(
     ImportMultisigRequest importMultisigRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/multisig/import';
 
@@ -608,12 +608,12 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         ImportMultisigRequest.serializer, importMultisigRequest);
     var jsonimportMultisigRequest = json.encode(serializedBody);
     bodyData = jsonimportMultisigRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -628,14 +628,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTMultisigImportResponse);
-      var data = _serializers.deserializeWith<APIV1POSTMultisigImportResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1POSTMultisigImportResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTMultisigImportResponse?>(
+          serializer as Serializer<APIV1POSTMultisigImportResponse?>, response.data);
 
       return Response<APIV1POSTMultisigImportResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -649,8 +649,8 @@ class KmdApi {
   /// Unlock the wallet and return a wallet handle token that can be used for subsequent operations. These tokens expire periodically and must be renewed. You can &#x60;POST&#x60; the token to &#x60;/v1/wallet/info&#x60; to see how much time remains until expiration, and renew it with &#x60;/v1/wallet/renew&#x60;. When you&#39;re done, you can invalidate the token with &#x60;/v1/wallet/release&#x60;.
   Future<Response<APIV1POSTWalletInitResponse>> initWalletHandleToken(
     InitWalletHandleTokenRequest initializeWalletHandleTokenRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/wallet/init';
 
@@ -663,13 +663,13 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         InitWalletHandleTokenRequest.serializer,
         initializeWalletHandleTokenRequest);
     var jsoninitializeWalletHandleTokenRequest = json.encode(serializedBody);
     bodyData = jsoninitializeWalletHandleTokenRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -684,14 +684,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTWalletInitResponse);
-      var data = _serializers.deserializeWith<APIV1POSTWalletInitResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1POSTWalletInitResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTWalletInitResponse?>(
+          serializer as Serializer<APIV1POSTWalletInitResponse?>, response.data);
 
       return Response<APIV1POSTWalletInitResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -705,8 +705,8 @@ class KmdApi {
   /// Lists all of the public keys in this wallet. All of them have a stored private key.
   Future<Response<APIV1POSTKeyListResponse>> listKeysInWallet(
     ListKeysRequest listKeysRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/key/list';
 
@@ -720,11 +720,11 @@ class KmdApi {
     List<String> contentTypes = ['application/json'];
 
     var serializedBody =
-        _serializers.serializeWith(ListKeysRequest.serializer, listKeysRequest);
+        _serializers!.serializeWith(ListKeysRequest.serializer, listKeysRequest);
     var jsonlistKeysRequest = json.encode(serializedBody);
     bodyData = jsonlistKeysRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -738,14 +738,14 @@ class KmdApi {
       cancelToken: cancelToken,
     )
         .then((response) {
-      var serializer = _serializers.serializerForType(APIV1POSTKeyListResponse);
-      var data = _serializers.deserializeWith<APIV1POSTKeyListResponse>(
-          serializer, response.data);
+      var serializer = _serializers!.serializerForType(APIV1POSTKeyListResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTKeyListResponse?>(
+          serializer as Serializer<APIV1POSTKeyListResponse?>, response.data);
 
       return Response<APIV1POSTKeyListResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -759,8 +759,8 @@ class KmdApi {
   /// Lists all of the multisig accounts whose preimages this wallet stores
   Future<Response<APIV1POSTMultisigListResponse>> listMultisg(
     ListMultisigRequest listMultisigRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/multisig/list';
 
@@ -773,12 +773,12 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         ListMultisigRequest.serializer, listMultisigRequest);
     var jsonlistMultisigRequest = json.encode(serializedBody);
     bodyData = jsonlistMultisigRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -793,14 +793,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTMultisigListResponse);
-      var data = _serializers.deserializeWith<APIV1POSTMultisigListResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1POSTMultisigListResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTMultisigListResponse?>(
+          serializer as Serializer<APIV1POSTMultisigListResponse?>, response.data);
 
       return Response<APIV1POSTMultisigListResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -813,8 +813,8 @@ class KmdApi {
   ///
   /// Lists all of the wallets that kmd is aware of.
   Future<Response<APIV1GETWalletsResponse>> listWallets({
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/wallets';
 
@@ -826,7 +826,7 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -839,14 +839,14 @@ class KmdApi {
       cancelToken: cancelToken,
     )
         .then((response) {
-      var serializer = _serializers.serializerForType(APIV1GETWalletsResponse);
-      var data = _serializers.deserializeWith<APIV1GETWalletsResponse>(
-          serializer, response.data);
+      var serializer = _serializers!.serializerForType(APIV1GETWalletsResponse)!;
+      var data = _serializers!.deserializeWith<APIV1GETWalletsResponse?>(
+          serializer as Serializer<APIV1GETWalletsResponse?>, response.data);
 
       return Response<APIV1GETWalletsResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -860,8 +860,8 @@ class KmdApi {
   /// Invalidate the passed wallet handle token, making it invalid for use in subsequent requests.
   Future<Response<APIV1POSTWalletReleaseResponse>> releaseWalletHandleToken(
     ReleaseWalletHandleTokenRequest releaseWalletHandleTokenRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/wallet/release';
 
@@ -874,13 +874,13 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         ReleaseWalletHandleTokenRequest.serializer,
         releaseWalletHandleTokenRequest);
     var jsonreleaseWalletHandleTokenRequest = json.encode(serializedBody);
     bodyData = jsonreleaseWalletHandleTokenRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -895,14 +895,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTWalletReleaseResponse);
-      var data = _serializers.deserializeWith<APIV1POSTWalletReleaseResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1POSTWalletReleaseResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTWalletReleaseResponse?>(
+          serializer as Serializer<APIV1POSTWalletReleaseResponse?>, response.data);
 
       return Response<APIV1POSTWalletReleaseResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -916,8 +916,8 @@ class KmdApi {
   /// Rename the underlying wallet to something else
   Future<Response<APIV1POSTWalletRenameResponse>> renameWallet(
     RenameWalletRequest renameWalletRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/wallet/rename';
 
@@ -930,12 +930,12 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         RenameWalletRequest.serializer, renameWalletRequest);
     var jsonrenameWalletRequest = json.encode(serializedBody);
     bodyData = jsonrenameWalletRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -950,14 +950,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTWalletRenameResponse);
-      var data = _serializers.deserializeWith<APIV1POSTWalletRenameResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1POSTWalletRenameResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTWalletRenameResponse?>(
+          serializer as Serializer<APIV1POSTWalletRenameResponse?>, response.data);
 
       return Response<APIV1POSTWalletRenameResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -971,8 +971,8 @@ class KmdApi {
   /// Renew a wallet handle token, increasing its expiration duration to its initial value
   Future<Response<APIV1POSTWalletRenewResponse>> renewWalletHandleToken(
     RenewWalletHandleTokenRequest renewWalletHandleTokenRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/wallet/renew';
 
@@ -985,13 +985,13 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         RenewWalletHandleTokenRequest.serializer,
         renewWalletHandleTokenRequest);
     var jsonrenewWalletHandleTokenRequest = json.encode(serializedBody);
     bodyData = jsonrenewWalletHandleTokenRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -1006,14 +1006,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTWalletRenewResponse);
-      var data = _serializers.deserializeWith<APIV1POSTWalletRenewResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1POSTWalletRenewResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTWalletRenewResponse?>(
+          serializer as Serializer<APIV1POSTWalletRenewResponse?>, response.data);
 
       return Response<APIV1POSTWalletRenewResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -1027,8 +1027,8 @@ class KmdApi {
   /// Start a multisig signature, or add a signature to a partially completed multisig signature object.
   Future<Response<APIV1POSTMultisigProgramSignResponse>> signMultisigProgram(
     SignProgramMultisigRequest signMultisigProgramRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/multisig/signprogram';
 
@@ -1041,11 +1041,11 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serialize(signMultisigProgramRequest);
+    var serializedBody = _serializers!.serialize(signMultisigProgramRequest);
     var jsonsignMultisigProgramRequest = json.encode(serializedBody);
     bodyData = jsonsignMultisigProgramRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -1060,15 +1060,15 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTMultisigProgramSignResponse);
+          _serializers!.serializerForType(APIV1POSTMultisigProgramSignResponse)!;
       var data =
-          _serializers.deserializeWith<APIV1POSTMultisigProgramSignResponse>(
-              serializer, response.data);
+          _serializers!.deserializeWith<APIV1POSTMultisigProgramSignResponse?>(
+              serializer as Serializer<APIV1POSTMultisigProgramSignResponse?>, response.data);
 
       return Response<APIV1POSTMultisigProgramSignResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -1083,8 +1083,8 @@ class KmdApi {
   Future<Response<APIV1POSTMultisigTransactionSignResponse>>
       signMultisigTransaction(
     SignMultisigRequest signMultisigTransactionRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/multisig/sign';
 
@@ -1097,12 +1097,12 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         SignMultisigRequest.serializer, signMultisigTransactionRequest);
     var jsonsignMultisigTransactionRequest = json.encode(serializedBody);
     bodyData = jsonsignMultisigTransactionRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -1116,16 +1116,16 @@ class KmdApi {
       cancelToken: cancelToken,
     )
         .then((response) {
-      var serializer = _serializers
-          .serializerForType(APIV1POSTMultisigTransactionSignResponse);
-      var data = _serializers
-          .deserializeWith<APIV1POSTMultisigTransactionSignResponse>(
-              serializer, response.data);
+      var serializer = _serializers!
+          .serializerForType(APIV1POSTMultisigTransactionSignResponse)!;
+      var data = _serializers!
+          .deserializeWith<APIV1POSTMultisigTransactionSignResponse?>(
+              serializer as Serializer<APIV1POSTMultisigTransactionSignResponse?>, response.data);
 
       return Response<APIV1POSTMultisigTransactionSignResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -1139,8 +1139,8 @@ class KmdApi {
   /// Signs the passed program with a key from the wallet, determined by the account named in the request.
   Future<Response<APIV1POSTProgramSignResponse>> signProgram(
     SignProgramRequest signProgramRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/program/sign';
 
@@ -1153,11 +1153,11 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serialize(signProgramRequest);
+    var serializedBody = _serializers!.serialize(signProgramRequest);
     var jsonsignProgramRequest = json.encode(serializedBody);
     bodyData = jsonsignProgramRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -1172,14 +1172,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTProgramSignResponse);
-      var data = _serializers.deserializeWith<APIV1POSTProgramSignResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1POSTProgramSignResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTProgramSignResponse?>(
+          serializer as Serializer<APIV1POSTProgramSignResponse?>, response.data);
 
       return Response<APIV1POSTProgramSignResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -1193,8 +1193,8 @@ class KmdApi {
   /// Signs the passed transaction with a key from the wallet, determined by the sender encoded in the transaction.
   Future<Response<APIV1POSTTransactionSignResponse>> signTransaction(
     SignTransactionRequest signTransactionRequest, {
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/v1/transaction/sign';
 
@@ -1207,12 +1207,12 @@ class KmdApi {
 
     List<String> contentTypes = ['application/json'];
 
-    var serializedBody = _serializers.serializeWith(
+    var serializedBody = _serializers!.serializeWith(
         SignTransactionRequest.serializer, signTransactionRequest);
     var jsonsignTransactionRequest = json.encode(serializedBody);
     bodyData = jsonsignTransactionRequest;
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -1227,14 +1227,14 @@ class KmdApi {
     )
         .then((response) {
       var serializer =
-          _serializers.serializerForType(APIV1POSTTransactionSignResponse);
-      var data = _serializers.deserializeWith<APIV1POSTTransactionSignResponse>(
-          serializer, response.data);
+          _serializers!.serializerForType(APIV1POSTTransactionSignResponse)!;
+      var data = _serializers!.deserializeWith<APIV1POSTTransactionSignResponse?>(
+          serializer as Serializer<APIV1POSTTransactionSignResponse?>, response.data);
 
       return Response<APIV1POSTTransactionSignResponse>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,
@@ -1247,8 +1247,8 @@ class KmdApi {
   ///
   /// Returns the entire swagger spec in json.
   Future<Response<String>> swaggerHandler({
-    CancelToken cancelToken,
-    Map<String, String> headers,
+    CancelToken? cancelToken,
+    Map<String, String>? headers,
   }) async {
     String _path = '/swagger.json';
 
@@ -1261,7 +1261,7 @@ class KmdApi {
 
     List<String> contentTypes = [];
 
-    return _dio
+    return _dio!
         .request(
       _path,
       queryParameters: queryParams,
@@ -1275,14 +1275,14 @@ class KmdApi {
       cancelToken: cancelToken,
     )
         .then((response) {
-      var serializer = _serializers.serializerForType(String);
+      var serializer = _serializers!.serializerForType(String)!;
       var data =
-          _serializers.deserializeWith<String>(serializer, response.data);
+          _serializers!.deserializeWith<String?>(serializer as Serializer<String?>, response.data);
 
       return Response<String>(
         data: data,
         headers: response.headers,
-        request: response.request,
+        requestOptions: response.requestOptions,
         redirects: response.redirects,
         statusCode: response.statusCode,
         statusMessage: response.statusMessage,

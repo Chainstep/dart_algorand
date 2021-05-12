@@ -15,9 +15,9 @@ class _$AssetSerializer implements StructuredSerializer<Asset> {
   final String wireName = 'Asset';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Asset object,
+  Iterable<Object?> serialize(Serializers serializers, Asset object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.assetIndex != null) {
       result
         ..add('AssetIndex')
@@ -34,23 +34,23 @@ class _$AssetSerializer implements StructuredSerializer<Asset> {
   }
 
   @override
-  Asset deserialize(Serializers serializers, Iterable<Object> serialized,
+  Asset deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = AssetBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'AssetIndex':
           result.assetIndex = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'AssetParams':
           result.assetParams.replace(serializers.deserialize(value,
-              specifiedType: const FullType(AssetParams)) as AssetParams);
+              specifiedType: const FullType(AssetParams)) as AssetParams?);
           break;
       }
     }
@@ -61,11 +61,11 @@ class _$AssetSerializer implements StructuredSerializer<Asset> {
 
 class _$Asset extends Asset {
   @override
-  final int assetIndex;
+  final int? assetIndex;
   @override
-  final AssetParams assetParams;
+  final AssetParams? assetParams;
 
-  factory _$Asset([void Function(AssetBuilder) updates]) =>
+  factory _$Asset([void Function(AssetBuilder)? updates]) =>
       (AssetBuilder()..update(updates)).build();
 
   _$Asset._({this.assetIndex, this.assetParams}) : super._();
@@ -100,13 +100,13 @@ class _$Asset extends Asset {
 }
 
 class AssetBuilder implements Builder<Asset, AssetBuilder> {
-  _$Asset _$v;
+  _$Asset? _$v;
 
-  int _assetIndex;
-  int get assetIndex => _$this._assetIndex;
-  set assetIndex(int assetIndex) => _$this._assetIndex = assetIndex;
+  int? _assetIndex;
+  int? get assetIndex => _$this._assetIndex;
+  set assetIndex(int? assetIndex) => _$this._assetIndex = assetIndex;
 
-  AssetParamsBuilder _assetParams;
+  AssetParamsBuilder? _assetParams;
   AssetParamsBuilder get assetParams =>
       _$this._assetParams ??= AssetParamsBuilder();
   set assetParams(AssetParamsBuilder assetParams) =>
@@ -116,8 +116,8 @@ class AssetBuilder implements Builder<Asset, AssetBuilder> {
 
   AssetBuilder get _$this {
     if (_$v != null) {
-      _assetIndex = _$v.assetIndex;
-      _assetParams = _$v.assetParams?.toBuilder();
+      _assetIndex = _$v!.assetIndex;
+      _assetParams = _$v!.assetParams?.toBuilder();
       _$v = null;
     }
     return this;
@@ -132,7 +132,7 @@ class AssetBuilder implements Builder<Asset, AssetBuilder> {
   }
 
   @override
-  void update(void Function(AssetBuilder) updates) {
+  void update(void Function(AssetBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -143,7 +143,7 @@ class AssetBuilder implements Builder<Asset, AssetBuilder> {
       _$result = _$v ??
           _$Asset._(assetIndex: assetIndex, assetParams: _assetParams?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'assetParams';
         _assetParams?.build();

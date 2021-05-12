@@ -8,12 +8,12 @@ abstract class TransactionResults
   /* CreatedAssetIndex indicates the asset index of an asset created by this txn */
   @nullable
   @BuiltValueField(wireName: r'createdasset')
-  int get createdasset;
+  int? get createdasset;
 
   // Boilerplate code needed to wire-up generated code
   TransactionResults._();
 
-  factory TransactionResults([updates(TransactionResultsBuilder b)]) =
+  factory TransactionResults([updates(TransactionResultsBuilder b)?]) =
       _$TransactionResults;
   static Serializer<TransactionResults> get serializer =>
       _$transactionResultsSerializer;

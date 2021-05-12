@@ -15,9 +15,9 @@ class _$AssetParamsSerializer implements StructuredSerializer<AssetParams> {
   final String wireName = 'AssetParams';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, AssetParams object,
+  Iterable<Object?> serialize(Serializers serializers, AssetParams object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.assetname != null) {
       result
         ..add('assetname')
@@ -94,63 +94,63 @@ class _$AssetParamsSerializer implements StructuredSerializer<AssetParams> {
   }
 
   @override
-  AssetParams deserialize(Serializers serializers, Iterable<Object> serialized,
+  AssetParams deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = AssetParamsBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'assetname':
           result.assetname = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'clawbackaddr':
           result.clawbackaddr = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'creator':
           result.creator = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'decimals':
           result.decimals = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'defaultfrozen':
           result.defaultfrozen = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'freezeaddr':
           result.freezeaddr = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'managerkey':
           result.managerkey = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'metadatahash':
           result.metadatahash = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'reserveaddr':
           result.reserveaddr = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'total':
           result.total = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'unitname':
           result.unitname = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'url':
           result.url = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -161,31 +161,31 @@ class _$AssetParamsSerializer implements StructuredSerializer<AssetParams> {
 
 class _$AssetParams extends AssetParams {
   @override
-  final String assetname;
+  final String? assetname;
   @override
-  final String clawbackaddr;
+  final String? clawbackaddr;
   @override
-  final String creator;
+  final String? creator;
   @override
-  final int decimals;
+  final int? decimals;
   @override
-  final bool defaultfrozen;
+  final bool? defaultfrozen;
   @override
-  final String freezeaddr;
+  final String? freezeaddr;
   @override
-  final String managerkey;
+  final String? managerkey;
   @override
-  final String metadatahash;
+  final String? metadatahash;
   @override
-  final String reserveaddr;
+  final String? reserveaddr;
   @override
-  final int total;
+  final int? total;
   @override
-  final String unitname;
+  final String? unitname;
   @override
-  final String url;
+  final String? url;
 
-  factory _$AssetParams([void Function(AssetParamsBuilder) updates]) =>
+  factory _$AssetParams([void Function(AssetParamsBuilder)? updates]) =>
       (AssetParamsBuilder()..update(updates)).build();
 
   _$AssetParams._(
@@ -274,80 +274,80 @@ class _$AssetParams extends AssetParams {
 }
 
 class AssetParamsBuilder implements Builder<AssetParams, AssetParamsBuilder> {
-  _$AssetParams _$v;
+  _$AssetParams? _$v;
 
-  String _assetname;
-  String get assetname => _$this._assetname;
-  set assetname(String assetname) => _$this._assetname = assetname;
+  String? _assetname;
+  String? get assetname => _$this._assetname;
+  set assetname(String? assetname) => _$this._assetname = assetname;
 
-  String _clawbackaddr;
-  String get clawbackaddr => _$this._clawbackaddr;
-  set clawbackaddr(String clawbackaddr) => _$this._clawbackaddr = clawbackaddr;
+  String? _clawbackaddr;
+  String? get clawbackaddr => _$this._clawbackaddr;
+  set clawbackaddr(String? clawbackaddr) => _$this._clawbackaddr = clawbackaddr;
 
-  String _creator;
-  String get creator => _$this._creator;
-  set creator(String creator) => _$this._creator = creator;
+  String? _creator;
+  String? get creator => _$this._creator;
+  set creator(String? creator) => _$this._creator = creator;
 
-  int _decimals;
-  int get decimals => _$this._decimals;
-  set decimals(int decimals) => _$this._decimals = decimals;
+  int? _decimals;
+  int? get decimals => _$this._decimals;
+  set decimals(int? decimals) => _$this._decimals = decimals;
 
-  bool _defaultfrozen;
-  bool get defaultfrozen => _$this._defaultfrozen;
-  set defaultfrozen(bool defaultfrozen) =>
+  bool? _defaultfrozen;
+  bool? get defaultfrozen => _$this._defaultfrozen;
+  set defaultfrozen(bool? defaultfrozen) =>
       _$this._defaultfrozen = defaultfrozen;
 
-  String _freezeaddr;
-  String get freezeaddr => _$this._freezeaddr;
-  set freezeaddr(String freezeaddr) => _$this._freezeaddr = freezeaddr;
+  String? _freezeaddr;
+  String? get freezeaddr => _$this._freezeaddr;
+  set freezeaddr(String? freezeaddr) => _$this._freezeaddr = freezeaddr;
 
-  String _managerkey;
-  String get managerkey => _$this._managerkey;
-  set managerkey(String managerkey) => _$this._managerkey = managerkey;
+  String? _managerkey;
+  String? get managerkey => _$this._managerkey;
+  set managerkey(String? managerkey) => _$this._managerkey = managerkey;
 
-  String _metadatahash;
-  String get metadatahash => _$this._metadatahash;
-  set metadatahash(String metadatahash) => _$this._metadatahash = metadatahash;
+  String? _metadatahash;
+  String? get metadatahash => _$this._metadatahash;
+  set metadatahash(String? metadatahash) => _$this._metadatahash = metadatahash;
 
-  String _reserveaddr;
-  String get reserveaddr => _$this._reserveaddr;
-  set reserveaddr(String reserveaddr) => _$this._reserveaddr = reserveaddr;
+  String? _reserveaddr;
+  String? get reserveaddr => _$this._reserveaddr;
+  set reserveaddr(String? reserveaddr) => _$this._reserveaddr = reserveaddr;
 
-  int _total;
-  int get total => _$this._total;
-  set total(int total) => _$this._total = total;
+  int? _total;
+  int? get total => _$this._total;
+  set total(int? total) => _$this._total = total;
 
-  String _unitname;
-  String get unitname => _$this._unitname;
-  set unitname(String unitname) => _$this._unitname = unitname;
+  String? _unitname;
+  String? get unitname => _$this._unitname;
+  set unitname(String? unitname) => _$this._unitname = unitname;
 
-  String _url;
-  String get url => _$this._url;
-  set url(String url) => _$this._url = url;
+  String? _url;
+  String? get url => _$this._url;
+  set url(String? url) => _$this._url = url;
 
   AssetParamsBuilder();
 
   AssetParamsBuilder get _$this {
     if (_$v != null) {
-      _assetname = _$v.assetname;
-      _clawbackaddr = _$v.clawbackaddr;
-      _creator = _$v.creator;
-      _decimals = _$v.decimals;
-      _defaultfrozen = _$v.defaultfrozen;
-      _freezeaddr = _$v.freezeaddr;
-      _managerkey = _$v.managerkey;
-      _metadatahash = _$v.metadatahash;
-      _reserveaddr = _$v.reserveaddr;
-      _total = _$v.total;
-      _unitname = _$v.unitname;
-      _url = _$v.url;
+      _assetname = _$v!.assetname;
+      _clawbackaddr = _$v!.clawbackaddr;
+      _creator = _$v!.creator;
+      _decimals = _$v!.decimals;
+      _defaultfrozen = _$v!.defaultfrozen;
+      _freezeaddr = _$v!.freezeaddr;
+      _managerkey = _$v!.managerkey;
+      _metadatahash = _$v!.metadatahash;
+      _reserveaddr = _$v!.reserveaddr;
+      _total = _$v!.total;
+      _unitname = _$v!.unitname;
+      _url = _$v!.url;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(AssetParams other) {
+  void replace(AssetParams? other) {
     if (other == null) {
       throw ArgumentError.notNull('other');
     }
@@ -355,7 +355,7 @@ class AssetParamsBuilder implements Builder<AssetParams, AssetParamsBuilder> {
   }
 
   @override
-  void update(void Function(AssetParamsBuilder) updates) {
+  void update(void Function(AssetParamsBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

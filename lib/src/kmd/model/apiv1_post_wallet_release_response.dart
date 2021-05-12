@@ -9,17 +9,17 @@ abstract class APIV1POSTWalletReleaseResponse
             APIV1POSTWalletReleaseResponseBuilder> {
   @nullable
   @BuiltValueField(wireName: r'error')
-  bool get error;
+  bool? get error;
 
   @nullable
   @BuiltValueField(wireName: r'message')
-  String get message;
+  String? get message;
 
   // Boilerplate code needed to wire-up generated code
   APIV1POSTWalletReleaseResponse._();
 
   factory APIV1POSTWalletReleaseResponse(
-          [Function(APIV1POSTWalletReleaseResponseBuilder) updates]) =
+          [Function(APIV1POSTWalletReleaseResponseBuilder)? updates]) =
       _$APIV1POSTWalletReleaseResponse;
 
   static Serializer<APIV1POSTWalletReleaseResponse> get serializer =>

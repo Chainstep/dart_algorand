@@ -17,9 +17,9 @@ class _$SignProgramRequestSerializer
   final String wireName = 'SignProgramRequest';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, SignProgramRequest object,
+  Iterable<Object?> serialize(Serializers serializers, SignProgramRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.address != null) {
       result
         ..add('address')
@@ -49,31 +49,31 @@ class _$SignProgramRequestSerializer
 
   @override
   SignProgramRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = SignProgramRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'address':
           result.address = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'data':
           result.data = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_password':
           result.walletPassword = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -84,16 +84,16 @@ class _$SignProgramRequestSerializer
 
 class _$SignProgramRequest extends SignProgramRequest {
   @override
-  final String address;
+  final String? address;
   @override
-  final String data;
+  final String? data;
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
   @override
-  final String walletPassword;
+  final String? walletPassword;
 
   factory _$SignProgramRequest(
-          [void Function(SignProgramRequestBuilder) updates]) =>
+          [void Function(SignProgramRequestBuilder)? updates]) =>
       (SignProgramRequestBuilder()..update(updates)).build();
 
   _$SignProgramRequest._(
@@ -140,34 +140,34 @@ class _$SignProgramRequest extends SignProgramRequest {
 
 class SignProgramRequestBuilder
     implements Builder<SignProgramRequest, SignProgramRequestBuilder> {
-  _$SignProgramRequest _$v;
+  _$SignProgramRequest? _$v;
 
-  String _address;
-  String get address => _$this._address;
-  set address(String address) => _$this._address = address;
+  String? _address;
+  String? get address => _$this._address;
+  set address(String? address) => _$this._address = address;
 
-  String _data;
-  String get data => _$this._data;
-  set data(String data) => _$this._data = data;
+  String? _data;
+  String? get data => _$this._data;
+  set data(String? data) => _$this._data = data;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
-  String _walletPassword;
-  String get walletPassword => _$this._walletPassword;
-  set walletPassword(String walletPassword) =>
+  String? _walletPassword;
+  String? get walletPassword => _$this._walletPassword;
+  set walletPassword(String? walletPassword) =>
       _$this._walletPassword = walletPassword;
 
   SignProgramRequestBuilder();
 
   SignProgramRequestBuilder get _$this {
     if (_$v != null) {
-      _address = _$v.address;
-      _data = _$v.data;
-      _walletHandleToken = _$v.walletHandleToken;
-      _walletPassword = _$v.walletPassword;
+      _address = _$v!.address;
+      _data = _$v!.data;
+      _walletHandleToken = _$v!.walletHandleToken;
+      _walletPassword = _$v!.walletPassword;
       _$v = null;
     }
     return this;
@@ -182,7 +182,7 @@ class SignProgramRequestBuilder
   }
 
   @override
-  void update(void Function(SignProgramRequestBuilder) updates) {
+  void update(void Function(SignProgramRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

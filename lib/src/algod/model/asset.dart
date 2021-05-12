@@ -9,16 +9,16 @@ abstract class Asset implements Built<Asset, AssetBuilder> {
   /* AssetIndex is the unique asset identifier */
   @nullable
   @BuiltValueField(wireName: r'AssetIndex')
-  int get assetIndex;
+  int? get assetIndex;
 
   @nullable
   @BuiltValueField(wireName: r'AssetParams')
-  AssetParams get assetParams;
+  AssetParams? get assetParams;
 
   // Boilerplate code needed to wire-up generated code
   Asset._();
 
-  factory Asset([updates(AssetBuilder b)]) = _$Asset;
+  factory Asset([updates(AssetBuilder b)?]) = _$Asset;
 
   static Serializer<Asset> get serializer => _$assetSerializer;
 }

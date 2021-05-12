@@ -10,21 +10,21 @@ abstract class APIV1POSTMultisigListResponse
             APIV1POSTMultisigListResponseBuilder> {
   @nullable
   @BuiltValueField(wireName: r'addresses')
-  BuiltList<String> get addresses;
+  BuiltList<String>? get addresses;
 
   @nullable
   @BuiltValueField(wireName: r'error')
-  bool get error;
+  bool? get error;
 
   @nullable
   @BuiltValueField(wireName: r'message')
-  String get message;
+  String? get message;
 
   // Boilerplate code needed to wire-up generated code
   APIV1POSTMultisigListResponse._();
 
   factory APIV1POSTMultisigListResponse(
-          [updates(APIV1POSTMultisigListResponseBuilder b)]) =
+          [updates(APIV1POSTMultisigListResponseBuilder b)?]) =
       _$APIV1POSTMultisigListResponse;
   static Serializer<APIV1POSTMultisigListResponse> get serializer =>
       _$aPIV1POSTMultisigListResponseSerializer;

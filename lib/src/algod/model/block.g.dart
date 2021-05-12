@@ -15,9 +15,9 @@ class _$BlockSerializer implements StructuredSerializer<Block> {
   final String wireName = 'Block';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Block object,
+  Iterable<Object?> serialize(Serializers serializers, Block object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.currentProtocol != null) {
       result
         ..add('currentProtocol')
@@ -136,92 +136,92 @@ class _$BlockSerializer implements StructuredSerializer<Block> {
   }
 
   @override
-  Block deserialize(Serializers serializers, Iterable<Object> serialized,
+  Block deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = BlockBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'currentProtocol':
           result.currentProtocol = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'frac':
           result.frac = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'hash':
           result.hash = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'nextProtocol':
           result.nextProtocol = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'nextProtocolApprovals':
           result.nextProtocolApprovals = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'nextProtocolSwitchOn':
           result.nextProtocolSwitchOn = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'nextProtocolVoteBefore':
           result.nextProtocolVoteBefore = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'period':
           result.period = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'previousBlockHash':
           result.previousBlockHash = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'proposer':
           result.proposer = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'rate':
           result.rate = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'reward':
           result.reward = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'round':
           result.round = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'seed':
           result.seed = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'timestamp':
           result.timestamp = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'txnRoot':
           result.txnRoot = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'txns':
           result.txns.replace(serializers.deserialize(value,
                   specifiedType: const FullType(TransactionList))
-              as TransactionList);
+              as TransactionList?);
           break;
         case 'upgradeApprove':
           result.upgradeApprove = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'upgradePropose':
           result.upgradePropose = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -232,45 +232,45 @@ class _$BlockSerializer implements StructuredSerializer<Block> {
 
 class _$Block extends Block {
   @override
-  final String currentProtocol;
+  final String? currentProtocol;
   @override
-  final int frac;
+  final int? frac;
   @override
-  final String hash;
+  final String? hash;
   @override
-  final String nextProtocol;
+  final String? nextProtocol;
   @override
-  final int nextProtocolApprovals;
+  final int? nextProtocolApprovals;
   @override
-  final int nextProtocolSwitchOn;
+  final int? nextProtocolSwitchOn;
   @override
-  final int nextProtocolVoteBefore;
+  final int? nextProtocolVoteBefore;
   @override
-  final int period;
+  final int? period;
   @override
-  final String previousBlockHash;
+  final String? previousBlockHash;
   @override
-  final String proposer;
+  final String? proposer;
   @override
-  final int rate;
+  final int? rate;
   @override
-  final int reward;
+  final int? reward;
   @override
-  final int round;
+  final int? round;
   @override
-  final String seed;
+  final String? seed;
   @override
-  final int timestamp;
+  final int? timestamp;
   @override
-  final String txnRoot;
+  final String? txnRoot;
   @override
-  final TransactionList txns;
+  final TransactionList? txns;
   @override
-  final bool upgradeApprove;
+  final bool? upgradeApprove;
   @override
-  final String upgradePropose;
+  final String? upgradePropose;
 
-  factory _$Block([void Function(BlockBuilder) updates]) =>
+  factory _$Block([void Function(BlockBuilder)? updates]) =>
       (BlockBuilder()..update(updates)).build();
 
   _$Block._(
@@ -404,114 +404,114 @@ class _$Block extends Block {
 }
 
 class BlockBuilder implements Builder<Block, BlockBuilder> {
-  _$Block _$v;
+  _$Block? _$v;
 
-  String _currentProtocol;
-  String get currentProtocol => _$this._currentProtocol;
-  set currentProtocol(String currentProtocol) =>
+  String? _currentProtocol;
+  String? get currentProtocol => _$this._currentProtocol;
+  set currentProtocol(String? currentProtocol) =>
       _$this._currentProtocol = currentProtocol;
 
-  int _frac;
-  int get frac => _$this._frac;
-  set frac(int frac) => _$this._frac = frac;
+  int? _frac;
+  int? get frac => _$this._frac;
+  set frac(int? frac) => _$this._frac = frac;
 
-  String _hash;
-  String get hash => _$this._hash;
-  set hash(String hash) => _$this._hash = hash;
+  String? _hash;
+  String? get hash => _$this._hash;
+  set hash(String? hash) => _$this._hash = hash;
 
-  String _nextProtocol;
-  String get nextProtocol => _$this._nextProtocol;
-  set nextProtocol(String nextProtocol) => _$this._nextProtocol = nextProtocol;
+  String? _nextProtocol;
+  String? get nextProtocol => _$this._nextProtocol;
+  set nextProtocol(String? nextProtocol) => _$this._nextProtocol = nextProtocol;
 
-  int _nextProtocolApprovals;
-  int get nextProtocolApprovals => _$this._nextProtocolApprovals;
-  set nextProtocolApprovals(int nextProtocolApprovals) =>
+  int? _nextProtocolApprovals;
+  int? get nextProtocolApprovals => _$this._nextProtocolApprovals;
+  set nextProtocolApprovals(int? nextProtocolApprovals) =>
       _$this._nextProtocolApprovals = nextProtocolApprovals;
 
-  int _nextProtocolSwitchOn;
-  int get nextProtocolSwitchOn => _$this._nextProtocolSwitchOn;
-  set nextProtocolSwitchOn(int nextProtocolSwitchOn) =>
+  int? _nextProtocolSwitchOn;
+  int? get nextProtocolSwitchOn => _$this._nextProtocolSwitchOn;
+  set nextProtocolSwitchOn(int? nextProtocolSwitchOn) =>
       _$this._nextProtocolSwitchOn = nextProtocolSwitchOn;
 
-  int _nextProtocolVoteBefore;
-  int get nextProtocolVoteBefore => _$this._nextProtocolVoteBefore;
-  set nextProtocolVoteBefore(int nextProtocolVoteBefore) =>
+  int? _nextProtocolVoteBefore;
+  int? get nextProtocolVoteBefore => _$this._nextProtocolVoteBefore;
+  set nextProtocolVoteBefore(int? nextProtocolVoteBefore) =>
       _$this._nextProtocolVoteBefore = nextProtocolVoteBefore;
 
-  int _period;
-  int get period => _$this._period;
-  set period(int period) => _$this._period = period;
+  int? _period;
+  int? get period => _$this._period;
+  set period(int? period) => _$this._period = period;
 
-  String _previousBlockHash;
-  String get previousBlockHash => _$this._previousBlockHash;
-  set previousBlockHash(String previousBlockHash) =>
+  String? _previousBlockHash;
+  String? get previousBlockHash => _$this._previousBlockHash;
+  set previousBlockHash(String? previousBlockHash) =>
       _$this._previousBlockHash = previousBlockHash;
 
-  String _proposer;
-  String get proposer => _$this._proposer;
-  set proposer(String proposer) => _$this._proposer = proposer;
+  String? _proposer;
+  String? get proposer => _$this._proposer;
+  set proposer(String? proposer) => _$this._proposer = proposer;
 
-  int _rate;
-  int get rate => _$this._rate;
-  set rate(int rate) => _$this._rate = rate;
+  int? _rate;
+  int? get rate => _$this._rate;
+  set rate(int? rate) => _$this._rate = rate;
 
-  int _reward;
-  int get reward => _$this._reward;
-  set reward(int reward) => _$this._reward = reward;
+  int? _reward;
+  int? get reward => _$this._reward;
+  set reward(int? reward) => _$this._reward = reward;
 
-  int _round;
-  int get round => _$this._round;
-  set round(int round) => _$this._round = round;
+  int? _round;
+  int? get round => _$this._round;
+  set round(int? round) => _$this._round = round;
 
-  String _seed;
-  String get seed => _$this._seed;
-  set seed(String seed) => _$this._seed = seed;
+  String? _seed;
+  String? get seed => _$this._seed;
+  set seed(String? seed) => _$this._seed = seed;
 
-  int _timestamp;
-  int get timestamp => _$this._timestamp;
-  set timestamp(int timestamp) => _$this._timestamp = timestamp;
+  int? _timestamp;
+  int? get timestamp => _$this._timestamp;
+  set timestamp(int? timestamp) => _$this._timestamp = timestamp;
 
-  String _txnRoot;
-  String get txnRoot => _$this._txnRoot;
-  set txnRoot(String txnRoot) => _$this._txnRoot = txnRoot;
+  String? _txnRoot;
+  String? get txnRoot => _$this._txnRoot;
+  set txnRoot(String? txnRoot) => _$this._txnRoot = txnRoot;
 
-  TransactionListBuilder _txns;
+  TransactionListBuilder? _txns;
   TransactionListBuilder get txns => _$this._txns ??= TransactionListBuilder();
   set txns(TransactionListBuilder txns) => _$this._txns = txns;
 
-  bool _upgradeApprove;
-  bool get upgradeApprove => _$this._upgradeApprove;
-  set upgradeApprove(bool upgradeApprove) =>
+  bool? _upgradeApprove;
+  bool? get upgradeApprove => _$this._upgradeApprove;
+  set upgradeApprove(bool? upgradeApprove) =>
       _$this._upgradeApprove = upgradeApprove;
 
-  String _upgradePropose;
-  String get upgradePropose => _$this._upgradePropose;
-  set upgradePropose(String upgradePropose) =>
+  String? _upgradePropose;
+  String? get upgradePropose => _$this._upgradePropose;
+  set upgradePropose(String? upgradePropose) =>
       _$this._upgradePropose = upgradePropose;
 
   BlockBuilder();
 
   BlockBuilder get _$this {
     if (_$v != null) {
-      _currentProtocol = _$v.currentProtocol;
-      _frac = _$v.frac;
-      _hash = _$v.hash;
-      _nextProtocol = _$v.nextProtocol;
-      _nextProtocolApprovals = _$v.nextProtocolApprovals;
-      _nextProtocolSwitchOn = _$v.nextProtocolSwitchOn;
-      _nextProtocolVoteBefore = _$v.nextProtocolVoteBefore;
-      _period = _$v.period;
-      _previousBlockHash = _$v.previousBlockHash;
-      _proposer = _$v.proposer;
-      _rate = _$v.rate;
-      _reward = _$v.reward;
-      _round = _$v.round;
-      _seed = _$v.seed;
-      _timestamp = _$v.timestamp;
-      _txnRoot = _$v.txnRoot;
-      _txns = _$v.txns?.toBuilder();
-      _upgradeApprove = _$v.upgradeApprove;
-      _upgradePropose = _$v.upgradePropose;
+      _currentProtocol = _$v!.currentProtocol;
+      _frac = _$v!.frac;
+      _hash = _$v!.hash;
+      _nextProtocol = _$v!.nextProtocol;
+      _nextProtocolApprovals = _$v!.nextProtocolApprovals;
+      _nextProtocolSwitchOn = _$v!.nextProtocolSwitchOn;
+      _nextProtocolVoteBefore = _$v!.nextProtocolVoteBefore;
+      _period = _$v!.period;
+      _previousBlockHash = _$v!.previousBlockHash;
+      _proposer = _$v!.proposer;
+      _rate = _$v!.rate;
+      _reward = _$v!.reward;
+      _round = _$v!.round;
+      _seed = _$v!.seed;
+      _timestamp = _$v!.timestamp;
+      _txnRoot = _$v!.txnRoot;
+      _txns = _$v!.txns?.toBuilder();
+      _upgradeApprove = _$v!.upgradeApprove;
+      _upgradePropose = _$v!.upgradePropose;
       _$v = null;
     }
     return this;
@@ -526,7 +526,7 @@ class BlockBuilder implements Builder<Block, BlockBuilder> {
   }
 
   @override
-  void update(void Function(BlockBuilder) updates) {
+  void update(void Function(BlockBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -556,7 +556,7 @@ class BlockBuilder implements Builder<Block, BlockBuilder> {
               upgradeApprove: upgradeApprove,
               upgradePropose: upgradePropose);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'txns';
         _txns?.build();

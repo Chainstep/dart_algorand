@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:dart_algorand/algod.dart';
 import 'package:dart_algorand/dart_algorand.dart';
 
 import 'params.dart';
@@ -20,14 +23,14 @@ void main() async {
       addresses: [account1.address, account2.address]);
 
   // get suggested params
-  final params = await acl.transactionParams();
+  final params = await (acl.transactionParams() as FutureOr<TransactionParams>);
 
   // create transaction
   final txn = PaymentTxn(
       sender: msig.address(),
       fee: params.fee,
       first_valid_round: params.lastRound,
-      last_valid_round: params.lastRound + 100,
+      last_valid_round: params.lastRound! + 100,
       genesis_hash: params.genesishashb64,
       receiver: account3.address,
       genesis_id: params.genesisID,
@@ -37,8 +40,8 @@ void main() async {
   final mtx = MultisigTransaction(transaction: txn, multisig: msig);
 
   // sign the transaction
-  mtx.sign(account1.private_key);
-  mtx.sign(account2.private_key);
+  mtx.sign(account1.private_key!);
+  mtx.sign(account2.private_key!);
 
   // print encoded transaction
   print(msgpack_encode(mtx));

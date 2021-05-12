@@ -26,7 +26,7 @@ void main() {
 
     test('parseUrl', () {
       final result = parseUrl(
-          'algorand://NMCHCPELNTYXRIHIVN3PE5NL5DFCBWDGSR4S7DQZDPV5XYVGSU4B6UEDIY?amount=100');
+          'algorand://NMCHCPELNTYXRIHIVN3PE5NL5DFCBWDGSR4S7DQZDPV5XYVGSU4B6UEDIY?amount=100')!;
       expect(result.address,
           'NMCHCPELNTYXRIHIVN3PE5NL5DFCBWDGSR4S7DQZDPV5XYVGSU4B6UEDIY');
       expect(result.amount, 100);
@@ -34,7 +34,7 @@ void main() {
 
     test('parseUrl with no amount', () {
       final result = parseUrl(
-          'algorand://NMCHCPELNTYXRIHIVN3PE5NL5DFCBWDGSR4S7DQZDPV5XYVGSU4B6UEDIY');
+          'algorand://NMCHCPELNTYXRIHIVN3PE5NL5DFCBWDGSR4S7DQZDPV5XYVGSU4B6UEDIY')!;
       expect(result.address,
           'NMCHCPELNTYXRIHIVN3PE5NL5DFCBWDGSR4S7DQZDPV5XYVGSU4B6UEDIY');
       expect(result.amount, 0);
@@ -54,7 +54,7 @@ void main() {
         receiver: "HQVYNUAJVOFZB4UUDZWAJ7I24SFXGPD2E3BOAZAPIMWOU2QEMY4TLLJVOE",
         fee: 1000,
         amt: 10000,
-        note: note,
+        note: note as Uint8List?,
         first_valid_round: 10,
         last_valid_round: 1000,
         genesis_id: 'testnet-v1.0',
@@ -118,7 +118,7 @@ void main() {
 
     test('signature', () {
       final account = generate_account();
-      final public_key = decode_address(account.address);
+      final public_key = decode_address(account.address!);
       final program = Uint8List.fromList([0x01, 0x20, 0x01, 0x01, 0x22]);
       final lsig = LogicSig(program: program);
       lsig.sign(private_key: account.private_key);
@@ -154,14 +154,14 @@ void main() {
       expect(lsig.sig, isNull);
       expect(lsig.msig, isNotNull);
 
-      final sender_addr = msig.address();
+      final sender_addr = msig.address()!;
       final public_key = decode_address(sender_addr);
       expect(lsig.verify(public_key), isFalse); // not enough signatures
 
-      expect(() => lsig.append_to_multisig(account.private_key),
+      expect(() => lsig.append_to_multisig(account.private_key!),
           throwsA(isA<InvalidSecretKeyError>()));
 
-      lsig.append_to_multisig(account_2.private_key);
+      lsig.append_to_multisig(account_2.private_key!);
       expect(lsig.verify(public_key), isTrue);
 
       // combine sig and multisig, ensure it fails
@@ -207,8 +207,8 @@ void main() {
 
       final program = Uint8List.fromList([0x01, 0x20, 0x01, 0x01, 0x22]);
       final args = <Uint8List>[
-        utf8.encode('123'),
-        utf8.encode('456'),
+        utf8.encode('123') as Uint8List,
+        utf8.encode('456') as Uint8List,
       ];
 
       final sk = mnemonic.to_private_key(mn);
@@ -344,7 +344,7 @@ void main() {
       expect(
           () async => await read_program(program, args),
           throwsA(predicate(
-              (e) => e is InvalidProgram && e.message == 'program too long')));
+              (dynamic e) => e is InvalidProgram && e.message == 'program too long')));
     });
 
     test('check program long', () {
@@ -355,7 +355,7 @@ void main() {
       expect(
           () async => await read_program(program2, []),
           throwsA(predicate(
-              (e) => e is InvalidProgram && e.message == 'program too long')));
+              (dynamic e) => e is InvalidProgram && e.message == 'program too long')));
     });
 
     test('check program invalid opcode', () {
@@ -364,7 +364,7 @@ void main() {
 
       expect(
           () async => await read_program(program, args),
-          throwsA(predicate((e) =>
+          throwsA(predicate((dynamic e) =>
               e is InvalidProgram && e.message == 'invalid instruction 129')));
     });
 
@@ -384,7 +384,7 @@ void main() {
 
       expect(
           () async => await read_program(program3, []),
-          throwsA(predicate((e) =>
+          throwsA(predicate((dynamic e) =>
               e is InvalidProgram &&
               e.message == 'program too costly to run')));
     });
@@ -577,7 +577,7 @@ void main() {
       msig.threshold = 2;
       var mtx = MultisigTransaction(transaction: txn, multisig: msig);
 
-      expect(() => mtx.sign(account_1.private_key),
+      expect(() => mtx.sign(account_1.private_key!),
           throwsA(isA<BadTxnSenderError>()));
 
       // change sender address to be correct
@@ -585,7 +585,7 @@ void main() {
       mtx = MultisigTransaction(transaction: txn, multisig: msig);
 
       // try to sign with incorrect private key
-      expect(() => mtx.sign(account_3.private_key),
+      expect(() => mtx.sign(account_3.private_key!),
           throwsA(isA<InvalidSecretKeyError>()));
 
       // create another multisig with different address
@@ -630,7 +630,7 @@ void main() {
 
     test('Private key from/to', () {
       final account = generate_account();
-      final mn = mnemonic.from_private_key(account.private_key);
+      final mn = mnemonic.from_private_key(account.private_key!);
       expect(mn.split(' ').length, MNEMONIC_LEN);
       expect(account.private_key, mnemonic.to_private_key(mn));
     });
@@ -690,7 +690,7 @@ void main() {
   group('Address', () {
     test('Encode Decode', () {
       final account = generate_account();
-      expect(account.address, encode_address(decode_address(account.address)));
+      expect(account.address, encode_address(decode_address(account.address!)));
     });
 
     test('Is valid', () {
@@ -1532,8 +1532,8 @@ void main() {
       expect(msgpack_encode(stx2), goldenTx2);
 
       final gid = calculate_group_id([tx1_copy, tx2_copy]);
-      stx1.transaction.group = gid;
-      stx2.transaction.group = gid;
+      stx1.transaction!.group = gid;
+      stx2.transaction!.group = gid;
 
       // goal clerk group sets Group to every transaction and concatenate
       // them in output file

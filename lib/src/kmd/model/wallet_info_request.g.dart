@@ -17,9 +17,9 @@ class _$WalletInfoRequestSerializer
   final String wireName = 'WalletInfoRequest';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, WalletInfoRequest object,
+  Iterable<Object?> serialize(Serializers serializers, WalletInfoRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.walletHandleToken != null) {
       result
         ..add('wallet_handle_token')
@@ -31,19 +31,19 @@ class _$WalletInfoRequestSerializer
 
   @override
   WalletInfoRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = WalletInfoRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -54,10 +54,10 @@ class _$WalletInfoRequestSerializer
 
 class _$WalletInfoRequest extends WalletInfoRequest {
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
 
   factory _$WalletInfoRequest(
-          [void Function(WalletInfoRequestBuilder) updates]) =>
+          [void Function(WalletInfoRequestBuilder)? updates]) =>
       (WalletInfoRequestBuilder()..update(updates)).build();
 
   _$WalletInfoRequest._({this.walletHandleToken}) : super._();
@@ -92,18 +92,18 @@ class _$WalletInfoRequest extends WalletInfoRequest {
 
 class WalletInfoRequestBuilder
     implements Builder<WalletInfoRequest, WalletInfoRequestBuilder> {
-  _$WalletInfoRequest _$v;
+  _$WalletInfoRequest? _$v;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
   WalletInfoRequestBuilder();
 
   WalletInfoRequestBuilder get _$this {
     if (_$v != null) {
-      _walletHandleToken = _$v.walletHandleToken;
+      _walletHandleToken = _$v!.walletHandleToken;
       _$v = null;
     }
     return this;
@@ -118,7 +118,7 @@ class WalletInfoRequestBuilder
   }
 
   @override
-  void update(void Function(WalletInfoRequestBuilder) updates) {
+  void update(void Function(WalletInfoRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

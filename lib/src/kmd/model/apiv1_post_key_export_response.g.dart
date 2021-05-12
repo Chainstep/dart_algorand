@@ -20,10 +20,10 @@ class _$APIV1POSTKeyExportResponseSerializer
   final String wireName = 'APIV1POSTKeyExportResponse';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, APIV1POSTKeyExportResponse object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.error != null) {
       result
         ..add('error')
@@ -47,27 +47,27 @@ class _$APIV1POSTKeyExportResponseSerializer
 
   @override
   APIV1POSTKeyExportResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1POSTKeyExportResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'error':
           result.error = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'private_key':
           result.privateKey = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -78,14 +78,14 @@ class _$APIV1POSTKeyExportResponseSerializer
 
 class _$APIV1POSTKeyExportResponse extends APIV1POSTKeyExportResponse {
   @override
-  final bool error;
+  final bool? error;
   @override
-  final String message;
+  final String? message;
   @override
-  final String privateKey;
+  final String? privateKey;
 
   factory _$APIV1POSTKeyExportResponse(
-          [void Function(APIV1POSTKeyExportResponseBuilder) updates]) =>
+          [void Function(APIV1POSTKeyExportResponseBuilder)? updates]) =>
       (APIV1POSTKeyExportResponseBuilder()..update(updates)).build();
 
   _$APIV1POSTKeyExportResponse._({this.error, this.message, this.privateKey})
@@ -128,27 +128,27 @@ class _$APIV1POSTKeyExportResponse extends APIV1POSTKeyExportResponse {
 class APIV1POSTKeyExportResponseBuilder
     implements
         Builder<APIV1POSTKeyExportResponse, APIV1POSTKeyExportResponseBuilder> {
-  _$APIV1POSTKeyExportResponse _$v;
+  _$APIV1POSTKeyExportResponse? _$v;
 
-  bool _error;
-  bool get error => _$this._error;
-  set error(bool error) => _$this._error = error;
+  bool? _error;
+  bool? get error => _$this._error;
+  set error(bool? error) => _$this._error = error;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
-  String _privateKey;
-  String get privateKey => _$this._privateKey;
-  set privateKey(String privateKey) => _$this._privateKey = privateKey;
+  String? _privateKey;
+  String? get privateKey => _$this._privateKey;
+  set privateKey(String? privateKey) => _$this._privateKey = privateKey;
 
   APIV1POSTKeyExportResponseBuilder();
 
   APIV1POSTKeyExportResponseBuilder get _$this {
     if (_$v != null) {
-      _error = _$v.error;
-      _message = _$v.message;
-      _privateKey = _$v.privateKey;
+      _error = _$v!.error;
+      _message = _$v!.message;
+      _privateKey = _$v!.privateKey;
       _$v = null;
     }
     return this;
@@ -163,7 +163,7 @@ class APIV1POSTKeyExportResponseBuilder
   }
 
   @override
-  void update(void Function(APIV1POSTKeyExportResponseBuilder) updates) {
+  void update(void Function(APIV1POSTKeyExportResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

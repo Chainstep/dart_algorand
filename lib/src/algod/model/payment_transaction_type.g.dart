@@ -20,10 +20,10 @@ class _$PaymentTransactionTypeSerializer
   final String wireName = 'PaymentTransactionType';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, PaymentTransactionType object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.amount != null) {
       result
         ..add('amount')
@@ -65,39 +65,39 @@ class _$PaymentTransactionTypeSerializer
 
   @override
   PaymentTransactionType deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = PaymentTransactionTypeBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'amount':
           result.amount = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'close':
           result.close = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'closeamount':
           result.closeamount = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'closerewards':
           result.closerewards = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'to':
           result.to = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'torewards':
           result.torewards = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -108,20 +108,20 @@ class _$PaymentTransactionTypeSerializer
 
 class _$PaymentTransactionType extends PaymentTransactionType {
   @override
-  final int amount;
+  final int? amount;
   @override
-  final String close;
+  final String? close;
   @override
-  final int closeamount;
+  final int? closeamount;
   @override
-  final int closerewards;
+  final int? closerewards;
   @override
-  final String to;
+  final String? to;
   @override
-  final int torewards;
+  final int? torewards;
 
   factory _$PaymentTransactionType(
-          [void Function(PaymentTransactionTypeBuilder) updates]) =>
+          [void Function(PaymentTransactionTypeBuilder)? updates]) =>
       (PaymentTransactionTypeBuilder()..update(updates)).build();
 
   _$PaymentTransactionType._(
@@ -181,49 +181,49 @@ class _$PaymentTransactionType extends PaymentTransactionType {
 
 class PaymentTransactionTypeBuilder
     implements Builder<PaymentTransactionType, PaymentTransactionTypeBuilder> {
-  _$PaymentTransactionType _$v;
+  _$PaymentTransactionType? _$v;
 
-  int _amount;
-  int get amount => _$this._amount;
-  set amount(int amount) => _$this._amount = amount;
+  int? _amount;
+  int? get amount => _$this._amount;
+  set amount(int? amount) => _$this._amount = amount;
 
-  String _close;
-  String get close => _$this._close;
-  set close(String close) => _$this._close = close;
+  String? _close;
+  String? get close => _$this._close;
+  set close(String? close) => _$this._close = close;
 
-  int _closeamount;
-  int get closeamount => _$this._closeamount;
-  set closeamount(int closeamount) => _$this._closeamount = closeamount;
+  int? _closeamount;
+  int? get closeamount => _$this._closeamount;
+  set closeamount(int? closeamount) => _$this._closeamount = closeamount;
 
-  int _closerewards;
-  int get closerewards => _$this._closerewards;
-  set closerewards(int closerewards) => _$this._closerewards = closerewards;
+  int? _closerewards;
+  int? get closerewards => _$this._closerewards;
+  set closerewards(int? closerewards) => _$this._closerewards = closerewards;
 
-  String _to;
-  String get to => _$this._to;
-  set to(String to) => _$this._to = to;
+  String? _to;
+  String? get to => _$this._to;
+  set to(String? to) => _$this._to = to;
 
-  int _torewards;
-  int get torewards => _$this._torewards;
-  set torewards(int torewards) => _$this._torewards = torewards;
+  int? _torewards;
+  int? get torewards => _$this._torewards;
+  set torewards(int? torewards) => _$this._torewards = torewards;
 
   PaymentTransactionTypeBuilder();
 
   PaymentTransactionTypeBuilder get _$this {
     if (_$v != null) {
-      _amount = _$v.amount;
-      _close = _$v.close;
-      _closeamount = _$v.closeamount;
-      _closerewards = _$v.closerewards;
-      _to = _$v.to;
-      _torewards = _$v.torewards;
+      _amount = _$v!.amount;
+      _close = _$v!.close;
+      _closeamount = _$v!.closeamount;
+      _closerewards = _$v!.closerewards;
+      _to = _$v!.to;
+      _torewards = _$v!.torewards;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(PaymentTransactionType other) {
+  void replace(PaymentTransactionType? other) {
     if (other == null) {
       throw ArgumentError.notNull('other');
     }
@@ -231,7 +231,7 @@ class PaymentTransactionTypeBuilder
   }
 
   @override
-  void update(void Function(PaymentTransactionTypeBuilder) updates) {
+  void update(void Function(PaymentTransactionTypeBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -15,9 +15,9 @@ class _$SupplySerializer implements StructuredSerializer<Supply> {
   final String wireName = 'Supply';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Supply object,
+  Iterable<Object?> serialize(Serializers serializers, Supply object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.onlineMoney != null) {
       result
         ..add('onlineMoney')
@@ -40,27 +40,27 @@ class _$SupplySerializer implements StructuredSerializer<Supply> {
   }
 
   @override
-  Supply deserialize(Serializers serializers, Iterable<Object> serialized,
+  Supply deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = SupplyBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'onlineMoney':
           result.onlineMoney = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'round':
           result.round = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'totalMoney':
           result.totalMoney = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -71,13 +71,13 @@ class _$SupplySerializer implements StructuredSerializer<Supply> {
 
 class _$Supply extends Supply {
   @override
-  final int onlineMoney;
+  final int? onlineMoney;
   @override
-  final int round;
+  final int? round;
   @override
-  final int totalMoney;
+  final int? totalMoney;
 
-  factory _$Supply([void Function(SupplyBuilder) updates]) =>
+  factory _$Supply([void Function(SupplyBuilder)? updates]) =>
       (SupplyBuilder()..update(updates)).build();
 
   _$Supply._({this.onlineMoney, this.round, this.totalMoney}) : super._();
@@ -115,27 +115,27 @@ class _$Supply extends Supply {
 }
 
 class SupplyBuilder implements Builder<Supply, SupplyBuilder> {
-  _$Supply _$v;
+  _$Supply? _$v;
 
-  int _onlineMoney;
-  int get onlineMoney => _$this._onlineMoney;
-  set onlineMoney(int onlineMoney) => _$this._onlineMoney = onlineMoney;
+  int? _onlineMoney;
+  int? get onlineMoney => _$this._onlineMoney;
+  set onlineMoney(int? onlineMoney) => _$this._onlineMoney = onlineMoney;
 
-  int _round;
-  int get round => _$this._round;
-  set round(int round) => _$this._round = round;
+  int? _round;
+  int? get round => _$this._round;
+  set round(int? round) => _$this._round = round;
 
-  int _totalMoney;
-  int get totalMoney => _$this._totalMoney;
-  set totalMoney(int totalMoney) => _$this._totalMoney = totalMoney;
+  int? _totalMoney;
+  int? get totalMoney => _$this._totalMoney;
+  set totalMoney(int? totalMoney) => _$this._totalMoney = totalMoney;
 
   SupplyBuilder();
 
   SupplyBuilder get _$this {
     if (_$v != null) {
-      _onlineMoney = _$v.onlineMoney;
-      _round = _$v.round;
-      _totalMoney = _$v.totalMoney;
+      _onlineMoney = _$v!.onlineMoney;
+      _round = _$v!.round;
+      _totalMoney = _$v!.totalMoney;
       _$v = null;
     }
     return this;
@@ -150,7 +150,7 @@ class SupplyBuilder implements Builder<Supply, SupplyBuilder> {
   }
 
   @override
-  void update(void Function(SupplyBuilder) updates) {
+  void update(void Function(SupplyBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

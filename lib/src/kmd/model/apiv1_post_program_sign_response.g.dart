@@ -21,10 +21,10 @@ class _$APIV1POSTProgramSignResponseSerializer
   final String wireName = 'APIV1POSTProgramSignResponse';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, APIV1POSTProgramSignResponse object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.error != null) {
       result
         ..add('error')
@@ -48,27 +48,27 @@ class _$APIV1POSTProgramSignResponseSerializer
 
   @override
   APIV1POSTProgramSignResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1POSTProgramSignResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'error':
           result.error = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'sig':
           result.sig = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -79,14 +79,14 @@ class _$APIV1POSTProgramSignResponseSerializer
 
 class _$APIV1POSTProgramSignResponse extends APIV1POSTProgramSignResponse {
   @override
-  final bool error;
+  final bool? error;
   @override
-  final String message;
+  final String? message;
   @override
-  final String sig;
+  final String? sig;
 
   factory _$APIV1POSTProgramSignResponse(
-          [void Function(APIV1POSTProgramSignResponseBuilder) updates]) =>
+          [void Function(APIV1POSTProgramSignResponseBuilder)? updates]) =>
       (APIV1POSTProgramSignResponseBuilder()..update(updates)).build();
 
   _$APIV1POSTProgramSignResponse._({this.error, this.message, this.sig})
@@ -130,27 +130,27 @@ class APIV1POSTProgramSignResponseBuilder
     implements
         Builder<APIV1POSTProgramSignResponse,
             APIV1POSTProgramSignResponseBuilder> {
-  _$APIV1POSTProgramSignResponse _$v;
+  _$APIV1POSTProgramSignResponse? _$v;
 
-  bool _error;
-  bool get error => _$this._error;
-  set error(bool error) => _$this._error = error;
+  bool? _error;
+  bool? get error => _$this._error;
+  set error(bool? error) => _$this._error = error;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
-  String _sig;
-  String get sig => _$this._sig;
-  set sig(String sig) => _$this._sig = sig;
+  String? _sig;
+  String? get sig => _$this._sig;
+  set sig(String? sig) => _$this._sig = sig;
 
   APIV1POSTProgramSignResponseBuilder();
 
   APIV1POSTProgramSignResponseBuilder get _$this {
     if (_$v != null) {
-      _error = _$v.error;
-      _message = _$v.message;
-      _sig = _$v.sig;
+      _error = _$v!.error;
+      _message = _$v!.message;
+      _sig = _$v!.sig;
       _$v = null;
     }
     return this;
@@ -165,7 +165,7 @@ class APIV1POSTProgramSignResponseBuilder
   }
 
   @override
-  void update(void Function(APIV1POSTProgramSignResponseBuilder) updates) {
+  void update(void Function(APIV1POSTProgramSignResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -30,7 +30,7 @@ String from_private_key(String key) {
 }
 
 /// Return the public key for the mnemonic.
-String to_public_key(String mnemonic) {
+String? to_public_key(String mnemonic) {
   final key_bytes = to_key(mnemonic);
   final key = SigningKey(seed: key_bytes);
   return encode_address(key.verifyKey);

@@ -20,10 +20,10 @@ class _$ListMultisigRequestSerializer
   final String wireName = 'ListMultisigRequest';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, ListMultisigRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.walletHandleToken != null) {
       result
         ..add('wallet_handle_token')
@@ -35,19 +35,19 @@ class _$ListMultisigRequestSerializer
 
   @override
   ListMultisigRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = ListMultisigRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -58,10 +58,10 @@ class _$ListMultisigRequestSerializer
 
 class _$ListMultisigRequest extends ListMultisigRequest {
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
 
   factory _$ListMultisigRequest(
-          [void Function(ListMultisigRequestBuilder) updates]) =>
+          [void Function(ListMultisigRequestBuilder)? updates]) =>
       (ListMultisigRequestBuilder()..update(updates)).build();
 
   _$ListMultisigRequest._({this.walletHandleToken}) : super._();
@@ -97,18 +97,18 @@ class _$ListMultisigRequest extends ListMultisigRequest {
 
 class ListMultisigRequestBuilder
     implements Builder<ListMultisigRequest, ListMultisigRequestBuilder> {
-  _$ListMultisigRequest _$v;
+  _$ListMultisigRequest? _$v;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
   ListMultisigRequestBuilder();
 
   ListMultisigRequestBuilder get _$this {
     if (_$v != null) {
-      _walletHandleToken = _$v.walletHandleToken;
+      _walletHandleToken = _$v!.walletHandleToken;
       _$v = null;
     }
     return this;
@@ -123,7 +123,7 @@ class ListMultisigRequestBuilder
   }
 
   @override
-  void update(void Function(ListMultisigRequestBuilder) updates) {
+  void update(void Function(ListMultisigRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

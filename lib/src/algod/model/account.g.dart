@@ -15,9 +15,9 @@ class _$AccountSerializer implements StructuredSerializer<Account> {
   final String wireName = 'Account';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Account object,
+  Iterable<Object?> serialize(Serializers serializers, Account object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.address != null) {
       result
         ..add('address')
@@ -84,57 +84,57 @@ class _$AccountSerializer implements StructuredSerializer<Account> {
   }
 
   @override
-  Account deserialize(Serializers serializers, Iterable<Object> serialized,
+  Account deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = AccountBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'address':
           result.address = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'amount':
           result.amount = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'amountwithoutpendingrewards':
           result.amountwithoutpendingrewards = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'assets':
           result.assets.replace(serializers.deserialize(value,
               specifiedType: const FullType(
-                  BuiltMap, [FullType(String), FullType(AssetHolding)])));
+                  BuiltMap, [FullType(String), FullType(AssetHolding)]))!);
           break;
         case 'participation':
           result.participation.replace(serializers.deserialize(value,
-              specifiedType: const FullType(Participation)) as Participation);
+              specifiedType: const FullType(Participation)) as Participation?);
           break;
         case 'pendingrewards':
           result.pendingrewards = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'rewards':
           result.rewards = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'round':
           result.round = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'status':
           result.status = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'thisassettotal':
           result.thisassettotal.replace(serializers.deserialize(value,
               specifiedType: const FullType(
-                  BuiltMap, [FullType(String), FullType(AssetParams)])));
+                  BuiltMap, [FullType(String), FullType(AssetParams)]))!);
           break;
       }
     }
@@ -145,27 +145,27 @@ class _$AccountSerializer implements StructuredSerializer<Account> {
 
 class _$Account extends Account {
   @override
-  final String address;
+  final String? address;
   @override
-  final int amount;
+  final int? amount;
   @override
-  final int amountwithoutpendingrewards;
+  final int? amountwithoutpendingrewards;
   @override
-  final BuiltMap<String, AssetHolding> assets;
+  final BuiltMap<String, AssetHolding>? assets;
   @override
-  final Participation participation;
+  final Participation? participation;
   @override
-  final int pendingrewards;
+  final int? pendingrewards;
   @override
-  final int rewards;
+  final int? rewards;
   @override
-  final int round;
+  final int? round;
   @override
-  final String status;
+  final String? status;
   @override
-  final BuiltMap<String, AssetParams> thisassettotal;
+  final BuiltMap<String, AssetParams>? thisassettotal;
 
-  factory _$Account([void Function(AccountBuilder) updates]) =>
+  factory _$Account([void Function(AccountBuilder)? updates]) =>
       (AccountBuilder()..update(updates)).build();
 
   _$Account._(
@@ -244,51 +244,51 @@ class _$Account extends Account {
 }
 
 class AccountBuilder implements Builder<Account, AccountBuilder> {
-  _$Account _$v;
+  _$Account? _$v;
 
-  String _address;
-  String get address => _$this._address;
-  set address(String address) => _$this._address = address;
+  String? _address;
+  String? get address => _$this._address;
+  set address(String? address) => _$this._address = address;
 
-  int _amount;
-  int get amount => _$this._amount;
-  set amount(int amount) => _$this._amount = amount;
+  int? _amount;
+  int? get amount => _$this._amount;
+  set amount(int? amount) => _$this._amount = amount;
 
-  int _amountwithoutpendingrewards;
-  int get amountwithoutpendingrewards => _$this._amountwithoutpendingrewards;
-  set amountwithoutpendingrewards(int amountwithoutpendingrewards) =>
+  int? _amountwithoutpendingrewards;
+  int? get amountwithoutpendingrewards => _$this._amountwithoutpendingrewards;
+  set amountwithoutpendingrewards(int? amountwithoutpendingrewards) =>
       _$this._amountwithoutpendingrewards = amountwithoutpendingrewards;
 
-  MapBuilder<String, AssetHolding> _assets;
+  MapBuilder<String, AssetHolding>? _assets;
   MapBuilder<String, AssetHolding> get assets =>
       _$this._assets ??= MapBuilder<String, AssetHolding>();
   set assets(MapBuilder<String, AssetHolding> assets) =>
       _$this._assets = assets;
 
-  ParticipationBuilder _participation;
+  ParticipationBuilder? _participation;
   ParticipationBuilder get participation =>
       _$this._participation ??= ParticipationBuilder();
   set participation(ParticipationBuilder participation) =>
       _$this._participation = participation;
 
-  int _pendingrewards;
-  int get pendingrewards => _$this._pendingrewards;
-  set pendingrewards(int pendingrewards) =>
+  int? _pendingrewards;
+  int? get pendingrewards => _$this._pendingrewards;
+  set pendingrewards(int? pendingrewards) =>
       _$this._pendingrewards = pendingrewards;
 
-  int _rewards;
-  int get rewards => _$this._rewards;
-  set rewards(int rewards) => _$this._rewards = rewards;
+  int? _rewards;
+  int? get rewards => _$this._rewards;
+  set rewards(int? rewards) => _$this._rewards = rewards;
 
-  int _round;
-  int get round => _$this._round;
-  set round(int round) => _$this._round = round;
+  int? _round;
+  int? get round => _$this._round;
+  set round(int? round) => _$this._round = round;
 
-  String _status;
-  String get status => _$this._status;
-  set status(String status) => _$this._status = status;
+  String? _status;
+  String? get status => _$this._status;
+  set status(String? status) => _$this._status = status;
 
-  MapBuilder<String, AssetParams> _thisassettotal;
+  MapBuilder<String, AssetParams>? _thisassettotal;
   MapBuilder<String, AssetParams> get thisassettotal =>
       _$this._thisassettotal ??= MapBuilder<String, AssetParams>();
   set thisassettotal(MapBuilder<String, AssetParams> thisassettotal) =>
@@ -298,16 +298,16 @@ class AccountBuilder implements Builder<Account, AccountBuilder> {
 
   AccountBuilder get _$this {
     if (_$v != null) {
-      _address = _$v.address;
-      _amount = _$v.amount;
-      _amountwithoutpendingrewards = _$v.amountwithoutpendingrewards;
-      _assets = _$v.assets?.toBuilder();
-      _participation = _$v.participation?.toBuilder();
-      _pendingrewards = _$v.pendingrewards;
-      _rewards = _$v.rewards;
-      _round = _$v.round;
-      _status = _$v.status;
-      _thisassettotal = _$v.thisassettotal?.toBuilder();
+      _address = _$v!.address;
+      _amount = _$v!.amount;
+      _amountwithoutpendingrewards = _$v!.amountwithoutpendingrewards;
+      _assets = _$v!.assets?.toBuilder();
+      _participation = _$v!.participation?.toBuilder();
+      _pendingrewards = _$v!.pendingrewards;
+      _rewards = _$v!.rewards;
+      _round = _$v!.round;
+      _status = _$v!.status;
+      _thisassettotal = _$v!.thisassettotal?.toBuilder();
       _$v = null;
     }
     return this;
@@ -322,7 +322,7 @@ class AccountBuilder implements Builder<Account, AccountBuilder> {
   }
 
   @override
-  void update(void Function(AccountBuilder) updates) {
+  void update(void Function(AccountBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -343,7 +343,7 @@ class AccountBuilder implements Builder<Account, AccountBuilder> {
               status: status,
               thisassettotal: _thisassettotal?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'assets';
         _assets?.build();

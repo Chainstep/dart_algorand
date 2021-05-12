@@ -21,10 +21,10 @@ class _$RenewWalletHandleTokenRequestSerializer
   final String wireName = 'RenewWalletHandleTokenRequest';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, RenewWalletHandleTokenRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.walletHandleToken != null) {
       result
         ..add('wallet_handle_token')
@@ -36,19 +36,19 @@ class _$RenewWalletHandleTokenRequestSerializer
 
   @override
   RenewWalletHandleTokenRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = RenewWalletHandleTokenRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -59,10 +59,10 @@ class _$RenewWalletHandleTokenRequestSerializer
 
 class _$RenewWalletHandleTokenRequest extends RenewWalletHandleTokenRequest {
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
 
   factory _$RenewWalletHandleTokenRequest(
-          [void Function(RenewWalletHandleTokenRequestBuilder) updates]) =>
+          [void Function(RenewWalletHandleTokenRequestBuilder)? updates]) =>
       (RenewWalletHandleTokenRequestBuilder()..update(updates)).build();
 
   _$RenewWalletHandleTokenRequest._({this.walletHandleToken}) : super._();
@@ -100,18 +100,18 @@ class RenewWalletHandleTokenRequestBuilder
     implements
         Builder<RenewWalletHandleTokenRequest,
             RenewWalletHandleTokenRequestBuilder> {
-  _$RenewWalletHandleTokenRequest _$v;
+  _$RenewWalletHandleTokenRequest? _$v;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
   RenewWalletHandleTokenRequestBuilder();
 
   RenewWalletHandleTokenRequestBuilder get _$this {
     if (_$v != null) {
-      _walletHandleToken = _$v.walletHandleToken;
+      _walletHandleToken = _$v!.walletHandleToken;
       _$v = null;
     }
     return this;
@@ -126,7 +126,7 @@ class RenewWalletHandleTokenRequestBuilder
   }
 
   @override
-  void update(void Function(RenewWalletHandleTokenRequestBuilder) updates) {
+  void update(void Function(RenewWalletHandleTokenRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -7,12 +7,12 @@ abstract class ListKeysRequest
     implements Built<ListKeysRequest, ListKeysRequestBuilder> {
   @nullable
   @BuiltValueField(wireName: r'wallet_handle_token')
-  String get walletHandleToken;
+  String? get walletHandleToken;
 
   // Boilerplate code needed to wire-up generated code
   ListKeysRequest._();
 
-  factory ListKeysRequest([Function(ListKeysRequestBuilder) updates]) =
+  factory ListKeysRequest([Function(ListKeysRequestBuilder)? updates]) =
       _$ListKeysRequest;
 
   static Serializer<ListKeysRequest> get serializer =>

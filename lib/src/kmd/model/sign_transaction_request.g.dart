@@ -20,10 +20,10 @@ class _$SignTransactionRequestSerializer
   final String wireName = 'SignTransactionRequest';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, SignTransactionRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.transaction != null) {
       result
         ..add('transaction')
@@ -47,27 +47,27 @@ class _$SignTransactionRequestSerializer
 
   @override
   SignTransactionRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = SignTransactionRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'transaction':
           result.transaction = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_password':
           result.walletPassword = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -78,14 +78,14 @@ class _$SignTransactionRequestSerializer
 
 class _$SignTransactionRequest extends SignTransactionRequest {
   @override
-  final String transaction;
+  final String? transaction;
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
   @override
-  final String walletPassword;
+  final String? walletPassword;
 
   factory _$SignTransactionRequest(
-          [void Function(SignTransactionRequestBuilder) updates]) =>
+          [void Function(SignTransactionRequestBuilder)? updates]) =>
       (SignTransactionRequestBuilder()..update(updates)).build();
 
   _$SignTransactionRequest._(
@@ -129,29 +129,29 @@ class _$SignTransactionRequest extends SignTransactionRequest {
 
 class SignTransactionRequestBuilder
     implements Builder<SignTransactionRequest, SignTransactionRequestBuilder> {
-  _$SignTransactionRequest _$v;
+  _$SignTransactionRequest? _$v;
 
-  String _transaction;
-  String get transaction => _$this._transaction;
-  set transaction(String transaction) => _$this._transaction = transaction;
+  String? _transaction;
+  String? get transaction => _$this._transaction;
+  set transaction(String? transaction) => _$this._transaction = transaction;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
-  String _walletPassword;
-  String get walletPassword => _$this._walletPassword;
-  set walletPassword(String walletPassword) =>
+  String? _walletPassword;
+  String? get walletPassword => _$this._walletPassword;
+  set walletPassword(String? walletPassword) =>
       _$this._walletPassword = walletPassword;
 
   SignTransactionRequestBuilder();
 
   SignTransactionRequestBuilder get _$this {
     if (_$v != null) {
-      _transaction = _$v.transaction;
-      _walletHandleToken = _$v.walletHandleToken;
-      _walletPassword = _$v.walletPassword;
+      _transaction = _$v!.transaction;
+      _walletHandleToken = _$v!.walletHandleToken;
+      _walletPassword = _$v!.walletPassword;
       _$v = null;
     }
     return this;
@@ -166,7 +166,7 @@ class SignTransactionRequestBuilder
   }
 
   @override
-  void update(void Function(SignTransactionRequestBuilder) updates) {
+  void update(void Function(SignTransactionRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

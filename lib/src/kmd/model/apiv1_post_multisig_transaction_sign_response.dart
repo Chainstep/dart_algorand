@@ -9,21 +9,21 @@ abstract class APIV1POSTMultisigTransactionSignResponse
             APIV1POSTMultisigTransactionSignResponseBuilder> {
   @nullable
   @BuiltValueField(wireName: r'error')
-  bool get error;
+  bool? get error;
 
   @nullable
   @BuiltValueField(wireName: r'message')
-  String get message;
+  String? get message;
 
   @nullable
   @BuiltValueField(wireName: r'multisig')
-  String get multisig;
+  String? get multisig;
 
   // Boilerplate code needed to wire-up generated code
   APIV1POSTMultisigTransactionSignResponse._();
 
   factory APIV1POSTMultisigTransactionSignResponse(
-          [updates(APIV1POSTMultisigTransactionSignResponseBuilder b)]) =
+          [updates(APIV1POSTMultisigTransactionSignResponseBuilder b)?]) =
       _$APIV1POSTMultisigTransactionSignResponse;
   static Serializer<APIV1POSTMultisigTransactionSignResponse> get serializer =>
       _$aPIV1POSTMultisigTransactionSignResponseSerializer;

@@ -8,16 +8,16 @@ abstract class MultisigSubsig
     implements Built<MultisigSubsig, MultisigSubsigBuilder> {
   @nullable
   @BuiltValueField(wireName: r'pk')
-  String get key;
+  String? get key;
 
   @nullable
   @BuiltValueField(wireName: r's')
-  String get sig;
+  String? get sig;
 
   // Boilerplate code needed to wire-up generated code
   MultisigSubsig._();
 
-  factory MultisigSubsig([Function(MultisigSubsigBuilder) b]) =
+  factory MultisigSubsig([Function(MultisigSubsigBuilder)? b]) =
       _$MultisigSubsig;
 
   static Serializer<MultisigSubsig> get serializer =>

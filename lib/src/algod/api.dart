@@ -5,12 +5,12 @@ import 'serializers.dart';
 import 'api/algod_api.dart';
 
 class Openapi {
-  Dio dio;
-  Serializers serializers;
+  Dio? dio;
+  Serializers? serializers;
   String basePath;
 
   Openapi(
-      {this.dio, Serializers serializers, this.basePath = 'http://localhost'}) {
+      {this.dio, Serializers? serializers, this.basePath = 'http://localhost'}) {
     if (dio == null) {
       BaseOptions options = BaseOptions(
         baseUrl: basePath,

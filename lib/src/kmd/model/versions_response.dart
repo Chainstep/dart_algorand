@@ -8,12 +8,12 @@ abstract class VersionsResponse
     implements Built<VersionsResponse, VersionsResponseBuilder> {
   @nullable
   @BuiltValueField(wireName: r'versions')
-  BuiltList<String> get versions;
+  BuiltList<String>? get versions;
 
   // Boilerplate code needed to wire-up generated code
   VersionsResponse._();
 
-  factory VersionsResponse([updates(VersionsResponseBuilder b)]) =
+  factory VersionsResponse([updates(VersionsResponseBuilder b)?]) =
       _$VersionsResponse;
   static Serializer<VersionsResponse> get serializer =>
       _$versionsResponseSerializer;

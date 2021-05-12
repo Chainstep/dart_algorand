@@ -10,12 +10,12 @@ abstract class TransactionList
   /* TransactionList is a list of transactions */
   @nullable
   @BuiltValueField(wireName: r'transactions')
-  BuiltList<Transaction> get transactions;
+  BuiltList<Transaction>? get transactions;
 
   // Boilerplate code needed to wire-up generated code
   TransactionList._();
 
-  factory TransactionList([updates(TransactionListBuilder b)]) =
+  factory TransactionList([updates(TransactionListBuilder b)?]) =
       _$TransactionList;
 
   static Serializer<TransactionList> get serializer =>

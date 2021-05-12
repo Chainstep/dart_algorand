@@ -10,21 +10,21 @@ abstract class APIV1POSTWalletRenewResponse
             APIV1POSTWalletRenewResponseBuilder> {
   @nullable
   @BuiltValueField(wireName: r'error')
-  bool get error;
+  bool? get error;
 
   @nullable
   @BuiltValueField(wireName: r'message')
-  String get message;
+  String? get message;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_handle')
-  APIV1WalletHandle get walletHandle;
+  APIV1WalletHandle? get walletHandle;
 
   // Boilerplate code needed to wire-up generated code
   APIV1POSTWalletRenewResponse._();
 
   factory APIV1POSTWalletRenewResponse(
-          [updates(APIV1POSTWalletRenewResponseBuilder b)]) =
+          [updates(APIV1POSTWalletRenewResponseBuilder b)?]) =
       _$APIV1POSTWalletRenewResponse;
 
   static Serializer<APIV1POSTWalletRenewResponse> get serializer =>

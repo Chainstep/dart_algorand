@@ -17,9 +17,9 @@ class _$ExportKeyRequestSerializer
   final String wireName = 'ExportKeyRequest';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, ExportKeyRequest object,
+  Iterable<Object?> serialize(Serializers serializers, ExportKeyRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.address != null) {
       result
         ..add('address')
@@ -43,27 +43,27 @@ class _$ExportKeyRequestSerializer
 
   @override
   ExportKeyRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = ExportKeyRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'address':
           result.address = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_password':
           result.walletPassword = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -74,14 +74,14 @@ class _$ExportKeyRequestSerializer
 
 class _$ExportKeyRequest extends ExportKeyRequest {
   @override
-  final String address;
+  final String? address;
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
   @override
-  final String walletPassword;
+  final String? walletPassword;
 
   factory _$ExportKeyRequest(
-          [void Function(ExportKeyRequestBuilder) updates]) =>
+          [void Function(ExportKeyRequestBuilder)? updates]) =>
       (ExportKeyRequestBuilder()..update(updates)).build();
 
   _$ExportKeyRequest._(
@@ -123,29 +123,29 @@ class _$ExportKeyRequest extends ExportKeyRequest {
 
 class ExportKeyRequestBuilder
     implements Builder<ExportKeyRequest, ExportKeyRequestBuilder> {
-  _$ExportKeyRequest _$v;
+  _$ExportKeyRequest? _$v;
 
-  String _address;
-  String get address => _$this._address;
-  set address(String address) => _$this._address = address;
+  String? _address;
+  String? get address => _$this._address;
+  set address(String? address) => _$this._address = address;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
-  String _walletPassword;
-  String get walletPassword => _$this._walletPassword;
-  set walletPassword(String walletPassword) =>
+  String? _walletPassword;
+  String? get walletPassword => _$this._walletPassword;
+  set walletPassword(String? walletPassword) =>
       _$this._walletPassword = walletPassword;
 
   ExportKeyRequestBuilder();
 
   ExportKeyRequestBuilder get _$this {
     if (_$v != null) {
-      _address = _$v.address;
-      _walletHandleToken = _$v.walletHandleToken;
-      _walletPassword = _$v.walletPassword;
+      _address = _$v!.address;
+      _walletHandleToken = _$v!.walletHandleToken;
+      _walletPassword = _$v!.walletPassword;
       _$v = null;
     }
     return this;
@@ -160,7 +160,7 @@ class ExportKeyRequestBuilder
   }
 
   @override
-  void update(void Function(ExportKeyRequestBuilder) updates) {
+  void update(void Function(ExportKeyRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

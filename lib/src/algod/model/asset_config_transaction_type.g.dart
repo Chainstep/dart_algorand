@@ -20,10 +20,10 @@ class _$AssetConfigTransactionTypeSerializer
   final String wireName = 'AssetConfigTransactionType';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, AssetConfigTransactionType object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.id != null) {
       result
         ..add('id')
@@ -41,23 +41,23 @@ class _$AssetConfigTransactionTypeSerializer
 
   @override
   AssetConfigTransactionType deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = AssetConfigTransactionTypeBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'params':
           result.params.replace(serializers.deserialize(value,
-              specifiedType: const FullType(AssetParams)) as AssetParams);
+              specifiedType: const FullType(AssetParams)) as AssetParams?);
           break;
       }
     }
@@ -68,12 +68,12 @@ class _$AssetConfigTransactionTypeSerializer
 
 class _$AssetConfigTransactionType extends AssetConfigTransactionType {
   @override
-  final int id;
+  final int? id;
   @override
-  final AssetParams params;
+  final AssetParams? params;
 
   factory _$AssetConfigTransactionType(
-          [void Function(AssetConfigTransactionTypeBuilder) updates]) =>
+          [void Function(AssetConfigTransactionTypeBuilder)? updates]) =>
       (AssetConfigTransactionTypeBuilder()..update(updates)).build();
 
   _$AssetConfigTransactionType._({this.id, this.params}) : super._();
@@ -112,13 +112,13 @@ class _$AssetConfigTransactionType extends AssetConfigTransactionType {
 class AssetConfigTransactionTypeBuilder
     implements
         Builder<AssetConfigTransactionType, AssetConfigTransactionTypeBuilder> {
-  _$AssetConfigTransactionType _$v;
+  _$AssetConfigTransactionType? _$v;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
-  AssetParamsBuilder _params;
+  AssetParamsBuilder? _params;
   AssetParamsBuilder get params => _$this._params ??= AssetParamsBuilder();
   set params(AssetParamsBuilder params) => _$this._params = params;
 
@@ -126,15 +126,15 @@ class AssetConfigTransactionTypeBuilder
 
   AssetConfigTransactionTypeBuilder get _$this {
     if (_$v != null) {
-      _id = _$v.id;
-      _params = _$v.params?.toBuilder();
+      _id = _$v!.id;
+      _params = _$v!.params?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(AssetConfigTransactionType other) {
+  void replace(AssetConfigTransactionType? other) {
     if (other == null) {
       throw ArgumentError.notNull('other');
     }
@@ -142,7 +142,7 @@ class AssetConfigTransactionTypeBuilder
   }
 
   @override
-  void update(void Function(AssetConfigTransactionTypeBuilder) updates) {
+  void update(void Function(AssetConfigTransactionTypeBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -153,7 +153,7 @@ class AssetConfigTransactionTypeBuilder
       _$result = _$v ??
           _$AssetConfigTransactionType._(id: id, params: _params?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'params';
         _params?.build();

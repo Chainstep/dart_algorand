@@ -7,17 +7,17 @@ abstract class APIV1DELETEKeyResponse
     implements Built<APIV1DELETEKeyResponse, APIV1DELETEKeyResponseBuilder> {
   @nullable
   @BuiltValueField(wireName: r'error')
-  bool get error;
+  bool? get error;
 
   @nullable
   @BuiltValueField(wireName: r'message')
-  String get message;
+  String? get message;
 
   // Boilerplate code needed to wire-up generated code
   APIV1DELETEKeyResponse._();
 
   factory APIV1DELETEKeyResponse(
-          [Function(APIV1DELETEKeyResponseBuilder) updates]) =
+          [Function(APIV1DELETEKeyResponseBuilder)? updates]) =
       _$APIV1DELETEKeyResponse;
 
   static Serializer<APIV1DELETEKeyResponse> get serializer =>

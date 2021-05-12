@@ -1,4 +1,7 @@
+import 'dart:async';
+
 import 'package:dart_algorand/dart_algorand.dart';
+import 'package:dart_algorand/kmd.dart';
 
 import 'params.dart';
 
@@ -13,8 +16,8 @@ void main() async {
       kmdClient: kcl);
 
   // get wallet information
-  final info = await wallet.info();
-  print('Wallet name: ${info.wallet.name}');
+  final info = await (wallet.info() as FutureOr<APIV1WalletHandle>);
+  print('Wallet name: ${info.wallet!.name}');
 
   // create an account
   final address = await wallet.generateKey();

@@ -20,10 +20,10 @@ class _$DeleteMultisigRequestSerializer
   final String wireName = 'DeleteMultisigRequest';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, DeleteMultisigRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.address != null) {
       result
         ..add('address')
@@ -47,27 +47,27 @@ class _$DeleteMultisigRequestSerializer
 
   @override
   DeleteMultisigRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = DeleteMultisigRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'address':
           result.address = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_password':
           result.walletPassword = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -78,14 +78,14 @@ class _$DeleteMultisigRequestSerializer
 
 class _$DeleteMultisigRequest extends DeleteMultisigRequest {
   @override
-  final String address;
+  final String? address;
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
   @override
-  final String walletPassword;
+  final String? walletPassword;
 
   factory _$DeleteMultisigRequest(
-          [void Function(DeleteMultisigRequestBuilder) updates]) =>
+          [void Function(DeleteMultisigRequestBuilder)? updates]) =>
       (DeleteMultisigRequestBuilder()..update(updates)).build();
 
   _$DeleteMultisigRequest._(
@@ -128,29 +128,29 @@ class _$DeleteMultisigRequest extends DeleteMultisigRequest {
 
 class DeleteMultisigRequestBuilder
     implements Builder<DeleteMultisigRequest, DeleteMultisigRequestBuilder> {
-  _$DeleteMultisigRequest _$v;
+  _$DeleteMultisigRequest? _$v;
 
-  String _address;
-  String get address => _$this._address;
-  set address(String address) => _$this._address = address;
+  String? _address;
+  String? get address => _$this._address;
+  set address(String? address) => _$this._address = address;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
-  String _walletPassword;
-  String get walletPassword => _$this._walletPassword;
-  set walletPassword(String walletPassword) =>
+  String? _walletPassword;
+  String? get walletPassword => _$this._walletPassword;
+  set walletPassword(String? walletPassword) =>
       _$this._walletPassword = walletPassword;
 
   DeleteMultisigRequestBuilder();
 
   DeleteMultisigRequestBuilder get _$this {
     if (_$v != null) {
-      _address = _$v.address;
-      _walletHandleToken = _$v.walletHandleToken;
-      _walletPassword = _$v.walletPassword;
+      _address = _$v!.address;
+      _walletHandleToken = _$v!.walletHandleToken;
+      _walletPassword = _$v!.walletPassword;
       _$v = null;
     }
     return this;
@@ -165,7 +165,7 @@ class DeleteMultisigRequestBuilder
   }
 
   @override
-  void update(void Function(DeleteMultisigRequestBuilder) updates) {
+  void update(void Function(DeleteMultisigRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

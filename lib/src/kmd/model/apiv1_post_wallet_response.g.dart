@@ -20,10 +20,10 @@ class _$APIV1POSTWalletResponseSerializer
   final String wireName = 'APIV1POSTWalletResponse';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, APIV1POSTWalletResponse object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.error != null) {
       result
         ..add('error')
@@ -47,27 +47,27 @@ class _$APIV1POSTWalletResponseSerializer
 
   @override
   APIV1POSTWalletResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1POSTWalletResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'error':
           result.error = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet':
           result.wallet.replace(serializers.deserialize(value,
-              specifiedType: const FullType(APIV1Wallet)) as APIV1Wallet);
+              specifiedType: const FullType(APIV1Wallet)) as APIV1Wallet?);
           break;
       }
     }
@@ -78,14 +78,14 @@ class _$APIV1POSTWalletResponseSerializer
 
 class _$APIV1POSTWalletResponse extends APIV1POSTWalletResponse {
   @override
-  final bool error;
+  final bool? error;
   @override
-  final String message;
+  final String? message;
   @override
-  final APIV1Wallet wallet;
+  final APIV1Wallet? wallet;
 
   factory _$APIV1POSTWalletResponse(
-          [void Function(APIV1POSTWalletResponseBuilder) updates]) =>
+          [void Function(APIV1POSTWalletResponseBuilder)? updates]) =>
       (APIV1POSTWalletResponseBuilder()..update(updates)).build();
 
   _$APIV1POSTWalletResponse._({this.error, this.message, this.wallet})
@@ -128,17 +128,17 @@ class _$APIV1POSTWalletResponse extends APIV1POSTWalletResponse {
 class APIV1POSTWalletResponseBuilder
     implements
         Builder<APIV1POSTWalletResponse, APIV1POSTWalletResponseBuilder> {
-  _$APIV1POSTWalletResponse _$v;
+  _$APIV1POSTWalletResponse? _$v;
 
-  bool _error;
-  bool get error => _$this._error;
-  set error(bool error) => _$this._error = error;
+  bool? _error;
+  bool? get error => _$this._error;
+  set error(bool? error) => _$this._error = error;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
-  APIV1WalletBuilder _wallet;
+  APIV1WalletBuilder? _wallet;
   APIV1WalletBuilder get wallet => _$this._wallet ??= APIV1WalletBuilder();
   set wallet(APIV1WalletBuilder wallet) => _$this._wallet = wallet;
 
@@ -146,9 +146,9 @@ class APIV1POSTWalletResponseBuilder
 
   APIV1POSTWalletResponseBuilder get _$this {
     if (_$v != null) {
-      _error = _$v.error;
-      _message = _$v.message;
-      _wallet = _$v.wallet?.toBuilder();
+      _error = _$v!.error;
+      _message = _$v!.message;
+      _wallet = _$v!.wallet?.toBuilder();
       _$v = null;
     }
     return this;
@@ -163,7 +163,7 @@ class APIV1POSTWalletResponseBuilder
   }
 
   @override
-  void update(void Function(APIV1POSTWalletResponseBuilder) updates) {
+  void update(void Function(APIV1POSTWalletResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -175,7 +175,7 @@ class APIV1POSTWalletResponseBuilder
           _$APIV1POSTWalletResponse._(
               error: error, message: message, wallet: _wallet?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'wallet';
         _wallet?.build();

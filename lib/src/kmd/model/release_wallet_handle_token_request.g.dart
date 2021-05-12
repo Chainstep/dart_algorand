@@ -21,10 +21,10 @@ class _$ReleaseWalletHandleTokenRequestSerializer
   final String wireName = 'ReleaseWalletHandleTokenRequest';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, ReleaseWalletHandleTokenRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.walletHandleToken != null) {
       result
         ..add('wallet_handle_token')
@@ -36,19 +36,19 @@ class _$ReleaseWalletHandleTokenRequestSerializer
 
   @override
   ReleaseWalletHandleTokenRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = ReleaseWalletHandleTokenRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -60,10 +60,10 @@ class _$ReleaseWalletHandleTokenRequestSerializer
 class _$ReleaseWalletHandleTokenRequest
     extends ReleaseWalletHandleTokenRequest {
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
 
   factory _$ReleaseWalletHandleTokenRequest(
-          [void Function(ReleaseWalletHandleTokenRequestBuilder) updates]) =>
+          [void Function(ReleaseWalletHandleTokenRequestBuilder)? updates]) =>
       (ReleaseWalletHandleTokenRequestBuilder()..update(updates)).build();
 
   _$ReleaseWalletHandleTokenRequest._({this.walletHandleToken}) : super._();
@@ -101,18 +101,18 @@ class ReleaseWalletHandleTokenRequestBuilder
     implements
         Builder<ReleaseWalletHandleTokenRequest,
             ReleaseWalletHandleTokenRequestBuilder> {
-  _$ReleaseWalletHandleTokenRequest _$v;
+  _$ReleaseWalletHandleTokenRequest? _$v;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
   ReleaseWalletHandleTokenRequestBuilder();
 
   ReleaseWalletHandleTokenRequestBuilder get _$this {
     if (_$v != null) {
-      _walletHandleToken = _$v.walletHandleToken;
+      _walletHandleToken = _$v!.walletHandleToken;
       _$v = null;
     }
     return this;
@@ -127,7 +127,7 @@ class ReleaseWalletHandleTokenRequestBuilder
   }
 
   @override
-  void update(void Function(ReleaseWalletHandleTokenRequestBuilder) updates) {
+  void update(void Function(ReleaseWalletHandleTokenRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -9,21 +9,21 @@ abstract class APIV1POSTTransactionSignResponse
             APIV1POSTTransactionSignResponseBuilder> {
   @nullable
   @BuiltValueField(wireName: r'error')
-  bool get error;
+  bool? get error;
 
   @nullable
   @BuiltValueField(wireName: r'message')
-  String get message;
+  String? get message;
 
   @nullable
   @BuiltValueField(wireName: r'signed_transaction')
-  String get signedTransaction;
+  String? get signedTransaction;
 
   // Boilerplate code needed to wire-up generated code
   APIV1POSTTransactionSignResponse._();
 
   factory APIV1POSTTransactionSignResponse(
-          [updates(APIV1POSTTransactionSignResponseBuilder b)]) =
+          [updates(APIV1POSTTransactionSignResponseBuilder b)?]) =
       _$APIV1POSTTransactionSignResponse;
   static Serializer<APIV1POSTTransactionSignResponse> get serializer =>
       _$aPIV1POSTTransactionSignResponseSerializer;

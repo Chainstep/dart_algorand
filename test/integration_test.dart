@@ -2,9 +2,17 @@
 // and that you created a wallet with ${walletName}, created an account in this wallet,
 // and funded it using the TestNet dispenser
 
+import 'dart:async';
 import 'dart:convert';
 
+import 'package:built_collection/built_collection.dart';
 import 'package:dart_algorand/dart_algorand.dart';
+import 'package:dart_algorand/kmd.dart';
+import 'package:dart_algorand/src/algod/model/account.dart';
+import 'package:dart_algorand/src/algod/model/block.dart';
+import 'package:dart_algorand/src/algod/model/transaction_fee.dart';
+import 'package:dart_algorand/src/algod/model/transaction_list.dart';
+import 'package:dart_algorand/src/algod/model/transaction_params.dart';
 import 'package:dart_algorand/src/algod_client.dart';
 import 'package:dart_algorand/src/auction.dart';
 import 'package:dart_algorand/src/multisig_txn.dart';
@@ -17,12 +25,12 @@ const walletPasswd = '';
 
 void main() {
   group('Integration tests', () {
-    AlgodClient algodClient;
-    KmdClient kmdClient;
-    String address0;
+    late AlgodClient algodClient;
+    late KmdClient kmdClient;
+    late String address0;
 
-    Future<String> getWalletId() async {
-      final wallets = await kmdClient.listWallets();
+    Future<String?> getWalletId() async {
+      final wallets = await (kmdClient.listWallets() as FutureOr<BuiltList<APIV1Wallet>>);
 
       return wallets.firstWhere((e) => e.name == walletName).id;
     }
@@ -49,19 +57,19 @@ void main() {
         throw FormatException('There are no keys in wallet `${walletName}` or the wallet does not exist. Create the wallet, add a key for tests to work, and fund it using the dispenser.');
       }
 
-      var max_balance = -1;
+      int? max_balance = -1;
 
       for (var k in keys) {
-        var accountInfo = await algodClient.accountInformation(k);
-        if (accountInfo.amount > max_balance) {
+        var accountInfo = await (algodClient.accountInformation(k) as FutureOr<Account>);
+        if (accountInfo.amount! > max_balance!) {
           max_balance = accountInfo.amount;
           address0 = k;
         }
       }
     });
     test('firstTest', () async {
-      final version = await kmdClient.getVersion();
-      expect(version.versions[0], 'v1');
+      final version = await (kmdClient.getVersion() as FutureOr<VersionsResponse>);
+      expect(version.versions![0], 'v1');
     });
 
     test('auction', () async {
@@ -81,7 +89,7 @@ void main() {
               handle: handle, password: walletPasswd, address: account1));
 
       // get suggested params and fee
-      final params = await algodClient.transactionParams();
+      final params = await (algodClient.transactionParams() as FutureOr<TransactionParams>);
 
       // get address0 private key
       final privateKey0 = await kmdClient.exportKey(
@@ -105,7 +113,7 @@ void main() {
           sender: address0,
           fee: params.fee,
           first_valid_round: params.lastRound,
-          last_valid_round: params.lastRound + 100,
+          last_valid_round: params.lastRound! + 100,
           genesis_hash: params.genesishashb64,
           receiver: account1,
           amt: 1000,
@@ -128,13 +136,13 @@ void main() {
 
       // generate account and check if it's valid
       final account1 = generate_account();
-      expect(is_valid_address(account1.address), isTrue);
+      expect(is_valid_address(account1.address!), isTrue);
 
       // import generated account
       final importAddress = await kmdClient.importKey(
           handle: handle, privateKey: account1.private_key);
 
-      String account2;
+      String? account2;
 
       addTearDown(() async {
         // delete keys
@@ -152,14 +160,14 @@ void main() {
           await kmdClient.generateKey(handle: handle, displayMnemonic: false);
 
       // get suggested params
-      final params = await algodClient.transactionParams();
+      final params = await (algodClient.transactionParams() as FutureOr<TransactionParams>);
 
       // create transaction
       final txn = PaymentTxn(
           sender: address0,
           fee: params.fee,
           first_valid_round: params.lastRound,
-          last_valid_round: params.lastRound + 100,
+          last_valid_round: params.lastRound! + 100,
           genesis_hash: params.genesishashb64,
           genesis_id: params.genesisID,
           receiver: account1.address,
@@ -185,27 +193,27 @@ void main() {
       expect(send, txid);
 
       // get transaction info in pending transactions
-      expect((await algodClient.pendingTransactionInfo(txid)).tx, txid);
+      expect((await algodClient.pendingTransactionInfo(txid))!.tx, txid);
 
       // wait for transaction to send
-      await algodClient.statusAfterBlock(params.lastRound + 2);
+      await algodClient.statusAfterBlock(params.lastRound! + 2);
 
       // get transaction info in two different ways
-      final info1 = await algodClient.transactionsByAddress(
+      final info1 = await (algodClient.transactionsByAddress(
           address: address0,
-          first: params.lastRound - 2,
-          last: params.lastRound + 2);
+          first: params.lastRound! - 2,
+          last: params.lastRound! + 2) as FutureOr<TransactionList>);
 
-      final info2 = await algodClient.transactionInfo(
-          address: address0, transactionID: txid);
+      final info2 = await (algodClient.transactionInfo(
+          address: address0, transactionID: txid) as FutureOr<Transaction>);
 
       expect(info1.transactions, isNotEmpty);
-      expect(info2.tx, txid);
+      expect(info2.genesis_id, txid);
     }, skip: 'Taking long and spending');
 
     test('multisig', () async {
       final walletID = await getWalletId();
-      String account1, account2, msigAddress;
+      String? account1, account2, msigAddress;
 
       // get new handle for wallet
       final handle = await kmdClient.initWalletHandleToken(
@@ -238,7 +246,7 @@ void main() {
           handle: handle, password: walletPasswd, address: account2);
 
       // get suggested params and fee
-      final params = await algodClient.transactionParams();
+      final params = await (algodClient.transactionParams() as FutureOr<TransactionParams>);
 
       // create multisig account and transaction
       final msig =
@@ -248,7 +256,7 @@ void main() {
           sender: msig.address(),
           fee: params.fee,
           first_valid_round: params.lastRound,
-          last_valid_round: params.lastRound + 100,
+          last_valid_round: params.lastRound! + 100,
           genesis_id: params.genesisID,
           genesis_hash: params.genesishashb64,
           receiver: address0,
@@ -303,25 +311,25 @@ void main() {
       expect(
           () async => await kmdClient.createWallet(
               name: walletName, password: walletPasswd),
-          throwsA(predicate((e) =>
+          throwsA(predicate((dynamic e) =>
               e is ClientError &&
-              e.response.data['message'] ==
+              e.response!.data['message'] ==
                   'wallet with same name already exists')));
 
       // get the wallet id
       final walletID = await getWalletId();
 
       // rename wallet
-      var newWallet = await kmdClient.renameWallet(
+      var newWallet = await (kmdClient.renameWallet(
           id: walletID,
           password: walletPasswd,
-          newName: walletName + 'newname');
+          newName: walletName + 'newname') as FutureOr<APIV1Wallet>);
 
       expect(newWallet.name, walletName + 'newname');
 
       // change it back
-      newWallet = await kmdClient.renameWallet(
-          id: walletID, password: walletPasswd, newName: walletName);
+      newWallet = await (kmdClient.renameWallet(
+          id: walletID, password: walletPasswd, newName: walletName) as FutureOr<APIV1Wallet>);
       expect(newWallet.name, walletName);
 
       // get new handle for the wallet
@@ -329,11 +337,11 @@ void main() {
           walledId: walletID, walletPassword: walletPasswd);
 
       // get wallet
-      final walletHandle = await kmdClient.getWalletInfo(handle);
+      final walletHandle = await (kmdClient.getWalletInfo(handle) as FutureOr<APIV1WalletHandle>);
       expect(walletHandle.expiresSeconds, greaterThan(0));
 
       // renew handle
-      final renewed_handle = await kmdClient.renewWalletHandle(handle);
+      final renewed_handle = await (kmdClient.renewWalletHandle(handle) as FutureOr<APIV1WalletHandle>);
       expect(renewed_handle.expiresSeconds, greaterThan(0));
 
       // release the handle
@@ -345,7 +353,7 @@ void main() {
     });
 
     test('wallet Info', () async {
-      final wallets = await kmdClient.listWallets();
+      final wallets = await (kmdClient.listWallets() as FutureOr<BuiltList<APIV1Wallet>>);
       var wallet_id;
 
       for (var w in wallets) {
@@ -376,8 +384,8 @@ void main() {
           walletPassword: walletPasswd,
           kmdClient: kmdClient);
 
-      AlgoAccount account1;
-      String address2, msigAddress;
+      late AlgoAccount account1;
+      String? address2, msigAddress;
 
       addTearDown(() async {
         // delete keys
@@ -408,17 +416,17 @@ void main() {
 
       // generate account with kmd
       address2 = await w.generateKey();
-      final privateKey2 = await w.exportKey(address2);
+      final privateKey2 = await (w.exportKey(address2) as FutureOr<String>);
 
       // get suggested params and fee
-      final params = await algodClient.transactionParams();
+      final params = await (algodClient.transactionParams() as FutureOr<TransactionParams>);
 
       // create transaction
       final txn = PaymentTxn(
           sender: address0,
           fee: params.fee,
           first_valid_round: params.lastRound,
-          last_valid_round: params.lastRound + 100,
+          last_valid_round: params.lastRound! + 100,
           genesis_hash: params.genesishashb64,
           genesis_id: params.genesisID,
           receiver: account1.address,
@@ -428,7 +436,7 @@ void main() {
       final signedKmd = await w.signTransaction(txn);
 
       // get address0 private key
-      final privateKey0 = await w.exportKey(address0);
+      final privateKey0 = await (w.exportKey(address0) as FutureOr<String>);
 
       // sign transaction offline
       final signedOffline = txn.sign(privateKey0);
@@ -444,7 +452,7 @@ void main() {
           sender: msig.address(),
           fee: params.fee,
           first_valid_round: params.lastRound,
-          last_valid_round: params.lastRound + 100,
+          last_valid_round: params.lastRound! + 100,
           genesis_hash: params.genesishashb64,
           genesis_id: params.genesisID,
           receiver: address0,
@@ -471,7 +479,7 @@ void main() {
 
       // sign the multisig offline
       final mtx1 = MultisigTransaction(transaction: mtxn, multisig: msig);
-      mtx1.sign(account1.private_key);
+      mtx1.sign(account1.private_key!);
       final mtx2 = MultisigTransaction(transaction: mtxn, multisig: msig);
       mtx2.sign(privateKey2);
       final signedMsigOffline = MultisigTransaction.merge([mtx1, mtx2]);
@@ -481,12 +489,12 @@ void main() {
 
       // test renaming the wallet
       await w.rename(walletName + '1');
-      var info = await w.info();
-      expect(info.wallet.name, walletName + '1');
+      var info = await (w.info() as FutureOr<APIV1WalletHandle>);
+      expect(info.wallet!.name, walletName + '1');
 
       await w.rename(walletName);
-      info = await w.info();
-      expect(info.wallet.name, walletName);
+      info = await (w.info() as FutureOr<APIV1WalletHandle>);
+      expect(info.wallet!.name, walletName);
 
       // test releasing the handle
       await w.releaseHandle();
@@ -497,9 +505,9 @@ void main() {
     });
 
     test('status after block', () async {
-      final lastRound = (await algodClient.status()).lastRound;
+      final lastRound = (await algodClient.status())!.lastRound!;
       final currRound =
-          (await algodClient.statusAfterBlock(lastRound)).lastRound;
+          (await algodClient.statusAfterBlock(lastRound))!.lastRound;
       expect(lastRound + 1, currRound);
     });
 
@@ -516,18 +524,18 @@ void main() {
     });
 
     test('block info', () async {
-      final lastRound = (await algodClient.status()).lastRound;
-      final result = await algodClient.blockInfo(lastRound);
+      final lastRound = (await algodClient.status())!.lastRound;
+      final result = await (algodClient.blockInfo(lastRound) as FutureOr<Block>);
       expect(result.hash, isNotEmpty);
     });
 
     test('kmd version', () async {
-      final result = await kmdClient.getVersion();
+      final result = await (kmdClient.getVersion() as FutureOr<VersionsResponse>);
       expect(result.versions, contains('v1'));
     });
 
     test('suggested fee', () async {
-      final result = await algodClient.suggestedFee();
+      final result = await (algodClient.suggestedFee() as FutureOr<TransactionFee>);
       expect(result.fee, greaterThan(0));
     });
 
@@ -544,14 +552,14 @@ void main() {
           handle: handle, password: walletPasswd, address: address0);
 
       // get suggested parmas and fee
-      final params = await algodClient.transactionParams();
+      final params = await (algodClient.transactionParams() as FutureOr<TransactionParams>);
 
       // create transaction
       final txn = PaymentTxn(
           sender: address0,
           fee: params.fee,
           first_valid_round: params.lastRound,
-          last_valid_round: params.lastRound + 100,
+          last_valid_round: params.lastRound! + 100,
           genesis_hash: params.genesishashb64,
           genesis_id: params.genesisID,
           receiver: address0,

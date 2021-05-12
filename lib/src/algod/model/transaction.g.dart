@@ -15,9 +15,9 @@ class _$TransactionSerializer implements StructuredSerializer<Transaction> {
   final String wireName = 'Transaction';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Transaction object,
+  Iterable<Object?> serialize(Serializers serializers, Transaction object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.curcfg != null) {
       result
         ..add('curcfg')
@@ -142,101 +142,101 @@ class _$TransactionSerializer implements StructuredSerializer<Transaction> {
   }
 
   @override
-  Transaction deserialize(Serializers serializers, Iterable<Object> serialized,
+  Transaction deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = TransactionBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'curcfg':
           result.curcfg.replace(serializers.deserialize(value,
                   specifiedType: const FullType(AssetConfigTransactionType))
-              as AssetConfigTransactionType);
+              as AssetConfigTransactionType?);
           break;
         case 'curfrz':
           result.curfrz.replace(serializers.deserialize(value,
                   specifiedType: const FullType(AssetFreezeTransactionType))
-              as AssetFreezeTransactionType);
+              as AssetFreezeTransactionType?);
           break;
         case 'curxfer':
           result.curxfer.replace(serializers.deserialize(value,
                   specifiedType: const FullType(AssetTransferTransactionType))
-              as AssetTransferTransactionType);
+              as AssetTransferTransactionType?);
           break;
         case 'fee':
           result.fee = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'first-round':
           result.firstRound = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'from':
           result.from = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'fromrewards':
           result.fromrewards = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'genesisID':
           result.genesisID = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'genesishashb64':
           result.genesishashb64 = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'group':
           result.group = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'keyreg':
           result.keyreg.replace(serializers.deserialize(value,
                   specifiedType: const FullType(KeyregTransactionType))
-              as KeyregTransactionType);
+              as KeyregTransactionType?);
           break;
         case 'last-round':
           result.lastRound = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'lease':
           result.lease = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'noteb64':
           result.noteb64 = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'payment':
           result.payment.replace(serializers.deserialize(value,
                   specifiedType: const FullType(PaymentTransactionType))
-              as PaymentTransactionType);
+              as PaymentTransactionType?);
           break;
         case 'poolerror':
           result.poolerror = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'round':
           result.round = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'tx':
           result.tx = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'txresults':
           result.txresults.replace(serializers.deserialize(value,
                   specifiedType: const FullType(TransactionResults))
-              as TransactionResults);
+              as TransactionResults?);
           break;
         case 'type':
           result.type = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -247,47 +247,47 @@ class _$TransactionSerializer implements StructuredSerializer<Transaction> {
 
 class _$Transaction extends Transaction {
   @override
-  final AssetConfigTransactionType curcfg;
+  final AssetConfigTransactionType? curcfg;
   @override
-  final AssetFreezeTransactionType curfrz;
+  final AssetFreezeTransactionType? curfrz;
   @override
-  final AssetTransferTransactionType curxfer;
+  final AssetTransferTransactionType? curxfer;
   @override
-  final int fee;
+  final int? fee;
   @override
-  final int firstRound;
+  final int? firstRound;
   @override
-  final String from;
+  final String? from;
   @override
-  final int fromrewards;
+  final int? fromrewards;
   @override
-  final String genesisID;
+  final String? genesisID;
   @override
-  final String genesishashb64;
+  final String? genesishashb64;
   @override
-  final String group;
+  final String? group;
   @override
-  final KeyregTransactionType keyreg;
+  final KeyregTransactionType? keyreg;
   @override
-  final int lastRound;
+  final int? lastRound;
   @override
-  final String lease;
+  final String? lease;
   @override
-  final String noteb64;
+  final String? noteb64;
   @override
-  final PaymentTransactionType payment;
+  final PaymentTransactionType? payment;
   @override
-  final String poolerror;
+  final String? poolerror;
   @override
-  final int round;
+  final int? round;
   @override
-  final String tx;
+  final String? tx;
   @override
-  final TransactionResults txresults;
+  final TransactionResults? txresults;
   @override
-  final String type;
+  final String? type;
 
-  factory _$Transaction([void Function(TransactionBuilder) updates]) =>
+  factory _$Transaction([void Function(TransactionBuilder)? updates]) =>
       (TransactionBuilder()..update(updates)).build();
 
   _$Transaction._(
@@ -416,124 +416,124 @@ class _$Transaction extends Transaction {
 }
 
 class TransactionBuilder implements Builder<Transaction, TransactionBuilder> {
-  _$Transaction _$v;
+  _$Transaction? _$v;
 
-  AssetConfigTransactionTypeBuilder _curcfg;
+  AssetConfigTransactionTypeBuilder? _curcfg;
   AssetConfigTransactionTypeBuilder get curcfg =>
       _$this._curcfg ??= AssetConfigTransactionTypeBuilder();
   set curcfg(AssetConfigTransactionTypeBuilder curcfg) =>
       _$this._curcfg = curcfg;
 
-  AssetFreezeTransactionTypeBuilder _curfrz;
+  AssetFreezeTransactionTypeBuilder? _curfrz;
   AssetFreezeTransactionTypeBuilder get curfrz =>
       _$this._curfrz ??= AssetFreezeTransactionTypeBuilder();
   set curfrz(AssetFreezeTransactionTypeBuilder curfrz) =>
       _$this._curfrz = curfrz;
 
-  AssetTransferTransactionTypeBuilder _curxfer;
+  AssetTransferTransactionTypeBuilder? _curxfer;
   AssetTransferTransactionTypeBuilder get curxfer =>
       _$this._curxfer ??= AssetTransferTransactionTypeBuilder();
   set curxfer(AssetTransferTransactionTypeBuilder curxfer) =>
       _$this._curxfer = curxfer;
 
-  int _fee;
-  int get fee => _$this._fee;
-  set fee(int fee) => _$this._fee = fee;
+  int? _fee;
+  int? get fee => _$this._fee;
+  set fee(int? fee) => _$this._fee = fee;
 
-  int _firstRound;
-  int get firstRound => _$this._firstRound;
-  set firstRound(int firstRound) => _$this._firstRound = firstRound;
+  int? _firstRound;
+  int? get firstRound => _$this._firstRound;
+  set firstRound(int? firstRound) => _$this._firstRound = firstRound;
 
-  String _from;
-  String get from => _$this._from;
-  set from(String from) => _$this._from = from;
+  String? _from;
+  String? get from => _$this._from;
+  set from(String? from) => _$this._from = from;
 
-  int _fromrewards;
-  int get fromrewards => _$this._fromrewards;
-  set fromrewards(int fromrewards) => _$this._fromrewards = fromrewards;
+  int? _fromrewards;
+  int? get fromrewards => _$this._fromrewards;
+  set fromrewards(int? fromrewards) => _$this._fromrewards = fromrewards;
 
-  String _genesisID;
-  String get genesisID => _$this._genesisID;
-  set genesisID(String genesisID) => _$this._genesisID = genesisID;
+  String? _genesisID;
+  String? get genesisID => _$this._genesisID;
+  set genesisID(String? genesisID) => _$this._genesisID = genesisID;
 
-  String _genesishashb64;
-  String get genesishashb64 => _$this._genesishashb64;
-  set genesishashb64(String genesishashb64) =>
+  String? _genesishashb64;
+  String? get genesishashb64 => _$this._genesishashb64;
+  set genesishashb64(String? genesishashb64) =>
       _$this._genesishashb64 = genesishashb64;
 
-  String _group;
-  String get group => _$this._group;
-  set group(String group) => _$this._group = group;
+  String? _group;
+  String? get group => _$this._group;
+  set group(String? group) => _$this._group = group;
 
-  KeyregTransactionTypeBuilder _keyreg;
+  KeyregTransactionTypeBuilder? _keyreg;
   KeyregTransactionTypeBuilder get keyreg =>
       _$this._keyreg ??= KeyregTransactionTypeBuilder();
   set keyreg(KeyregTransactionTypeBuilder keyreg) => _$this._keyreg = keyreg;
 
-  int _lastRound;
-  int get lastRound => _$this._lastRound;
-  set lastRound(int lastRound) => _$this._lastRound = lastRound;
+  int? _lastRound;
+  int? get lastRound => _$this._lastRound;
+  set lastRound(int? lastRound) => _$this._lastRound = lastRound;
 
-  String _lease;
-  String get lease => _$this._lease;
-  set lease(String lease) => _$this._lease = lease;
+  String? _lease;
+  String? get lease => _$this._lease;
+  set lease(String? lease) => _$this._lease = lease;
 
-  String _noteb64;
-  String get noteb64 => _$this._noteb64;
-  set noteb64(String noteb64) => _$this._noteb64 = noteb64;
+  String? _noteb64;
+  String? get noteb64 => _$this._noteb64;
+  set noteb64(String? noteb64) => _$this._noteb64 = noteb64;
 
-  PaymentTransactionTypeBuilder _payment;
+  PaymentTransactionTypeBuilder? _payment;
   PaymentTransactionTypeBuilder get payment =>
       _$this._payment ??= PaymentTransactionTypeBuilder();
   set payment(PaymentTransactionTypeBuilder payment) =>
       _$this._payment = payment;
 
-  String _poolerror;
-  String get poolerror => _$this._poolerror;
-  set poolerror(String poolerror) => _$this._poolerror = poolerror;
+  String? _poolerror;
+  String? get poolerror => _$this._poolerror;
+  set poolerror(String? poolerror) => _$this._poolerror = poolerror;
 
-  int _round;
-  int get round => _$this._round;
-  set round(int round) => _$this._round = round;
+  int? _round;
+  int? get round => _$this._round;
+  set round(int? round) => _$this._round = round;
 
-  String _tx;
-  String get tx => _$this._tx;
-  set tx(String tx) => _$this._tx = tx;
+  String? _tx;
+  String? get tx => _$this._tx;
+  set tx(String? tx) => _$this._tx = tx;
 
-  TransactionResultsBuilder _txresults;
+  TransactionResultsBuilder? _txresults;
   TransactionResultsBuilder get txresults =>
       _$this._txresults ??= TransactionResultsBuilder();
   set txresults(TransactionResultsBuilder txresults) =>
       _$this._txresults = txresults;
 
-  String _type;
-  String get type => _$this._type;
-  set type(String type) => _$this._type = type;
+  String? _type;
+  String? get type => _$this._type;
+  set type(String? type) => _$this._type = type;
 
   TransactionBuilder();
 
   TransactionBuilder get _$this {
     if (_$v != null) {
-      _curcfg = _$v.curcfg?.toBuilder();
-      _curfrz = _$v.curfrz?.toBuilder();
-      _curxfer = _$v.curxfer?.toBuilder();
-      _fee = _$v.fee;
-      _firstRound = _$v.firstRound;
-      _from = _$v.from;
-      _fromrewards = _$v.fromrewards;
-      _genesisID = _$v.genesisID;
-      _genesishashb64 = _$v.genesishashb64;
-      _group = _$v.group;
-      _keyreg = _$v.keyreg?.toBuilder();
-      _lastRound = _$v.lastRound;
-      _lease = _$v.lease;
-      _noteb64 = _$v.noteb64;
-      _payment = _$v.payment?.toBuilder();
-      _poolerror = _$v.poolerror;
-      _round = _$v.round;
-      _tx = _$v.tx;
-      _txresults = _$v.txresults?.toBuilder();
-      _type = _$v.type;
+      _curcfg = _$v!.curcfg?.toBuilder();
+      _curfrz = _$v!.curfrz?.toBuilder();
+      _curxfer = _$v!.curxfer?.toBuilder();
+      _fee = _$v!.fee;
+      _firstRound = _$v!.firstRound;
+      _from = _$v!.from;
+      _fromrewards = _$v!.fromrewards;
+      _genesisID = _$v!.genesisID;
+      _genesishashb64 = _$v!.genesishashb64;
+      _group = _$v!.group;
+      _keyreg = _$v!.keyreg?.toBuilder();
+      _lastRound = _$v!.lastRound;
+      _lease = _$v!.lease;
+      _noteb64 = _$v!.noteb64;
+      _payment = _$v!.payment?.toBuilder();
+      _poolerror = _$v!.poolerror;
+      _round = _$v!.round;
+      _tx = _$v!.tx;
+      _txresults = _$v!.txresults?.toBuilder();
+      _type = _$v!.type;
       _$v = null;
     }
     return this;
@@ -548,7 +548,7 @@ class TransactionBuilder implements Builder<Transaction, TransactionBuilder> {
   }
 
   @override
-  void update(void Function(TransactionBuilder) updates) {
+  void update(void Function(TransactionBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -579,7 +579,7 @@ class TransactionBuilder implements Builder<Transaction, TransactionBuilder> {
               txresults: _txresults?.build(),
               type: type);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'curcfg';
         _curcfg?.build();

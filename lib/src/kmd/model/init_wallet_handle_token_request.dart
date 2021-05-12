@@ -9,17 +9,17 @@ abstract class InitWalletHandleTokenRequest
             InitWalletHandleTokenRequestBuilder> {
   @nullable
   @BuiltValueField(wireName: r'wallet_id')
-  String get walletId;
+  String? get walletId;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_password')
-  String get walletPassword;
+  String? get walletPassword;
 
   // Boilerplate code needed to wire-up generated code
   InitWalletHandleTokenRequest._();
 
   factory InitWalletHandleTokenRequest(
-          [updates(InitWalletHandleTokenRequestBuilder b)]) =
+          [updates(InitWalletHandleTokenRequestBuilder b)?]) =
       _$InitWalletHandleTokenRequest;
 
   static Serializer<InitWalletHandleTokenRequest> get serializer =>

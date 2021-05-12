@@ -17,9 +17,9 @@ class _$VersionsResponseSerializer
   final String wireName = 'VersionsResponse';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, VersionsResponse object,
+  Iterable<Object?> serialize(Serializers serializers, VersionsResponse object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.versions != null) {
       result
         ..add('versions')
@@ -31,13 +31,13 @@ class _$VersionsResponseSerializer
 
   @override
   VersionsResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = VersionsResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
@@ -55,10 +55,10 @@ class _$VersionsResponseSerializer
 
 class _$VersionsResponse extends VersionsResponse {
   @override
-  final BuiltList<String> versions;
+  final BuiltList<String>? versions;
 
   factory _$VersionsResponse(
-          [void Function(VersionsResponseBuilder) updates]) =>
+          [void Function(VersionsResponseBuilder)? updates]) =>
       (VersionsResponseBuilder()..update(updates)).build();
 
   _$VersionsResponse._({this.versions}) : super._();
@@ -92,9 +92,9 @@ class _$VersionsResponse extends VersionsResponse {
 
 class VersionsResponseBuilder
     implements Builder<VersionsResponse, VersionsResponseBuilder> {
-  _$VersionsResponse _$v;
+  _$VersionsResponse? _$v;
 
-  ListBuilder<String> _versions;
+  ListBuilder<String>? _versions;
   ListBuilder<String> get versions =>
       _$this._versions ??= ListBuilder<String>();
   set versions(ListBuilder<String> versions) => _$this._versions = versions;
@@ -103,7 +103,7 @@ class VersionsResponseBuilder
 
   VersionsResponseBuilder get _$this {
     if (_$v != null) {
-      _versions = _$v.versions?.toBuilder();
+      _versions = _$v!.versions?.toBuilder();
       _$v = null;
     }
     return this;
@@ -118,7 +118,7 @@ class VersionsResponseBuilder
   }
 
   @override
-  void update(void Function(VersionsResponseBuilder) updates) {
+  void update(void Function(VersionsResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -128,7 +128,7 @@ class VersionsResponseBuilder
     try {
       _$result = _$v ?? _$VersionsResponse._(versions: _versions?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'versions';
         _versions?.build();

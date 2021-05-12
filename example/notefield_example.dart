@@ -1,6 +1,9 @@
+import 'dart:async';
 import 'dart:convert';
 
+import 'package:dart_algorand/algod.dart';
 import 'package:dart_algorand/dart_algorand.dart';
+import 'package:pinenacl/api.dart';
 
 import 'params.dart';
 
@@ -21,18 +24,18 @@ void main() async {
   final account1 = generate_account();
 
   // get suggested params
-  final params = await acl.transactionParams();
+  final params = await (acl.transactionParams() as FutureOr<TransactionParams>);
 
   // create transaction
   final txn = PaymentTxn(
       sender: address,
       fee: params.fee,
       first_valid_round: params.lastRound,
-      last_valid_round: params.lastRound + 100,
+      last_valid_round: params.lastRound! + 100,
       genesis_hash: params.genesishashb64,
       receiver: account1.address,
       genesis_id: params.genesisID,
-      note: utf8.encode('Some Text'),
+      note: utf8.encode('Some Text') as Uint8List?,
       amt: 10000);
 
   // sign it

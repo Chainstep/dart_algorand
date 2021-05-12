@@ -43,5 +43,5 @@ void main() async {
       default_frozen: defaultFrozen);
 
 // sign the transaction
-  final signed_txn = txn.sign(creator.private_key);
+  final signed_txn = txn.sign(creator.private_key!);
 }

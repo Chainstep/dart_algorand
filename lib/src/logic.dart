@@ -8,15 +8,15 @@ import 'error.dart';
 import 'langspec.dart';
 
 var lang_spec;
-Map opcodes;
+Map? opcodes;
 
 class Uvarint {
-  int _value;
-  int _length;
+  int? _value;
+  int? _length;
 
-  int get value => _value;
+  int? get value => _value;
 
-  int get length => _length;
+  int? get length => _length;
 
   Uvarint(Uint8List data) {
     int x = 0;
@@ -45,7 +45,7 @@ class Uvarint {
 }
 
 class IntConstBlock {
-  List<int> results;
+  List<int?> results;
   int size;
 
   IntConstBlock(this.size, this.results);
@@ -59,26 +59,26 @@ class ByteConstBlock {
 }
 
 class ProgramData {
-  final bool good;
-  final List<int> int_block;
-  final List<Uint8List> byte_block;
+  final bool? good;
+  final List<int?>? int_block;
+  final List<Uint8List>? byte_block;
 
   ProgramData({this.good, this.int_block, this.byte_block});
 }
 
 IntConstBlock read_int_const_block(Uint8List program, int pc) {
   int size = 1;
-  List<int> results = [];
+  List<int?> results = [];
 
   var result = Uvarint(program.sublist(pc + size));
-  if (result.length <= 0) {
+  if (result.length! <= 0) {
     throw InvalidProgram(
         message: 'could not decode int const block size at pc=${pc + size}');
   }
 
-  final num_ints = result.value;
+  final num_ints = result.value!;
 
-  size += result.length;
+  size += result.length!;
 
   for (var i = 0; i < num_ints; i++) {
     if (pc + size >= program.length) {
@@ -86,12 +86,12 @@ IntConstBlock read_int_const_block(Uint8List program, int pc) {
     }
 
     result = Uvarint(program.sublist(pc + size));
-    if (result.length <= 0) {
+    if (result.length! <= 0) {
       throw InvalidProgram(
           message: 'could not decode int const${i} at pc=${pc + size}');
     }
     results.add(result.value);
-    size += result.length;
+    size += result.length!;
   }
   return IntConstBlock(size, results);
 }
@@ -102,13 +102,13 @@ ByteConstBlock read_byte_const_block(Uint8List program, int pc) {
 
   var result = Uvarint(program.sublist(pc + size));
 
-  if (result.length <= 0) {
+  if (result.length! <= 0) {
     throw InvalidProgram(
         message: 'could not decode byte[] const block at pc=${pc}');
   }
 
-  size += result.length;
-  final numInts = result.value;
+  size += result.length!;
+  final numInts = result.value!;
 
   for (int i = 0; i < numInts; i++) {
     if (pc + size >= program.length) {
@@ -116,13 +116,13 @@ ByteConstBlock read_byte_const_block(Uint8List program, int pc) {
           message: 'byte[] const block exceeds program length');
     }
     result = Uvarint(program.sublist(pc + size));
-    if (result.length <= 0) {
+    if (result.length! <= 0) {
       throw InvalidProgram(
           message:
               'could not decode byte[] const[${i}] block at pc=${pc + size}');
     }
 
-    size += result.length;
+    size += result.length!;
 
     if (pc + size >= program.length) {
       throw InvalidProgram(
@@ -130,22 +130,22 @@ ByteConstBlock read_byte_const_block(Uint8List program, int pc) {
     }
 
     var buff = Uint8List.fromList(
-        program.sublist(pc + size, pc + size + result.value));
+        program.sublist(pc + size, pc + size + result.value!));
 
     results.add(buff);
-    size += result.value;
+    size += result.value!;
   }
 
   return ByteConstBlock(size, results);
 }
 
 /// Performs basic program validation: instruction count and program cost
-bool check_program(Uint8List program, List<Uint8List> args) {
+bool? check_program(Uint8List program, List<Uint8List>? args) {
   return (read_program(program, args)).good;
 }
 
-ProgramData read_program(Uint8List program, List<Uint8List> args) {
-  final ints = <int>[];
+ProgramData read_program(Uint8List program, List<Uint8List>? args) {
+  final ints = <int?>[];
   final bytes = <Uint8List>[];
 
   const intcblock_opcode = 32;
@@ -155,19 +155,19 @@ ProgramData read_program(Uint8List program, List<Uint8List> args) {
 
   final result = Uvarint(program);
 
-  final vlen = result.length;
+  final vlen = result.length!;
   if (vlen <= 0) {
     throw InvalidProgram(message: 'version parsing error');
   }
 
-  final version = result.value;
+  final version = result.value!;
   if (version > lang_spec['EvalMaxVersion']) {
     throw InvalidProgram(message: 'unsupported version');
   }
 
   args ??= <Uint8List>[];
 
-  int cost = 0;
+  num cost = 0;
   int length = program.length;
 
   for (var arg in args) {
@@ -181,14 +181,14 @@ ProgramData read_program(Uint8List program, List<Uint8List> args) {
   if (opcodes == null) {
     opcodes = {};
     for (var op in lang_spec['Ops']) {
-      opcodes[op['Opcode']] = op;
+      opcodes![op['Opcode']] = op;
     }
   }
 
   var pc = vlen;
 
   while (pc < program.length) {
-    Map op = opcodes[program[pc]];
+    Map? op = opcodes![program[pc]];
     if (op == null) {
       throw InvalidProgram(message: 'invalid instruction ${program[pc]}');
     }
@@ -198,16 +198,16 @@ ProgramData read_program(Uint8List program, List<Uint8List> args) {
     if (size == 0) {
       if (op['Opcode'] == intcblock_opcode) {
         var intsBlock = read_int_const_block(program, pc);
-        size += intsBlock.size;
+        size += intsBlock.size!;
         ints.addAll(intsBlock.results);
       } else if (op['Opcode'] == bytecblock_opcode) {
         var bytesBlock = read_byte_const_block(program, pc);
-        size += bytesBlock.size;
+        size += bytesBlock.size!;
         bytes.addAll(bytesBlock.results);
       }
     }
 
-    pc += size;
+    pc += size!;
   }
 
   if (cost > LOGIC_SIG_MAX_COST) {
@@ -218,7 +218,7 @@ ProgramData read_program(Uint8List program, List<Uint8List> args) {
 }
 
 /// Return the address of the program.
-String get_program_address(Uint8List program) {
+String? get_program_address(Uint8List program) {
   final to_sign = Utf8Encoder().convert(LOGIC_PREFIX) + program;
   final cksum = checksum(Uint8List.fromList(to_sign));
   return encode_address(cksum);

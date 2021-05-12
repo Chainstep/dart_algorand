@@ -7,20 +7,20 @@ abstract class ExportKeyRequest
     implements Built<ExportKeyRequest, ExportKeyRequestBuilder> {
   @nullable
   @BuiltValueField(wireName: r'address')
-  String get address;
+  String? get address;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_handle_token')
-  String get walletHandleToken;
+  String? get walletHandleToken;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_password')
-  String get walletPassword;
+  String? get walletPassword;
 
   // Boilerplate code needed to wire-up generated code
   ExportKeyRequest._();
 
-  factory ExportKeyRequest([updates(ExportKeyRequestBuilder b)]) =
+  factory ExportKeyRequest([updates(ExportKeyRequestBuilder b)?]) =
       _$ExportKeyRequest;
   static Serializer<ExportKeyRequest> get serializer =>
       _$exportKeyRequestSerializer;

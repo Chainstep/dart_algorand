@@ -20,10 +20,10 @@ class _$APIV1POSTKeyResponseSerializer
   final String wireName = 'APIV1POSTKeyResponse';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, APIV1POSTKeyResponse object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.address != null) {
       result
         ..add('address')
@@ -47,27 +47,27 @@ class _$APIV1POSTKeyResponseSerializer
 
   @override
   APIV1POSTKeyResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1POSTKeyResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'address':
           result.address = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'error':
           result.error = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -78,14 +78,14 @@ class _$APIV1POSTKeyResponseSerializer
 
 class _$APIV1POSTKeyResponse extends APIV1POSTKeyResponse {
   @override
-  final String address;
+  final String? address;
   @override
-  final bool error;
+  final bool? error;
   @override
-  final String message;
+  final String? message;
 
   factory _$APIV1POSTKeyResponse(
-          [void Function(APIV1POSTKeyResponseBuilder) updates]) =>
+          [void Function(APIV1POSTKeyResponseBuilder)? updates]) =>
       (APIV1POSTKeyResponseBuilder()..update(updates)).build();
 
   _$APIV1POSTKeyResponse._({this.address, this.error, this.message})
@@ -127,27 +127,27 @@ class _$APIV1POSTKeyResponse extends APIV1POSTKeyResponse {
 
 class APIV1POSTKeyResponseBuilder
     implements Builder<APIV1POSTKeyResponse, APIV1POSTKeyResponseBuilder> {
-  _$APIV1POSTKeyResponse _$v;
+  _$APIV1POSTKeyResponse? _$v;
 
-  String _address;
-  String get address => _$this._address;
-  set address(String address) => _$this._address = address;
+  String? _address;
+  String? get address => _$this._address;
+  set address(String? address) => _$this._address = address;
 
-  bool _error;
-  bool get error => _$this._error;
-  set error(bool error) => _$this._error = error;
+  bool? _error;
+  bool? get error => _$this._error;
+  set error(bool? error) => _$this._error = error;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
   APIV1POSTKeyResponseBuilder();
 
   APIV1POSTKeyResponseBuilder get _$this {
     if (_$v != null) {
-      _address = _$v.address;
-      _error = _$v.error;
-      _message = _$v.message;
+      _address = _$v!.address;
+      _error = _$v!.error;
+      _message = _$v!.message;
       _$v = null;
     }
     return this;
@@ -162,7 +162,7 @@ class APIV1POSTKeyResponseBuilder
   }
 
   @override
-  void update(void Function(APIV1POSTKeyResponseBuilder) updates) {
+  void update(void Function(APIV1POSTKeyResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

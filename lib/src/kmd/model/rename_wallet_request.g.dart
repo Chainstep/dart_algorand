@@ -20,10 +20,10 @@ class _$RenameWalletRequestSerializer
   final String wireName = 'RenameWalletRequest';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, RenameWalletRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.walletId != null) {
       result
         ..add('wallet_id')
@@ -47,27 +47,27 @@ class _$RenameWalletRequestSerializer
 
   @override
   RenameWalletRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = RenameWalletRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'wallet_id':
           result.walletId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_name':
           result.walletName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_password':
           result.walletPassword = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -78,14 +78,14 @@ class _$RenameWalletRequestSerializer
 
 class _$RenameWalletRequest extends RenameWalletRequest {
   @override
-  final String walletId;
+  final String? walletId;
   @override
-  final String walletName;
+  final String? walletName;
   @override
-  final String walletPassword;
+  final String? walletPassword;
 
   factory _$RenameWalletRequest(
-          [void Function(RenameWalletRequestBuilder) updates]) =>
+          [void Function(RenameWalletRequestBuilder)? updates]) =>
       (RenameWalletRequestBuilder()..update(updates)).build();
 
   _$RenameWalletRequest._({this.walletId, this.walletName, this.walletPassword})
@@ -127,28 +127,28 @@ class _$RenameWalletRequest extends RenameWalletRequest {
 
 class RenameWalletRequestBuilder
     implements Builder<RenameWalletRequest, RenameWalletRequestBuilder> {
-  _$RenameWalletRequest _$v;
+  _$RenameWalletRequest? _$v;
 
-  String _walletId;
-  String get walletId => _$this._walletId;
-  set walletId(String walletId) => _$this._walletId = walletId;
+  String? _walletId;
+  String? get walletId => _$this._walletId;
+  set walletId(String? walletId) => _$this._walletId = walletId;
 
-  String _walletName;
-  String get walletName => _$this._walletName;
-  set walletName(String walletName) => _$this._walletName = walletName;
+  String? _walletName;
+  String? get walletName => _$this._walletName;
+  set walletName(String? walletName) => _$this._walletName = walletName;
 
-  String _walletPassword;
-  String get walletPassword => _$this._walletPassword;
-  set walletPassword(String walletPassword) =>
+  String? _walletPassword;
+  String? get walletPassword => _$this._walletPassword;
+  set walletPassword(String? walletPassword) =>
       _$this._walletPassword = walletPassword;
 
   RenameWalletRequestBuilder();
 
   RenameWalletRequestBuilder get _$this {
     if (_$v != null) {
-      _walletId = _$v.walletId;
-      _walletName = _$v.walletName;
-      _walletPassword = _$v.walletPassword;
+      _walletId = _$v!.walletId;
+      _walletName = _$v!.walletName;
+      _walletPassword = _$v!.walletPassword;
       _$v = null;
     }
     return this;
@@ -163,7 +163,7 @@ class RenameWalletRequestBuilder
   }
 
   @override
-  void update(void Function(RenameWalletRequestBuilder) updates) {
+  void update(void Function(RenameWalletRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

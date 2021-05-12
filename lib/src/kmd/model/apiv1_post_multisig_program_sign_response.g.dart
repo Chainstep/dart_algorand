@@ -21,10 +21,10 @@ class _$APIV1POSTMultisigProgramSignResponseSerializer
   final String wireName = 'APIV1POSTMultisigProgramSignResponse';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, APIV1POSTMultisigProgramSignResponse object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.error != null) {
       result
         ..add('error')
@@ -48,27 +48,27 @@ class _$APIV1POSTMultisigProgramSignResponseSerializer
 
   @override
   APIV1POSTMultisigProgramSignResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1POSTMultisigProgramSignResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'error':
           result.error = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'multisig':
           result.multisig = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -80,14 +80,14 @@ class _$APIV1POSTMultisigProgramSignResponseSerializer
 class _$APIV1POSTMultisigProgramSignResponse
     extends APIV1POSTMultisigProgramSignResponse {
   @override
-  final bool error;
+  final bool? error;
   @override
-  final String message;
+  final String? message;
   @override
-  final String multisig;
+  final String? multisig;
 
   factory _$APIV1POSTMultisigProgramSignResponse(
-          [void Function(APIV1POSTMultisigProgramSignResponseBuilder)
+          [void Function(APIV1POSTMultisigProgramSignResponseBuilder)?
               updates]) =>
       (APIV1POSTMultisigProgramSignResponseBuilder()..update(updates)).build();
 
@@ -133,27 +133,27 @@ class APIV1POSTMultisigProgramSignResponseBuilder
     implements
         Builder<APIV1POSTMultisigProgramSignResponse,
             APIV1POSTMultisigProgramSignResponseBuilder> {
-  _$APIV1POSTMultisigProgramSignResponse _$v;
+  _$APIV1POSTMultisigProgramSignResponse? _$v;
 
-  bool _error;
-  bool get error => _$this._error;
-  set error(bool error) => _$this._error = error;
+  bool? _error;
+  bool? get error => _$this._error;
+  set error(bool? error) => _$this._error = error;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
-  String _multisig;
-  String get multisig => _$this._multisig;
-  set multisig(String multisig) => _$this._multisig = multisig;
+  String? _multisig;
+  String? get multisig => _$this._multisig;
+  set multisig(String? multisig) => _$this._multisig = multisig;
 
   APIV1POSTMultisigProgramSignResponseBuilder();
 
   APIV1POSTMultisigProgramSignResponseBuilder get _$this {
     if (_$v != null) {
-      _error = _$v.error;
-      _message = _$v.message;
-      _multisig = _$v.multisig;
+      _error = _$v!.error;
+      _message = _$v!.message;
+      _multisig = _$v!.multisig;
       _$v = null;
     }
     return this;
@@ -169,7 +169,7 @@ class APIV1POSTMultisigProgramSignResponseBuilder
 
   @override
   void update(
-      void Function(APIV1POSTMultisigProgramSignResponseBuilder) updates) {
+      void Function(APIV1POSTMultisigProgramSignResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

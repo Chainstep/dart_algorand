@@ -20,10 +20,10 @@ class _$CreateWalletRequestSerializer
   final String wireName = 'CreateWalletRequest';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, CreateWalletRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.masterDerivationKey != null) {
       result
         ..add('master_derivation_key')
@@ -53,31 +53,31 @@ class _$CreateWalletRequestSerializer
 
   @override
   CreateWalletRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = CreateWalletRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'master_derivation_key':
           result.masterDerivationKey = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_driver_name':
           result.walletDriverName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_name':
           result.walletName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_password':
           result.walletPassword = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -88,16 +88,16 @@ class _$CreateWalletRequestSerializer
 
 class _$CreateWalletRequest extends CreateWalletRequest {
   @override
-  final String masterDerivationKey;
+  final String? masterDerivationKey;
   @override
-  final String walletDriverName;
+  final String? walletDriverName;
   @override
-  final String walletName;
+  final String? walletName;
   @override
-  final String walletPassword;
+  final String? walletPassword;
 
   factory _$CreateWalletRequest(
-          [void Function(CreateWalletRequestBuilder) updates]) =>
+          [void Function(CreateWalletRequestBuilder)? updates]) =>
       (CreateWalletRequestBuilder()..update(updates)).build();
 
   _$CreateWalletRequest._(
@@ -149,35 +149,35 @@ class _$CreateWalletRequest extends CreateWalletRequest {
 
 class CreateWalletRequestBuilder
     implements Builder<CreateWalletRequest, CreateWalletRequestBuilder> {
-  _$CreateWalletRequest _$v;
+  _$CreateWalletRequest? _$v;
 
-  String _masterDerivationKey;
-  String get masterDerivationKey => _$this._masterDerivationKey;
-  set masterDerivationKey(String masterDerivationKey) =>
+  String? _masterDerivationKey;
+  String? get masterDerivationKey => _$this._masterDerivationKey;
+  set masterDerivationKey(String? masterDerivationKey) =>
       _$this._masterDerivationKey = masterDerivationKey;
 
-  String _walletDriverName;
-  String get walletDriverName => _$this._walletDriverName;
-  set walletDriverName(String walletDriverName) =>
+  String? _walletDriverName;
+  String? get walletDriverName => _$this._walletDriverName;
+  set walletDriverName(String? walletDriverName) =>
       _$this._walletDriverName = walletDriverName;
 
-  String _walletName;
-  String get walletName => _$this._walletName;
-  set walletName(String walletName) => _$this._walletName = walletName;
+  String? _walletName;
+  String? get walletName => _$this._walletName;
+  set walletName(String? walletName) => _$this._walletName = walletName;
 
-  String _walletPassword;
-  String get walletPassword => _$this._walletPassword;
-  set walletPassword(String walletPassword) =>
+  String? _walletPassword;
+  String? get walletPassword => _$this._walletPassword;
+  set walletPassword(String? walletPassword) =>
       _$this._walletPassword = walletPassword;
 
   CreateWalletRequestBuilder();
 
   CreateWalletRequestBuilder get _$this {
     if (_$v != null) {
-      _masterDerivationKey = _$v.masterDerivationKey;
-      _walletDriverName = _$v.walletDriverName;
-      _walletName = _$v.walletName;
-      _walletPassword = _$v.walletPassword;
+      _masterDerivationKey = _$v!.masterDerivationKey;
+      _walletDriverName = _$v!.walletDriverName;
+      _walletName = _$v!.walletName;
+      _walletPassword = _$v!.walletPassword;
       _$v = null;
     }
     return this;
@@ -192,7 +192,7 @@ class CreateWalletRequestBuilder
   }
 
   @override
-  void update(void Function(CreateWalletRequestBuilder) updates) {
+  void update(void Function(CreateWalletRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

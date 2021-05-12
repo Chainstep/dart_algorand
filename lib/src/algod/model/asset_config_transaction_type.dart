@@ -11,17 +11,17 @@ abstract class AssetConfigTransactionType
   /* AssetID is the asset being configured (or empty if creating) */
   @nullable
   @BuiltValueField(wireName: r'id')
-  int get id;
+  int? get id;
 
   @nullable
   @BuiltValueField(wireName: r'params')
-  AssetParams get params;
+  AssetParams? get params;
 
   // Boilerplate code needed to wire-up generated code
   AssetConfigTransactionType._();
 
   factory AssetConfigTransactionType(
-          [updates(AssetConfigTransactionTypeBuilder b)]) =
+          [updates(AssetConfigTransactionTypeBuilder b)?]) =
       _$AssetConfigTransactionType;
 
   static Serializer<AssetConfigTransactionType> get serializer =>

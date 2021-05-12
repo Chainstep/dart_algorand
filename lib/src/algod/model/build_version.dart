@@ -7,31 +7,31 @@ abstract class BuildVersion
     implements Built<BuildVersion, BuildVersionBuilder> {
   @nullable
   @BuiltValueField(wireName: r'branch')
-  String get branch;
+  String? get branch;
 
   @nullable
   @BuiltValueField(wireName: r'build_number')
-  int get buildNumber;
+  int? get buildNumber;
 
   @nullable
   @BuiltValueField(wireName: r'channel')
-  String get channel;
+  String? get channel;
 
   @nullable
   @BuiltValueField(wireName: r'commit_hash')
-  String get commitHash;
+  String? get commitHash;
 
   @nullable
   @BuiltValueField(wireName: r'major')
-  int get major;
+  int? get major;
 
   @nullable
   @BuiltValueField(wireName: r'minor')
-  int get minor;
+  int? get minor;
 
   // Boilerplate code needed to wire-up generated code
   BuildVersion._();
 
-  factory BuildVersion([updates(BuildVersionBuilder b)]) = _$BuildVersion;
+  factory BuildVersion([updates(BuildVersionBuilder b)?]) = _$BuildVersion;
   static Serializer<BuildVersion> get serializer => _$buildVersionSerializer;
 }

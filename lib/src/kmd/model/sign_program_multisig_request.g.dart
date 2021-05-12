@@ -20,10 +20,10 @@ class _$SignProgramMultisigRequestSerializer
   final String wireName = 'SignProgramMultisigRequest';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, SignProgramMultisigRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.address != null) {
       result
         ..add('address')
@@ -65,27 +65,27 @@ class _$SignProgramMultisigRequestSerializer
 
   @override
   SignProgramMultisigRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = SignProgramMultisigRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'address':
           result.address = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'data':
           result.data = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'partial_multisig':
           result.partialMultisig.replace(serializers.deserialize(value,
-              specifiedType: const FullType(MultisigSig)) as MultisigSig);
+              specifiedType: const FullType(MultisigSig)) as MultisigSig?);
           break;
         case 'public_key':
           result.publicKey.replace(serializers.deserialize(value,
@@ -94,11 +94,11 @@ class _$SignProgramMultisigRequestSerializer
           break;
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_password':
           result.walletPassword = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -109,20 +109,20 @@ class _$SignProgramMultisigRequestSerializer
 
 class _$SignProgramMultisigRequest extends SignProgramMultisigRequest {
   @override
-  final String address;
+  final String? address;
   @override
-  final String data;
+  final String? data;
   @override
-  final MultisigSig partialMultisig;
+  final MultisigSig? partialMultisig;
   @override
-  final BuiltList<int> publicKey;
+  final BuiltList<int>? publicKey;
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
   @override
-  final String walletPassword;
+  final String? walletPassword;
 
   factory _$SignProgramMultisigRequest(
-          [void Function(SignProgramMultisigRequestBuilder) updates]) =>
+          [void Function(SignProgramMultisigRequestBuilder)? updates]) =>
       (SignProgramMultisigRequestBuilder()..update(updates)).build();
 
   _$SignProgramMultisigRequest._(
@@ -183,46 +183,46 @@ class _$SignProgramMultisigRequest extends SignProgramMultisigRequest {
 class SignProgramMultisigRequestBuilder
     implements
         Builder<SignProgramMultisigRequest, SignProgramMultisigRequestBuilder> {
-  _$SignProgramMultisigRequest _$v;
+  _$SignProgramMultisigRequest? _$v;
 
-  String _address;
-  String get address => _$this._address;
-  set address(String address) => _$this._address = address;
+  String? _address;
+  String? get address => _$this._address;
+  set address(String? address) => _$this._address = address;
 
-  String _data;
-  String get data => _$this._data;
-  set data(String data) => _$this._data = data;
+  String? _data;
+  String? get data => _$this._data;
+  set data(String? data) => _$this._data = data;
 
-  MultisigSigBuilder _partialMultisig;
+  MultisigSigBuilder? _partialMultisig;
   MultisigSigBuilder get partialMultisig =>
       _$this._partialMultisig ??= MultisigSigBuilder();
   set partialMultisig(MultisigSigBuilder partialMultisig) =>
       _$this._partialMultisig = partialMultisig;
 
-  ListBuilder<int> _publicKey;
+  ListBuilder<int>? _publicKey;
   ListBuilder<int> get publicKey => _$this._publicKey ??= ListBuilder<int>();
   set publicKey(ListBuilder<int> publicKey) => _$this._publicKey = publicKey;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
-  String _walletPassword;
-  String get walletPassword => _$this._walletPassword;
-  set walletPassword(String walletPassword) =>
+  String? _walletPassword;
+  String? get walletPassword => _$this._walletPassword;
+  set walletPassword(String? walletPassword) =>
       _$this._walletPassword = walletPassword;
 
   SignProgramMultisigRequestBuilder();
 
   SignProgramMultisigRequestBuilder get _$this {
     if (_$v != null) {
-      _address = _$v.address;
-      _data = _$v.data;
-      _partialMultisig = _$v.partialMultisig?.toBuilder();
-      _publicKey = _$v.publicKey?.toBuilder();
-      _walletHandleToken = _$v.walletHandleToken;
-      _walletPassword = _$v.walletPassword;
+      _address = _$v!.address;
+      _data = _$v!.data;
+      _partialMultisig = _$v!.partialMultisig?.toBuilder();
+      _publicKey = _$v!.publicKey?.toBuilder();
+      _walletHandleToken = _$v!.walletHandleToken;
+      _walletPassword = _$v!.walletPassword;
       _$v = null;
     }
     return this;
@@ -237,7 +237,7 @@ class SignProgramMultisigRequestBuilder
   }
 
   @override
-  void update(void Function(SignProgramMultisigRequestBuilder) updates) {
+  void update(void Function(SignProgramMultisigRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -254,7 +254,7 @@ class SignProgramMultisigRequestBuilder
               walletHandleToken: walletHandleToken,
               walletPassword: walletPassword);
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'partialMultisig';
         _partialMultisig?.build();

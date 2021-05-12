@@ -15,9 +15,9 @@ class _$BuildVersionSerializer implements StructuredSerializer<BuildVersion> {
   final String wireName = 'BuildVersion';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, BuildVersion object,
+  Iterable<Object?> serialize(Serializers serializers, BuildVersion object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.branch != null) {
       result
         ..add('branch')
@@ -58,39 +58,39 @@ class _$BuildVersionSerializer implements StructuredSerializer<BuildVersion> {
   }
 
   @override
-  BuildVersion deserialize(Serializers serializers, Iterable<Object> serialized,
+  BuildVersion deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = BuildVersionBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'branch':
           result.branch = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'build_number':
           result.buildNumber = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'channel':
           result.channel = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'commit_hash':
           result.commitHash = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'major':
           result.major = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'minor':
           result.minor = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -101,19 +101,19 @@ class _$BuildVersionSerializer implements StructuredSerializer<BuildVersion> {
 
 class _$BuildVersion extends BuildVersion {
   @override
-  final String branch;
+  final String? branch;
   @override
-  final int buildNumber;
+  final int? buildNumber;
   @override
-  final String channel;
+  final String? channel;
   @override
-  final String commitHash;
+  final String? commitHash;
   @override
-  final int major;
+  final int? major;
   @override
-  final int minor;
+  final int? minor;
 
-  factory _$BuildVersion([void Function(BuildVersionBuilder) updates]) =>
+  factory _$BuildVersion([void Function(BuildVersionBuilder)? updates]) =>
       (BuildVersionBuilder()..update(updates)).build();
 
   _$BuildVersion._(
@@ -171,49 +171,49 @@ class _$BuildVersion extends BuildVersion {
 
 class BuildVersionBuilder
     implements Builder<BuildVersion, BuildVersionBuilder> {
-  _$BuildVersion _$v;
+  _$BuildVersion? _$v;
 
-  String _branch;
-  String get branch => _$this._branch;
-  set branch(String branch) => _$this._branch = branch;
+  String? _branch;
+  String? get branch => _$this._branch;
+  set branch(String? branch) => _$this._branch = branch;
 
-  int _buildNumber;
-  int get buildNumber => _$this._buildNumber;
-  set buildNumber(int buildNumber) => _$this._buildNumber = buildNumber;
+  int? _buildNumber;
+  int? get buildNumber => _$this._buildNumber;
+  set buildNumber(int? buildNumber) => _$this._buildNumber = buildNumber;
 
-  String _channel;
-  String get channel => _$this._channel;
-  set channel(String channel) => _$this._channel = channel;
+  String? _channel;
+  String? get channel => _$this._channel;
+  set channel(String? channel) => _$this._channel = channel;
 
-  String _commitHash;
-  String get commitHash => _$this._commitHash;
-  set commitHash(String commitHash) => _$this._commitHash = commitHash;
+  String? _commitHash;
+  String? get commitHash => _$this._commitHash;
+  set commitHash(String? commitHash) => _$this._commitHash = commitHash;
 
-  int _major;
-  int get major => _$this._major;
-  set major(int major) => _$this._major = major;
+  int? _major;
+  int? get major => _$this._major;
+  set major(int? major) => _$this._major = major;
 
-  int _minor;
-  int get minor => _$this._minor;
-  set minor(int minor) => _$this._minor = minor;
+  int? _minor;
+  int? get minor => _$this._minor;
+  set minor(int? minor) => _$this._minor = minor;
 
   BuildVersionBuilder();
 
   BuildVersionBuilder get _$this {
     if (_$v != null) {
-      _branch = _$v.branch;
-      _buildNumber = _$v.buildNumber;
-      _channel = _$v.channel;
-      _commitHash = _$v.commitHash;
-      _major = _$v.major;
-      _minor = _$v.minor;
+      _branch = _$v!.branch;
+      _buildNumber = _$v!.buildNumber;
+      _channel = _$v!.channel;
+      _commitHash = _$v!.commitHash;
+      _major = _$v!.major;
+      _minor = _$v!.minor;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(BuildVersion other) {
+  void replace(BuildVersion? other) {
     if (other == null) {
       throw ArgumentError.notNull('other');
     }
@@ -221,7 +221,7 @@ class BuildVersionBuilder
   }
 
   @override
-  void update(void Function(BuildVersionBuilder) updates) {
+  void update(void Function(BuildVersionBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -21,10 +21,10 @@ class _$InitWalletHandleTokenRequestSerializer
   final String wireName = 'InitWalletHandleTokenRequest';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, InitWalletHandleTokenRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.walletId != null) {
       result
         ..add('wallet_id')
@@ -42,23 +42,23 @@ class _$InitWalletHandleTokenRequestSerializer
 
   @override
   InitWalletHandleTokenRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = InitWalletHandleTokenRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'wallet_id':
           result.walletId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_password':
           result.walletPassword = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -69,12 +69,12 @@ class _$InitWalletHandleTokenRequestSerializer
 
 class _$InitWalletHandleTokenRequest extends InitWalletHandleTokenRequest {
   @override
-  final String walletId;
+  final String? walletId;
   @override
-  final String walletPassword;
+  final String? walletPassword;
 
   factory _$InitWalletHandleTokenRequest(
-          [void Function(InitWalletHandleTokenRequestBuilder) updates]) =>
+          [void Function(InitWalletHandleTokenRequestBuilder)? updates]) =>
       (InitWalletHandleTokenRequestBuilder()..update(updates)).build();
 
   _$InitWalletHandleTokenRequest._({this.walletId, this.walletPassword})
@@ -115,23 +115,23 @@ class InitWalletHandleTokenRequestBuilder
     implements
         Builder<InitWalletHandleTokenRequest,
             InitWalletHandleTokenRequestBuilder> {
-  _$InitWalletHandleTokenRequest _$v;
+  _$InitWalletHandleTokenRequest? _$v;
 
-  String _walletId;
-  String get walletId => _$this._walletId;
-  set walletId(String walletId) => _$this._walletId = walletId;
+  String? _walletId;
+  String? get walletId => _$this._walletId;
+  set walletId(String? walletId) => _$this._walletId = walletId;
 
-  String _walletPassword;
-  String get walletPassword => _$this._walletPassword;
-  set walletPassword(String walletPassword) =>
+  String? _walletPassword;
+  String? get walletPassword => _$this._walletPassword;
+  set walletPassword(String? walletPassword) =>
       _$this._walletPassword = walletPassword;
 
   InitWalletHandleTokenRequestBuilder();
 
   InitWalletHandleTokenRequestBuilder get _$this {
     if (_$v != null) {
-      _walletId = _$v.walletId;
-      _walletPassword = _$v.walletPassword;
+      _walletId = _$v!.walletId;
+      _walletPassword = _$v!.walletPassword;
       _$v = null;
     }
     return this;
@@ -146,7 +146,7 @@ class InitWalletHandleTokenRequestBuilder
   }
 
   @override
-  void update(void Function(InitWalletHandleTokenRequestBuilder) updates) {
+  void update(void Function(InitWalletHandleTokenRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

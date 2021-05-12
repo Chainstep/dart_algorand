@@ -9,13 +9,13 @@ abstract class RenewWalletHandleTokenRequest
             RenewWalletHandleTokenRequestBuilder> {
   @nullable
   @BuiltValueField(wireName: r'wallet_handle_token')
-  String get walletHandleToken;
+  String? get walletHandleToken;
 
   // Boilerplate code needed to wire-up generated code
   RenewWalletHandleTokenRequest._();
 
   factory RenewWalletHandleTokenRequest(
-          [updates(RenewWalletHandleTokenRequestBuilder b)]) =
+          [updates(RenewWalletHandleTokenRequestBuilder b)?]) =
       _$RenewWalletHandleTokenRequest;
   static Serializer<RenewWalletHandleTokenRequest> get serializer =>
       _$renewWalletHandleTokenRequestSerializer;

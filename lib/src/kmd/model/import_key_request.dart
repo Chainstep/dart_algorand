@@ -7,16 +7,16 @@ abstract class ImportKeyRequest
     implements Built<ImportKeyRequest, ImportKeyRequestBuilder> {
   @nullable
   @BuiltValueField(wireName: r'private_key')
-  String get privateKey;
+  String? get privateKey;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_handle_token')
-  String get walletHandleToken;
+  String? get walletHandleToken;
 
   // Boilerplate code needed to wire-up generated code
   ImportKeyRequest._();
 
-  factory ImportKeyRequest([Function(ImportKeyRequestBuilder) updates]) =
+  factory ImportKeyRequest([Function(ImportKeyRequestBuilder)? updates]) =
       _$ImportKeyRequest;
 
   static Serializer<ImportKeyRequest> get serializer =>

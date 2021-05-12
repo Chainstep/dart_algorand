@@ -9,21 +9,21 @@ abstract class AssetFreezeTransactionType
   /* Account specifies the account where the asset is being frozen or thawed. */
   @nullable
   @BuiltValueField(wireName: r'acct')
-  String get acct;
+  String? get acct;
   /* NewFreezeStatus specifies the new freeze status. */
   @nullable
   @BuiltValueField(wireName: r'freeze')
-  bool get freeze;
+  bool? get freeze;
   /* AssetID is the asset being configured (or empty if creating) */
   @nullable
   @BuiltValueField(wireName: r'id')
-  int get id;
+  int? get id;
 
   // Boilerplate code needed to wire-up generated code
   AssetFreezeTransactionType._();
 
   factory AssetFreezeTransactionType(
-          [updates(AssetFreezeTransactionTypeBuilder b)]) =
+          [updates(AssetFreezeTransactionTypeBuilder b)?]) =
       _$AssetFreezeTransactionType;
   static Serializer<AssetFreezeTransactionType> get serializer =>
       _$assetFreezeTransactionTypeSerializer;

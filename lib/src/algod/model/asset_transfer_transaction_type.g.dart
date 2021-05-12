@@ -21,10 +21,10 @@ class _$AssetTransferTransactionTypeSerializer
   final String wireName = 'AssetTransferTransactionType';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, AssetTransferTransactionType object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.amt != null) {
       result
         ..add('amt')
@@ -60,35 +60,35 @@ class _$AssetTransferTransactionTypeSerializer
 
   @override
   AssetTransferTransactionType deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = AssetTransferTransactionTypeBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'amt':
           result.amt = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'closeto':
           result.closeto = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'rcv':
           result.rcv = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'snd':
           result.snd = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -99,18 +99,18 @@ class _$AssetTransferTransactionTypeSerializer
 
 class _$AssetTransferTransactionType extends AssetTransferTransactionType {
   @override
-  final int amt;
+  final int? amt;
   @override
-  final String closeto;
+  final String? closeto;
   @override
-  final int id;
+  final int? id;
   @override
-  final String rcv;
+  final String? rcv;
   @override
-  final String snd;
+  final String? snd;
 
   factory _$AssetTransferTransactionType(
-          [void Function(AssetTransferTransactionTypeBuilder) updates]) =>
+          [void Function(AssetTransferTransactionTypeBuilder)? updates]) =>
       (AssetTransferTransactionTypeBuilder()..update(updates)).build();
 
   _$AssetTransferTransactionType._(
@@ -161,44 +161,44 @@ class AssetTransferTransactionTypeBuilder
     implements
         Builder<AssetTransferTransactionType,
             AssetTransferTransactionTypeBuilder> {
-  _$AssetTransferTransactionType _$v;
+  _$AssetTransferTransactionType? _$v;
 
-  int _amt;
-  int get amt => _$this._amt;
-  set amt(int amt) => _$this._amt = amt;
+  int? _amt;
+  int? get amt => _$this._amt;
+  set amt(int? amt) => _$this._amt = amt;
 
-  String _closeto;
-  String get closeto => _$this._closeto;
-  set closeto(String closeto) => _$this._closeto = closeto;
+  String? _closeto;
+  String? get closeto => _$this._closeto;
+  set closeto(String? closeto) => _$this._closeto = closeto;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
-  String _rcv;
-  String get rcv => _$this._rcv;
-  set rcv(String rcv) => _$this._rcv = rcv;
+  String? _rcv;
+  String? get rcv => _$this._rcv;
+  set rcv(String? rcv) => _$this._rcv = rcv;
 
-  String _snd;
-  String get snd => _$this._snd;
-  set snd(String snd) => _$this._snd = snd;
+  String? _snd;
+  String? get snd => _$this._snd;
+  set snd(String? snd) => _$this._snd = snd;
 
   AssetTransferTransactionTypeBuilder();
 
   AssetTransferTransactionTypeBuilder get _$this {
     if (_$v != null) {
-      _amt = _$v.amt;
-      _closeto = _$v.closeto;
-      _id = _$v.id;
-      _rcv = _$v.rcv;
-      _snd = _$v.snd;
+      _amt = _$v!.amt;
+      _closeto = _$v!.closeto;
+      _id = _$v!.id;
+      _rcv = _$v!.rcv;
+      _snd = _$v!.snd;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(AssetTransferTransactionType other) {
+  void replace(AssetTransferTransactionType? other) {
     if (other == null) {
       throw ArgumentError.notNull('other');
     }
@@ -206,7 +206,7 @@ class AssetTransferTransactionTypeBuilder
   }
 
   @override
-  void update(void Function(AssetTransferTransactionTypeBuilder) updates) {
+  void update(void Function(AssetTransferTransactionTypeBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -15,9 +15,9 @@ class _$APIV1WalletSerializer implements StructuredSerializer<APIV1Wallet> {
   final String wireName = 'APIV1Wallet';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, APIV1Wallet object,
+  Iterable<Object?> serialize(Serializers serializers, APIV1Wallet object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.driverName != null) {
       result
         ..add('driver_name')
@@ -58,35 +58,35 @@ class _$APIV1WalletSerializer implements StructuredSerializer<APIV1Wallet> {
   }
 
   @override
-  APIV1Wallet deserialize(Serializers serializers, Iterable<Object> serialized,
+  APIV1Wallet deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1WalletBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'driver_name':
           result.driverName = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'driver_version':
           result.driverVersion = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'mnemonic_ux':
           result.mnemonicUx = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'name':
           result.name = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'supported_txs':
           result.supportedTxs.replace(serializers.deserialize(value,
@@ -102,19 +102,19 @@ class _$APIV1WalletSerializer implements StructuredSerializer<APIV1Wallet> {
 
 class _$APIV1Wallet extends APIV1Wallet {
   @override
-  final String driverName;
+  final String? driverName;
   @override
-  final int driverVersion;
+  final int? driverVersion;
   @override
-  final String id;
+  final String? id;
   @override
-  final bool mnemonicUx;
+  final bool? mnemonicUx;
   @override
-  final String name;
+  final String? name;
   @override
-  final BuiltList<String> supportedTxs;
+  final BuiltList<String>? supportedTxs;
 
-  factory _$APIV1Wallet([void Function(APIV1WalletBuilder) updates]) =>
+  factory _$APIV1Wallet([void Function(APIV1WalletBuilder)? updates]) =>
       (APIV1WalletBuilder()..update(updates)).build();
 
   _$APIV1Wallet._(
@@ -171,29 +171,29 @@ class _$APIV1Wallet extends APIV1Wallet {
 }
 
 class APIV1WalletBuilder implements Builder<APIV1Wallet, APIV1WalletBuilder> {
-  _$APIV1Wallet _$v;
+  _$APIV1Wallet? _$v;
 
-  String _driverName;
-  String get driverName => _$this._driverName;
-  set driverName(String driverName) => _$this._driverName = driverName;
+  String? _driverName;
+  String? get driverName => _$this._driverName;
+  set driverName(String? driverName) => _$this._driverName = driverName;
 
-  int _driverVersion;
-  int get driverVersion => _$this._driverVersion;
-  set driverVersion(int driverVersion) => _$this._driverVersion = driverVersion;
+  int? _driverVersion;
+  int? get driverVersion => _$this._driverVersion;
+  set driverVersion(int? driverVersion) => _$this._driverVersion = driverVersion;
 
-  String _id;
-  String get id => _$this._id;
-  set id(String id) => _$this._id = id;
+  String? _id;
+  String? get id => _$this._id;
+  set id(String? id) => _$this._id = id;
 
-  bool _mnemonicUx;
-  bool get mnemonicUx => _$this._mnemonicUx;
-  set mnemonicUx(bool mnemonicUx) => _$this._mnemonicUx = mnemonicUx;
+  bool? _mnemonicUx;
+  bool? get mnemonicUx => _$this._mnemonicUx;
+  set mnemonicUx(bool? mnemonicUx) => _$this._mnemonicUx = mnemonicUx;
 
-  String _name;
-  String get name => _$this._name;
-  set name(String name) => _$this._name = name;
+  String? _name;
+  String? get name => _$this._name;
+  set name(String? name) => _$this._name = name;
 
-  ListBuilder<String> _supportedTxs;
+  ListBuilder<String>? _supportedTxs;
   ListBuilder<String> get supportedTxs =>
       _$this._supportedTxs ??= ListBuilder<String>();
   set supportedTxs(ListBuilder<String> supportedTxs) =>
@@ -203,19 +203,19 @@ class APIV1WalletBuilder implements Builder<APIV1Wallet, APIV1WalletBuilder> {
 
   APIV1WalletBuilder get _$this {
     if (_$v != null) {
-      _driverName = _$v.driverName;
-      _driverVersion = _$v.driverVersion;
-      _id = _$v.id;
-      _mnemonicUx = _$v.mnemonicUx;
-      _name = _$v.name;
-      _supportedTxs = _$v.supportedTxs?.toBuilder();
+      _driverName = _$v!.driverName;
+      _driverVersion = _$v!.driverVersion;
+      _id = _$v!.id;
+      _mnemonicUx = _$v!.mnemonicUx;
+      _name = _$v!.name;
+      _supportedTxs = _$v!.supportedTxs?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(APIV1Wallet other) {
+  void replace(APIV1Wallet? other) {
     if (other == null) {
       throw ArgumentError.notNull('other');
     }
@@ -223,7 +223,7 @@ class APIV1WalletBuilder implements Builder<APIV1Wallet, APIV1WalletBuilder> {
   }
 
   @override
-  void update(void Function(APIV1WalletBuilder) updates) {
+  void update(void Function(APIV1WalletBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -240,7 +240,7 @@ class APIV1WalletBuilder implements Builder<APIV1Wallet, APIV1WalletBuilder> {
               name: name,
               supportedTxs: _supportedTxs?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'supportedTxs';
         _supportedTxs?.build();

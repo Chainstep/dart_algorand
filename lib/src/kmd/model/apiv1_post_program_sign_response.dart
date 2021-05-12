@@ -9,21 +9,21 @@ abstract class APIV1POSTProgramSignResponse
             APIV1POSTProgramSignResponseBuilder> {
   @nullable
   @BuiltValueField(wireName: r'error')
-  bool get error;
+  bool? get error;
 
   @nullable
   @BuiltValueField(wireName: r'message')
-  String get message;
+  String? get message;
 
   @nullable
   @BuiltValueField(wireName: r'sig')
-  String get sig;
+  String? get sig;
 
   // Boilerplate code needed to wire-up generated code
   APIV1POSTProgramSignResponse._();
 
   factory APIV1POSTProgramSignResponse(
-          [updates(APIV1POSTProgramSignResponseBuilder b)]) =
+          [updates(APIV1POSTProgramSignResponseBuilder b)?]) =
       _$APIV1POSTProgramSignResponse;
   static Serializer<APIV1POSTProgramSignResponse> get serializer =>
       _$aPIV1POSTProgramSignResponseSerializer;

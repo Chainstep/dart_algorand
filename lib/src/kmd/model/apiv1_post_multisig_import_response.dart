@@ -9,21 +9,21 @@ abstract class APIV1POSTMultisigImportResponse
             APIV1POSTMultisigImportResponseBuilder> {
   @nullable
   @BuiltValueField(wireName: r'address')
-  String get address;
+  String? get address;
 
   @nullable
   @BuiltValueField(wireName: r'error')
-  bool get error;
+  bool? get error;
 
   @nullable
   @BuiltValueField(wireName: r'message')
-  String get message;
+  String? get message;
 
   // Boilerplate code needed to wire-up generated code
   APIV1POSTMultisigImportResponse._();
 
   factory APIV1POSTMultisigImportResponse(
-          [updates(APIV1POSTMultisigImportResponseBuilder b)]) =
+          [updates(APIV1POSTMultisigImportResponseBuilder b)?]) =
       _$APIV1POSTMultisigImportResponse;
   static Serializer<APIV1POSTMultisigImportResponse> get serializer =>
       _$aPIV1POSTMultisigImportResponseSerializer;

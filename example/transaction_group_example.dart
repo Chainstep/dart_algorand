@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:dart_algorand/algod.dart';
 import 'package:dart_algorand/dart_algorand.dart';
 
 import 'params.dart';
@@ -11,14 +14,14 @@ void main() async {
   final receiver = generate_account();
 
   // get suggested params
-  final params = await acl.transactionParams();
+  final params = await (acl.transactionParams() as FutureOr<TransactionParams>);
 
   // create transaction
   final txn1 = PaymentTxn(
       sender: sender.address,
       fee: params.fee,
       first_valid_round: params.lastRound,
-      last_valid_round: params.lastRound + 100,
+      last_valid_round: params.lastRound! + 100,
       genesis_hash: params.genesishashb64,
       receiver: receiver.address,
       genesis_id: params.genesisID,
@@ -28,7 +31,7 @@ void main() async {
       sender: receiver.address,
       fee: params.fee,
       first_valid_round: params.lastRound,
-      last_valid_round: params.lastRound + 100,
+      last_valid_round: params.lastRound! + 100,
       genesis_hash: params.genesishashb64,
       receiver: sender.address,
       genesis_id: params.genesisID,
@@ -40,8 +43,8 @@ void main() async {
   txn2.group = gid;
 
   // sign transactions
-  final stxn1 = txn1.sign(sender.private_key);
-  final stxn2 = txn2.sign(receiver.private_key);
+  final stxn1 = txn1.sign(sender.private_key!);
+  final stxn2 = txn2.sign(receiver.private_key!);
 
   // send them over network
   // await acl.sendTransactions([stxn1, stxn2]);

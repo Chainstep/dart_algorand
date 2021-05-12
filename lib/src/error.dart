@@ -96,20 +96,20 @@ class InvalidProgram implements Exception {
 
 class ClientError extends DioError {
   ClientError({
-    RequestOptions request,
-    Response response,
-    DioErrorType type = DioErrorType.DEFAULT,
+    required RequestOptions request,
+    Response? response,
+    DioErrorType type = DioErrorType.other,
     error,
-  }) : super(request: request, response: response, type: type, error: error);
+  }) : super(requestOptions: request, response: response, type: type, error: error);
 
   @override
   String toString() {
-    String m;
+    String? m;
 
     if (response?.data is Map) {
-      m = response.data['message'];
+      m = response!.data['message'];
     } else if (response?.data is String) {
-      m = response.data;
+      m = response!.data;
     }
     return m ?? super.toString();
   }

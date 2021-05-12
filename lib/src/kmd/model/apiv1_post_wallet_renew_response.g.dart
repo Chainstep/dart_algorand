@@ -21,10 +21,10 @@ class _$APIV1POSTWalletRenewResponseSerializer
   final String wireName = 'APIV1POSTWalletRenewResponse';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, APIV1POSTWalletRenewResponse object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.error != null) {
       result
         ..add('error')
@@ -48,28 +48,28 @@ class _$APIV1POSTWalletRenewResponseSerializer
 
   @override
   APIV1POSTWalletRenewResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1POSTWalletRenewResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'error':
           result.error = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_handle':
           result.walletHandle.replace(serializers.deserialize(value,
                   specifiedType: const FullType(APIV1WalletHandle))
-              as APIV1WalletHandle);
+              as APIV1WalletHandle?);
           break;
       }
     }
@@ -80,14 +80,14 @@ class _$APIV1POSTWalletRenewResponseSerializer
 
 class _$APIV1POSTWalletRenewResponse extends APIV1POSTWalletRenewResponse {
   @override
-  final bool error;
+  final bool? error;
   @override
-  final String message;
+  final String? message;
   @override
-  final APIV1WalletHandle walletHandle;
+  final APIV1WalletHandle? walletHandle;
 
   factory _$APIV1POSTWalletRenewResponse(
-          [void Function(APIV1POSTWalletRenewResponseBuilder) updates]) =>
+          [void Function(APIV1POSTWalletRenewResponseBuilder)? updates]) =>
       (APIV1POSTWalletRenewResponseBuilder()..update(updates)).build();
 
   _$APIV1POSTWalletRenewResponse._(
@@ -132,17 +132,17 @@ class APIV1POSTWalletRenewResponseBuilder
     implements
         Builder<APIV1POSTWalletRenewResponse,
             APIV1POSTWalletRenewResponseBuilder> {
-  _$APIV1POSTWalletRenewResponse _$v;
+  _$APIV1POSTWalletRenewResponse? _$v;
 
-  bool _error;
-  bool get error => _$this._error;
-  set error(bool error) => _$this._error = error;
+  bool? _error;
+  bool? get error => _$this._error;
+  set error(bool? error) => _$this._error = error;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
-  APIV1WalletHandleBuilder _walletHandle;
+  APIV1WalletHandleBuilder? _walletHandle;
   APIV1WalletHandleBuilder get walletHandle =>
       _$this._walletHandle ??= APIV1WalletHandleBuilder();
   set walletHandle(APIV1WalletHandleBuilder walletHandle) =>
@@ -152,9 +152,9 @@ class APIV1POSTWalletRenewResponseBuilder
 
   APIV1POSTWalletRenewResponseBuilder get _$this {
     if (_$v != null) {
-      _error = _$v.error;
-      _message = _$v.message;
-      _walletHandle = _$v.walletHandle?.toBuilder();
+      _error = _$v!.error;
+      _message = _$v!.message;
+      _walletHandle = _$v!.walletHandle?.toBuilder();
       _$v = null;
     }
     return this;
@@ -169,7 +169,7 @@ class APIV1POSTWalletRenewResponseBuilder
   }
 
   @override
-  void update(void Function(APIV1POSTWalletRenewResponseBuilder) updates) {
+  void update(void Function(APIV1POSTWalletRenewResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -183,7 +183,7 @@ class APIV1POSTWalletRenewResponseBuilder
               message: message,
               walletHandle: _walletHandle?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'walletHandle';
         _walletHandle?.build();

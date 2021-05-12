@@ -9,21 +9,21 @@ abstract class APIV1POSTKeyListResponse
         Built<APIV1POSTKeyListResponse, APIV1POSTKeyListResponseBuilder> {
   @nullable
   @BuiltValueField(wireName: r'addresses')
-  BuiltList<String> get addresses;
+  BuiltList<String>? get addresses;
 
   @nullable
   @BuiltValueField(wireName: r'error')
-  bool get error;
+  bool? get error;
 
   @nullable
   @BuiltValueField(wireName: r'message')
-  String get message;
+  String? get message;
 
   // Boilerplate code needed to wire-up generated code
   APIV1POSTKeyListResponse._();
 
   factory APIV1POSTKeyListResponse(
-          [updates(APIV1POSTKeyListResponseBuilder b)]) =
+          [updates(APIV1POSTKeyListResponseBuilder b)?]) =
       _$APIV1POSTKeyListResponse;
   static Serializer<APIV1POSTKeyListResponse> get serializer =>
       _$aPIV1POSTKeyListResponseSerializer;

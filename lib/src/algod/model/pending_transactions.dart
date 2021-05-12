@@ -9,16 +9,16 @@ abstract class PendingTransactions
   /* TotalTxns */
   @nullable
   @BuiltValueField(wireName: r'totalTxns')
-  int get totalTxns;
+  int? get totalTxns;
 
   @nullable
   @BuiltValueField(wireName: r'truncatedTxns')
-  TransactionList get truncatedTxns;
+  TransactionList? get truncatedTxns;
 
   // Boilerplate code needed to wire-up generated code
   PendingTransactions._();
 
-  factory PendingTransactions([updates(PendingTransactionsBuilder b)]) =
+  factory PendingTransactions([updates(PendingTransactionsBuilder b)?]) =
       _$PendingTransactions;
 
   static Serializer<PendingTransactions> get serializer =>

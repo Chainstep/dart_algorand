@@ -20,10 +20,10 @@ class _$KeyregTransactionTypeSerializer
   final String wireName = 'KeyregTransactionType';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, KeyregTransactionType object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.selkey != null) {
       result
         ..add('selkey')
@@ -59,35 +59,35 @@ class _$KeyregTransactionTypeSerializer
 
   @override
   KeyregTransactionType deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = KeyregTransactionTypeBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'selkey':
           result.selkey = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'votefst':
           result.votefst = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'votekd':
           result.votekd = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'votekey':
           result.votekey = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'votelst':
           result.votelst = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -98,18 +98,18 @@ class _$KeyregTransactionTypeSerializer
 
 class _$KeyregTransactionType extends KeyregTransactionType {
   @override
-  final String selkey;
+  final String? selkey;
   @override
-  final int votefst;
+  final int? votefst;
   @override
-  final int votekd;
+  final int? votekd;
   @override
-  final String votekey;
+  final String? votekey;
   @override
-  final int votelst;
+  final int? votelst;
 
   factory _$KeyregTransactionType(
-          [void Function(KeyregTransactionTypeBuilder) updates]) =>
+          [void Function(KeyregTransactionTypeBuilder)? updates]) =>
       (KeyregTransactionTypeBuilder()..update(updates)).build();
 
   _$KeyregTransactionType._(
@@ -160,44 +160,44 @@ class _$KeyregTransactionType extends KeyregTransactionType {
 
 class KeyregTransactionTypeBuilder
     implements Builder<KeyregTransactionType, KeyregTransactionTypeBuilder> {
-  _$KeyregTransactionType _$v;
+  _$KeyregTransactionType? _$v;
 
-  String _selkey;
-  String get selkey => _$this._selkey;
-  set selkey(String selkey) => _$this._selkey = selkey;
+  String? _selkey;
+  String? get selkey => _$this._selkey;
+  set selkey(String? selkey) => _$this._selkey = selkey;
 
-  int _votefst;
-  int get votefst => _$this._votefst;
-  set votefst(int votefst) => _$this._votefst = votefst;
+  int? _votefst;
+  int? get votefst => _$this._votefst;
+  set votefst(int? votefst) => _$this._votefst = votefst;
 
-  int _votekd;
-  int get votekd => _$this._votekd;
-  set votekd(int votekd) => _$this._votekd = votekd;
+  int? _votekd;
+  int? get votekd => _$this._votekd;
+  set votekd(int? votekd) => _$this._votekd = votekd;
 
-  String _votekey;
-  String get votekey => _$this._votekey;
-  set votekey(String votekey) => _$this._votekey = votekey;
+  String? _votekey;
+  String? get votekey => _$this._votekey;
+  set votekey(String? votekey) => _$this._votekey = votekey;
 
-  int _votelst;
-  int get votelst => _$this._votelst;
-  set votelst(int votelst) => _$this._votelst = votelst;
+  int? _votelst;
+  int? get votelst => _$this._votelst;
+  set votelst(int? votelst) => _$this._votelst = votelst;
 
   KeyregTransactionTypeBuilder();
 
   KeyregTransactionTypeBuilder get _$this {
     if (_$v != null) {
-      _selkey = _$v.selkey;
-      _votefst = _$v.votefst;
-      _votekd = _$v.votekd;
-      _votekey = _$v.votekey;
-      _votelst = _$v.votelst;
+      _selkey = _$v!.selkey;
+      _votefst = _$v!.votefst;
+      _votekd = _$v!.votekd;
+      _votekey = _$v!.votekey;
+      _votelst = _$v!.votelst;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(KeyregTransactionType other) {
+  void replace(KeyregTransactionType? other) {
     if (other == null) {
       throw ArgumentError.notNull('other');
     }
@@ -205,7 +205,7 @@ class KeyregTransactionTypeBuilder
   }
 
   @override
-  void update(void Function(KeyregTransactionTypeBuilder) updates) {
+  void update(void Function(KeyregTransactionTypeBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

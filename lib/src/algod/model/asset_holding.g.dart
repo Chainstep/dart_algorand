@@ -15,9 +15,9 @@ class _$AssetHoldingSerializer implements StructuredSerializer<AssetHolding> {
   final String wireName = 'AssetHolding';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, AssetHolding object,
+  Iterable<Object?> serialize(Serializers serializers, AssetHolding object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[
+    final result = <Object?>[
       'creator',
       serializers.serialize(object.creator,
           specifiedType: const FullType(String)),
@@ -31,27 +31,27 @@ class _$AssetHoldingSerializer implements StructuredSerializer<AssetHolding> {
   }
 
   @override
-  AssetHolding deserialize(Serializers serializers, Iterable<Object> serialized,
+  AssetHolding deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = AssetHoldingBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'creator':
           result.creator = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'amount':
           result.amount = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'frozen':
           result.frozen = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
       }
     }
@@ -62,13 +62,13 @@ class _$AssetHoldingSerializer implements StructuredSerializer<AssetHolding> {
 
 class _$AssetHolding extends AssetHolding {
   @override
-  final String creator;
+  final String? creator;
   @override
-  final int amount;
+  final int? amount;
   @override
-  final bool frozen;
+  final bool? frozen;
 
-  factory _$AssetHolding([void Function(AssetHoldingBuilder) updates]) =>
+  factory _$AssetHolding([void Function(AssetHoldingBuilder)? updates]) =>
       (AssetHoldingBuilder()..update(updates)).build();
 
   _$AssetHolding._({this.creator, this.amount, this.frozen}) : super._() {
@@ -117,27 +117,27 @@ class _$AssetHolding extends AssetHolding {
 
 class AssetHoldingBuilder
     implements Builder<AssetHolding, AssetHoldingBuilder> {
-  _$AssetHolding _$v;
+  _$AssetHolding? _$v;
 
-  String _creator;
-  String get creator => _$this._creator;
-  set creator(String creator) => _$this._creator = creator;
+  String? _creator;
+  String? get creator => _$this._creator;
+  set creator(String? creator) => _$this._creator = creator;
 
-  int _amount;
-  int get amount => _$this._amount;
-  set amount(int amount) => _$this._amount = amount;
+  int? _amount;
+  int? get amount => _$this._amount;
+  set amount(int? amount) => _$this._amount = amount;
 
-  bool _frozen;
-  bool get frozen => _$this._frozen;
-  set frozen(bool frozen) => _$this._frozen = frozen;
+  bool? _frozen;
+  bool? get frozen => _$this._frozen;
+  set frozen(bool? frozen) => _$this._frozen = frozen;
 
   AssetHoldingBuilder();
 
   AssetHoldingBuilder get _$this {
     if (_$v != null) {
-      _creator = _$v.creator;
-      _amount = _$v.amount;
-      _frozen = _$v.frozen;
+      _creator = _$v!.creator;
+      _amount = _$v!.amount;
+      _frozen = _$v!.frozen;
       _$v = null;
     }
     return this;
@@ -152,7 +152,7 @@ class AssetHoldingBuilder
   }
 
   @override
-  void update(void Function(AssetHoldingBuilder) updates) {
+  void update(void Function(AssetHoldingBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

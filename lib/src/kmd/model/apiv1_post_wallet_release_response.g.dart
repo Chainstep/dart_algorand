@@ -21,10 +21,10 @@ class _$APIV1POSTWalletReleaseResponseSerializer
   final String wireName = 'APIV1POSTWalletReleaseResponse';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, APIV1POSTWalletReleaseResponse object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.error != null) {
       result
         ..add('error')
@@ -42,23 +42,23 @@ class _$APIV1POSTWalletReleaseResponseSerializer
 
   @override
   APIV1POSTWalletReleaseResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1POSTWalletReleaseResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'error':
           result.error = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -69,12 +69,12 @@ class _$APIV1POSTWalletReleaseResponseSerializer
 
 class _$APIV1POSTWalletReleaseResponse extends APIV1POSTWalletReleaseResponse {
   @override
-  final bool error;
+  final bool? error;
   @override
-  final String message;
+  final String? message;
 
   factory _$APIV1POSTWalletReleaseResponse(
-          [void Function(APIV1POSTWalletReleaseResponseBuilder) updates]) =>
+          [void Function(APIV1POSTWalletReleaseResponseBuilder)? updates]) =>
       (APIV1POSTWalletReleaseResponseBuilder()..update(updates)).build();
 
   _$APIV1POSTWalletReleaseResponse._({this.error, this.message}) : super._();
@@ -114,22 +114,22 @@ class APIV1POSTWalletReleaseResponseBuilder
     implements
         Builder<APIV1POSTWalletReleaseResponse,
             APIV1POSTWalletReleaseResponseBuilder> {
-  _$APIV1POSTWalletReleaseResponse _$v;
+  _$APIV1POSTWalletReleaseResponse? _$v;
 
-  bool _error;
-  bool get error => _$this._error;
-  set error(bool error) => _$this._error = error;
+  bool? _error;
+  bool? get error => _$this._error;
+  set error(bool? error) => _$this._error = error;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
   APIV1POSTWalletReleaseResponseBuilder();
 
   APIV1POSTWalletReleaseResponseBuilder get _$this {
     if (_$v != null) {
-      _error = _$v.error;
-      _message = _$v.message;
+      _error = _$v!.error;
+      _message = _$v!.message;
       _$v = null;
     }
     return this;
@@ -144,7 +144,7 @@ class APIV1POSTWalletReleaseResponseBuilder
   }
 
   @override
-  void update(void Function(APIV1POSTWalletReleaseResponseBuilder) updates) {
+  void update(void Function(APIV1POSTWalletReleaseResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

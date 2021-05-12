@@ -8,11 +8,11 @@ abstract class TransactionID
   /* TxId is the string encoding of the transaction hash */
   @nullable
   @BuiltValueField(wireName: r'txId')
-  String get txId;
+  String? get txId;
 
   // Boilerplate code needed to wire-up generated code
   TransactionID._();
 
-  factory TransactionID([updates(TransactionIDBuilder b)]) = _$TransactionID;
+  factory TransactionID([updates(TransactionIDBuilder b)?]) = _$TransactionID;
   static Serializer<TransactionID> get serializer => _$transactionIDSerializer;
 }

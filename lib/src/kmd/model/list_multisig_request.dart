@@ -7,12 +7,12 @@ abstract class ListMultisigRequest
     implements Built<ListMultisigRequest, ListMultisigRequestBuilder> {
   @nullable
   @BuiltValueField(wireName: r'wallet_handle_token')
-  String get walletHandleToken;
+  String? get walletHandleToken;
 
   // Boilerplate code needed to wire-up generated code
   ListMultisigRequest._();
 
-  factory ListMultisigRequest([Function(ListMultisigRequestBuilder) updates]) =
+  factory ListMultisigRequest([Function(ListMultisigRequestBuilder)? updates]) =
       _$ListMultisigRequest;
 
   static Serializer<ListMultisigRequest> get serializer =>

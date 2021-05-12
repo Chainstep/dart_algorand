@@ -11,8 +11,8 @@ import 'package:dart_algorand/src/template.dart';
 /// have an expiry round, in which the owner can transfer back the
 /// assets.
 class Split extends Template {
-  String owner, receiver_1, receiver_2;
-  int ratn, ratd, expiry_round, min_pay, max_fee;
+  String? owner, receiver_1, receiver_2;
+  int? ratn, ratd, expiry_round, min_pay, max_fee;
 
   /// owner: an address that can receive the asset after the expiry round
   /// receiver_1: first address to receive assets

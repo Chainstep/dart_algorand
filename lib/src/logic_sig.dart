@@ -10,21 +10,21 @@ import 'package:pinenacl/api.dart';
 import 'package:pinenacl/ed25519.dart';
 
 class _MultiSigResult {
-  int index;
-  String sig;
+  int? index;
+  String? sig;
 
   _MultiSigResult({this.index, this.sig});
 }
 
 /// Represents a logic signature
 class LogicSig {
-  Uint8List program;
-  List<Uint8List> args;
-  String sig;
-  Multisig msig;
+  Uint8List? program;
+  List<Uint8List>? args;
+  String? sig;
+  Multisig? msig;
 
-  LogicSig({@required this.program, this.args}) {
-    if (!check_program(program, args)) {
+  LogicSig({required this.program, this.args}) {
+    if (!check_program(program!, args)!) {
       throw InvalidProgram();
     }
   }
@@ -53,9 +53,9 @@ class LogicSig {
     m['l'] = program;
 
     if (sig != null) {
-      m['sig'] = base64Decode(sig);
+      m['sig'] = base64Decode(sig!);
     } else if (msig != null) {
-      m['msig'] = msig.dictify();
+      m['msig'] = msig!.dictify();
     }
 
     return m;
@@ -65,18 +65,18 @@ class LogicSig {
   /// Returns true if the signature is valid (the sender address matches
   /// the logic hash or the signature is valid against the sender
   /// address), false otherwise
-  bool verify(Uint8List public_key) {
+  bool? verify(Uint8List public_key) {
     if (sig != null && msig != null) {
       return false;
     }
 
     try {
-      check_program(program, args);
+      check_program(program!, args);
     } on InvalidProgram {
       return false;
     }
 
-    final to_sign = Utf8Encoder().convert(LOGIC_PREFIX) + program;
+    final to_sign = Utf8Encoder().convert(LOGIC_PREFIX) + program!;
 
     if (sig == null && msig == null) {
       final chksum = checksum(Uint8List.fromList(to_sign));
@@ -87,20 +87,20 @@ class LogicSig {
       final verify_key = VerifyKey(public_key);
       try {
         verify_key.verify(
-            signature: Signature(base64Decode(sig)), message: to_sign);
+            signature: Signature(base64Decode(sig!)), message: to_sign);
         return true;
       } catch (e) {
         return false;
       }
     }
 
-    return msig.verify(Uint8List.fromList(to_sign));
+    return msig!.verify(Uint8List.fromList(to_sign));
   }
 
   ///  Compute hash of the logic sig program (that is the same as escrow
   ///  account address) as string address
-  String address() {
-    return get_program_address(program);
+  String? address() {
+    return get_program_address(program!);
   }
 
   static String sign_program(Uint8List program, String private_key) {
@@ -112,7 +112,7 @@ class LogicSig {
   }
 
   static _MultiSigResult single_sig_multisig(
-      {Uint8List program, String private_key, Multisig multisig}) {
+      {Uint8List? program, required String private_key, required Multisig multisig}) {
     var index = -1;
     final public_key = base64Decode(private_key).sublist(KEY_LEN_BYTES);
 
@@ -128,21 +128,21 @@ class LogicSig {
     }
 
     return _MultiSigResult(
-        index: index, sig: sign_program(program, private_key));
+        index: index, sig: sign_program(program!, private_key));
   }
 
   /// Creates signature (if no pk provided) or multi signature
   /// private_key: private key of signing account
   /// multisig: optional multisig account without signatures
   ///           to sign with
-  void sign({@required String private_key, Multisig multisig}) {
+  void sign({required String? private_key, Multisig? multisig}) {
     if (multisig == null) {
-      sig = sign_program(program, private_key);
+      sig = sign_program(program!, private_key!);
     } else {
       final result = single_sig_multisig(
-          program: program, private_key: private_key, multisig: multisig);
+          program: program, private_key: private_key!, multisig: multisig);
 
-      multisig.subsigs[result.index].signature = base64Decode(result.sig);
+      multisig.subsigs[result.index!].signature = base64Decode(result.sig!);
       msig = multisig;
     }
   }
@@ -154,8 +154,8 @@ class LogicSig {
     }
 
     final result = single_sig_multisig(
-        program: program, private_key: private_key, multisig: msig);
+        program: program, private_key: private_key, multisig: msig!);
 
-    msig.subsigs[result.index].signature = base64Decode(result.sig);
+    msig!.subsigs[result.index!].signature = base64Decode(result.sig!);
   }
 }

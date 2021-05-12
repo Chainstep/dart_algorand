@@ -21,10 +21,10 @@ class _$APIV1POSTMasterKeyExportResponseSerializer
   final String wireName = 'APIV1POSTMasterKeyExportResponse';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, APIV1POSTMasterKeyExportResponse object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.error != null) {
       result
         ..add('error')
@@ -48,27 +48,27 @@ class _$APIV1POSTMasterKeyExportResponseSerializer
 
   @override
   APIV1POSTMasterKeyExportResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1POSTMasterKeyExportResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'error':
           result.error = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'master_derivation_key':
           result.masterDerivationKey = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -80,14 +80,14 @@ class _$APIV1POSTMasterKeyExportResponseSerializer
 class _$APIV1POSTMasterKeyExportResponse
     extends APIV1POSTMasterKeyExportResponse {
   @override
-  final bool error;
+  final bool? error;
   @override
-  final String masterDerivationKey;
+  final String? masterDerivationKey;
   @override
-  final String message;
+  final String? message;
 
   factory _$APIV1POSTMasterKeyExportResponse(
-          [void Function(APIV1POSTMasterKeyExportResponseBuilder) updates]) =>
+          [void Function(APIV1POSTMasterKeyExportResponseBuilder)? updates]) =>
       (APIV1POSTMasterKeyExportResponseBuilder()..update(updates)).build();
 
   _$APIV1POSTMasterKeyExportResponse._(
@@ -132,28 +132,28 @@ class APIV1POSTMasterKeyExportResponseBuilder
     implements
         Builder<APIV1POSTMasterKeyExportResponse,
             APIV1POSTMasterKeyExportResponseBuilder> {
-  _$APIV1POSTMasterKeyExportResponse _$v;
+  _$APIV1POSTMasterKeyExportResponse? _$v;
 
-  bool _error;
-  bool get error => _$this._error;
-  set error(bool error) => _$this._error = error;
+  bool? _error;
+  bool? get error => _$this._error;
+  set error(bool? error) => _$this._error = error;
 
-  String _masterDerivationKey;
-  String get masterDerivationKey => _$this._masterDerivationKey;
-  set masterDerivationKey(String masterDerivationKey) =>
+  String? _masterDerivationKey;
+  String? get masterDerivationKey => _$this._masterDerivationKey;
+  set masterDerivationKey(String? masterDerivationKey) =>
       _$this._masterDerivationKey = masterDerivationKey;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
   APIV1POSTMasterKeyExportResponseBuilder();
 
   APIV1POSTMasterKeyExportResponseBuilder get _$this {
     if (_$v != null) {
-      _error = _$v.error;
-      _masterDerivationKey = _$v.masterDerivationKey;
-      _message = _$v.message;
+      _error = _$v!.error;
+      _masterDerivationKey = _$v!.masterDerivationKey;
+      _message = _$v!.message;
       _$v = null;
     }
     return this;
@@ -168,7 +168,7 @@ class APIV1POSTMasterKeyExportResponseBuilder
   }
 
   @override
-  void update(void Function(APIV1POSTMasterKeyExportResponseBuilder) updates) {
+  void update(void Function(APIV1POSTMasterKeyExportResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -16,9 +16,9 @@ class _$ParticipationSerializer implements StructuredSerializer<Participation> {
   final String wireName = 'Participation';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Participation object,
+  Iterable<Object?> serialize(Serializers serializers, Participation object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.partpkb64 != null) {
       result
         ..add('partpkb64')
@@ -54,35 +54,35 @@ class _$ParticipationSerializer implements StructuredSerializer<Participation> {
 
   @override
   Participation deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = ParticipationBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'partpkb64':
           result.partpkb64 = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'votefst':
           result.votefst = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'votekd':
           result.votekd = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'votelst':
           result.votelst = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'vrfpkb64':
           result.vrfpkb64 = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -93,17 +93,17 @@ class _$ParticipationSerializer implements StructuredSerializer<Participation> {
 
 class _$Participation extends Participation {
   @override
-  final String partpkb64;
+  final String? partpkb64;
   @override
-  final int votefst;
+  final int? votefst;
   @override
-  final int votekd;
+  final int? votekd;
   @override
-  final int votelst;
+  final int? votelst;
   @override
-  final String vrfpkb64;
+  final String? vrfpkb64;
 
-  factory _$Participation([void Function(ParticipationBuilder) updates]) =>
+  factory _$Participation([void Function(ParticipationBuilder)? updates]) =>
       (ParticipationBuilder()..update(updates)).build();
 
   _$Participation._(
@@ -152,44 +152,44 @@ class _$Participation extends Participation {
 
 class ParticipationBuilder
     implements Builder<Participation, ParticipationBuilder> {
-  _$Participation _$v;
+  _$Participation? _$v;
 
-  String _partpkb64;
-  String get partpkb64 => _$this._partpkb64;
-  set partpkb64(String partpkb64) => _$this._partpkb64 = partpkb64;
+  String? _partpkb64;
+  String? get partpkb64 => _$this._partpkb64;
+  set partpkb64(String? partpkb64) => _$this._partpkb64 = partpkb64;
 
-  int _votefst;
-  int get votefst => _$this._votefst;
-  set votefst(int votefst) => _$this._votefst = votefst;
+  int? _votefst;
+  int? get votefst => _$this._votefst;
+  set votefst(int? votefst) => _$this._votefst = votefst;
 
-  int _votekd;
-  int get votekd => _$this._votekd;
-  set votekd(int votekd) => _$this._votekd = votekd;
+  int? _votekd;
+  int? get votekd => _$this._votekd;
+  set votekd(int? votekd) => _$this._votekd = votekd;
 
-  int _votelst;
-  int get votelst => _$this._votelst;
-  set votelst(int votelst) => _$this._votelst = votelst;
+  int? _votelst;
+  int? get votelst => _$this._votelst;
+  set votelst(int? votelst) => _$this._votelst = votelst;
 
-  String _vrfpkb64;
-  String get vrfpkb64 => _$this._vrfpkb64;
-  set vrfpkb64(String vrfpkb64) => _$this._vrfpkb64 = vrfpkb64;
+  String? _vrfpkb64;
+  String? get vrfpkb64 => _$this._vrfpkb64;
+  set vrfpkb64(String? vrfpkb64) => _$this._vrfpkb64 = vrfpkb64;
 
   ParticipationBuilder();
 
   ParticipationBuilder get _$this {
     if (_$v != null) {
-      _partpkb64 = _$v.partpkb64;
-      _votefst = _$v.votefst;
-      _votekd = _$v.votekd;
-      _votelst = _$v.votelst;
-      _vrfpkb64 = _$v.vrfpkb64;
+      _partpkb64 = _$v!.partpkb64;
+      _votefst = _$v!.votefst;
+      _votekd = _$v!.votekd;
+      _votelst = _$v!.votelst;
+      _vrfpkb64 = _$v!.vrfpkb64;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(Participation other) {
+  void replace(Participation? other) {
     if (other == null) {
       throw ArgumentError.notNull('other');
     }
@@ -197,7 +197,7 @@ class ParticipationBuilder
   }
 
   @override
-  void update(void Function(ParticipationBuilder) updates) {
+  void update(void Function(ParticipationBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -20,10 +20,10 @@ class _$ExportMultisigRequestSerializer
   final String wireName = 'ExportMultisigRequest';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, ExportMultisigRequest object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.address != null) {
       result
         ..add('address')
@@ -41,23 +41,23 @@ class _$ExportMultisigRequestSerializer
 
   @override
   ExportMultisigRequest deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = ExportMultisigRequestBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'address':
           result.address = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallet_handle_token':
           result.walletHandleToken = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
       }
     }
@@ -68,12 +68,12 @@ class _$ExportMultisigRequestSerializer
 
 class _$ExportMultisigRequest extends ExportMultisigRequest {
   @override
-  final String address;
+  final String? address;
   @override
-  final String walletHandleToken;
+  final String? walletHandleToken;
 
   factory _$ExportMultisigRequest(
-          [void Function(ExportMultisigRequestBuilder) updates]) =>
+          [void Function(ExportMultisigRequestBuilder)? updates]) =>
       (ExportMultisigRequestBuilder()..update(updates)).build();
 
   _$ExportMultisigRequest._({this.address, this.walletHandleToken}) : super._();
@@ -111,23 +111,23 @@ class _$ExportMultisigRequest extends ExportMultisigRequest {
 
 class ExportMultisigRequestBuilder
     implements Builder<ExportMultisigRequest, ExportMultisigRequestBuilder> {
-  _$ExportMultisigRequest _$v;
+  _$ExportMultisigRequest? _$v;
 
-  String _address;
-  String get address => _$this._address;
-  set address(String address) => _$this._address = address;
+  String? _address;
+  String? get address => _$this._address;
+  set address(String? address) => _$this._address = address;
 
-  String _walletHandleToken;
-  String get walletHandleToken => _$this._walletHandleToken;
-  set walletHandleToken(String walletHandleToken) =>
+  String? _walletHandleToken;
+  String? get walletHandleToken => _$this._walletHandleToken;
+  set walletHandleToken(String? walletHandleToken) =>
       _$this._walletHandleToken = walletHandleToken;
 
   ExportMultisigRequestBuilder();
 
   ExportMultisigRequestBuilder get _$this {
     if (_$v != null) {
-      _address = _$v.address;
-      _walletHandleToken = _$v.walletHandleToken;
+      _address = _$v!.address;
+      _walletHandleToken = _$v!.walletHandleToken;
       _$v = null;
     }
     return this;
@@ -142,7 +142,7 @@ class ExportMultisigRequestBuilder
   }
 
   @override
-  void update(void Function(ExportMultisigRequestBuilder) updates) {
+  void update(void Function(ExportMultisigRequestBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

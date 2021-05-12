@@ -10,12 +10,12 @@ abstract class AssetList implements Built<AssetList, AssetListBuilder> {
   /* AssetList is a list of assets */
   @nullable
   @BuiltValueField(wireName: r'assets')
-  BuiltList<Asset> get assets;
+  BuiltList<Asset>? get assets;
 
   // Boilerplate code needed to wire-up generated code
   AssetList._();
 
-  factory AssetList([updates(AssetListBuilder b)]) = _$AssetList;
+  factory AssetList([updates(AssetListBuilder b)?]) = _$AssetList;
 
   static Serializer<AssetList> get serializer => _$assetListSerializer;
 }

@@ -9,13 +9,13 @@ abstract class ReleaseWalletHandleTokenRequest
             ReleaseWalletHandleTokenRequestBuilder> {
   @nullable
   @BuiltValueField(wireName: r'wallet_handle_token')
-  String get walletHandleToken;
+  String? get walletHandleToken;
 
   // Boilerplate code needed to wire-up generated code
   ReleaseWalletHandleTokenRequest._();
 
   factory ReleaseWalletHandleTokenRequest(
-          [updates(ReleaseWalletHandleTokenRequestBuilder b)]) =
+          [updates(ReleaseWalletHandleTokenRequestBuilder b)?]) =
       _$ReleaseWalletHandleTokenRequest;
   static Serializer<ReleaseWalletHandleTokenRequest> get serializer =>
       _$releaseWalletHandleTokenRequestSerializer;

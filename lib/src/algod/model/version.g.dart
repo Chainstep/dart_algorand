@@ -15,9 +15,9 @@ class _$VersionSerializer implements StructuredSerializer<Version> {
   final String wireName = 'Version';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, Version object,
+  Iterable<Object?> serialize(Serializers serializers, Version object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.vbuild != null) {
       result
         ..add('build')
@@ -46,27 +46,27 @@ class _$VersionSerializer implements StructuredSerializer<Version> {
   }
 
   @override
-  Version deserialize(Serializers serializers, Iterable<Object> serialized,
+  Version deserialize(Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = VersionBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'build':
           result.vbuild.replace(serializers.deserialize(value,
-              specifiedType: const FullType(BuildVersion)) as BuildVersion);
+              specifiedType: const FullType(BuildVersion)) as BuildVersion?);
           break;
         case 'genesis_hash_b64':
           result.genesisHashB64 = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'genesis_id':
           result.genesisId = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'versions':
           result.versions.replace(serializers.deserialize(value,
@@ -82,15 +82,15 @@ class _$VersionSerializer implements StructuredSerializer<Version> {
 
 class _$Version extends Version {
   @override
-  final BuildVersion vbuild;
+  final BuildVersion? vbuild;
   @override
-  final String genesisHashB64;
+  final String? genesisHashB64;
   @override
-  final String genesisId;
+  final String? genesisId;
   @override
-  final BuiltList<String> versions;
+  final BuiltList<String>? versions;
 
-  factory _$Version([void Function(VersionBuilder) updates]) =>
+  factory _$Version([void Function(VersionBuilder)? updates]) =>
       (VersionBuilder()..update(updates)).build();
 
   _$Version._({this.vbuild, this.genesisHashB64, this.genesisId, this.versions})
@@ -133,22 +133,22 @@ class _$Version extends Version {
 }
 
 class VersionBuilder implements Builder<Version, VersionBuilder> {
-  _$Version _$v;
+  _$Version? _$v;
 
-  BuildVersionBuilder _vbuild;
+  BuildVersionBuilder? _vbuild;
   BuildVersionBuilder get vbuild => _$this._vbuild ??= BuildVersionBuilder();
   set vbuild(BuildVersionBuilder vbuild) => _$this._vbuild = vbuild;
 
-  String _genesisHashB64;
-  String get genesisHashB64 => _$this._genesisHashB64;
-  set genesisHashB64(String genesisHashB64) =>
+  String? _genesisHashB64;
+  String? get genesisHashB64 => _$this._genesisHashB64;
+  set genesisHashB64(String? genesisHashB64) =>
       _$this._genesisHashB64 = genesisHashB64;
 
-  String _genesisId;
-  String get genesisId => _$this._genesisId;
-  set genesisId(String genesisId) => _$this._genesisId = genesisId;
+  String? _genesisId;
+  String? get genesisId => _$this._genesisId;
+  set genesisId(String? genesisId) => _$this._genesisId = genesisId;
 
-  ListBuilder<String> _versions;
+  ListBuilder<String>? _versions;
   ListBuilder<String> get versions =>
       _$this._versions ??= ListBuilder<String>();
   set versions(ListBuilder<String> versions) => _$this._versions = versions;
@@ -157,10 +157,10 @@ class VersionBuilder implements Builder<Version, VersionBuilder> {
 
   VersionBuilder get _$this {
     if (_$v != null) {
-      _vbuild = _$v.vbuild?.toBuilder();
-      _genesisHashB64 = _$v.genesisHashB64;
-      _genesisId = _$v.genesisId;
-      _versions = _$v.versions?.toBuilder();
+      _vbuild = _$v!.vbuild?.toBuilder();
+      _genesisHashB64 = _$v!.genesisHashB64;
+      _genesisId = _$v!.genesisId;
+      _versions = _$v!.versions?.toBuilder();
       _$v = null;
     }
     return this;
@@ -175,7 +175,7 @@ class VersionBuilder implements Builder<Version, VersionBuilder> {
   }
 
   @override
-  void update(void Function(VersionBuilder) updates) {
+  void update(void Function(VersionBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -190,7 +190,7 @@ class VersionBuilder implements Builder<Version, VersionBuilder> {
               genesisId: genesisId,
               versions: _versions?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'vbuild';
         _vbuild?.build();

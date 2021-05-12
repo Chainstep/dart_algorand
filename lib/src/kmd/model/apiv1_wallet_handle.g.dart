@@ -17,9 +17,9 @@ class _$APIV1WalletHandleSerializer
   final String wireName = 'APIV1WalletHandle';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, APIV1WalletHandle object,
+  Iterable<Object?> serialize(Serializers serializers, APIV1WalletHandle object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.expiresSeconds != null) {
       result
         ..add('expires_seconds')
@@ -37,23 +37,23 @@ class _$APIV1WalletHandleSerializer
 
   @override
   APIV1WalletHandle deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1WalletHandleBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'expires_seconds':
           result.expiresSeconds = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
         case 'wallet':
           result.wallet.replace(serializers.deserialize(value,
-              specifiedType: const FullType(APIV1Wallet)) as APIV1Wallet);
+              specifiedType: const FullType(APIV1Wallet)) as APIV1Wallet?);
           break;
       }
     }
@@ -64,12 +64,12 @@ class _$APIV1WalletHandleSerializer
 
 class _$APIV1WalletHandle extends APIV1WalletHandle {
   @override
-  final int expiresSeconds;
+  final int? expiresSeconds;
   @override
-  final APIV1Wallet wallet;
+  final APIV1Wallet? wallet;
 
   factory _$APIV1WalletHandle(
-          [void Function(APIV1WalletHandleBuilder) updates]) =>
+          [void Function(APIV1WalletHandleBuilder)? updates]) =>
       (APIV1WalletHandleBuilder()..update(updates)).build();
 
   _$APIV1WalletHandle._({this.expiresSeconds, this.wallet}) : super._();
@@ -106,14 +106,14 @@ class _$APIV1WalletHandle extends APIV1WalletHandle {
 
 class APIV1WalletHandleBuilder
     implements Builder<APIV1WalletHandle, APIV1WalletHandleBuilder> {
-  _$APIV1WalletHandle _$v;
+  _$APIV1WalletHandle? _$v;
 
-  int _expiresSeconds;
-  int get expiresSeconds => _$this._expiresSeconds;
-  set expiresSeconds(int expiresSeconds) =>
+  int? _expiresSeconds;
+  int? get expiresSeconds => _$this._expiresSeconds;
+  set expiresSeconds(int? expiresSeconds) =>
       _$this._expiresSeconds = expiresSeconds;
 
-  APIV1WalletBuilder _wallet;
+  APIV1WalletBuilder? _wallet;
   APIV1WalletBuilder get wallet => _$this._wallet ??= APIV1WalletBuilder();
   set wallet(APIV1WalletBuilder wallet) => _$this._wallet = wallet;
 
@@ -121,15 +121,15 @@ class APIV1WalletHandleBuilder
 
   APIV1WalletHandleBuilder get _$this {
     if (_$v != null) {
-      _expiresSeconds = _$v.expiresSeconds;
-      _wallet = _$v.wallet?.toBuilder();
+      _expiresSeconds = _$v!.expiresSeconds;
+      _wallet = _$v!.wallet?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(APIV1WalletHandle other) {
+  void replace(APIV1WalletHandle? other) {
     if (other == null) {
       throw ArgumentError.notNull('other');
     }
@@ -137,7 +137,7 @@ class APIV1WalletHandleBuilder
   }
 
   @override
-  void update(void Function(APIV1WalletHandleBuilder) updates) {
+  void update(void Function(APIV1WalletHandleBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -149,7 +149,7 @@ class APIV1WalletHandleBuilder
           _$APIV1WalletHandle._(
               expiresSeconds: expiresSeconds, wallet: _wallet?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'wallet';
         _wallet?.build();

@@ -17,9 +17,9 @@ class _$TransactionFeeSerializer
   final String wireName = 'TransactionFee';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, TransactionFee object,
+  Iterable<Object?> serialize(Serializers serializers, TransactionFee object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.fee != null) {
       result
         ..add('fee')
@@ -31,19 +31,19 @@ class _$TransactionFeeSerializer
 
   @override
   TransactionFee deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = TransactionFeeBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'fee':
           result.fee = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -54,9 +54,9 @@ class _$TransactionFeeSerializer
 
 class _$TransactionFee extends TransactionFee {
   @override
-  final int fee;
+  final int? fee;
 
-  factory _$TransactionFee([void Function(TransactionFeeBuilder) updates]) =>
+  factory _$TransactionFee([void Function(TransactionFeeBuilder)? updates]) =>
       (TransactionFeeBuilder()..update(updates)).build();
 
   _$TransactionFee._({this.fee}) : super._();
@@ -88,17 +88,17 @@ class _$TransactionFee extends TransactionFee {
 
 class TransactionFeeBuilder
     implements Builder<TransactionFee, TransactionFeeBuilder> {
-  _$TransactionFee _$v;
+  _$TransactionFee? _$v;
 
-  int _fee;
-  int get fee => _$this._fee;
-  set fee(int fee) => _$this._fee = fee;
+  int? _fee;
+  int? get fee => _$this._fee;
+  set fee(int? fee) => _$this._fee = fee;
 
   TransactionFeeBuilder();
 
   TransactionFeeBuilder get _$this {
     if (_$v != null) {
-      _fee = _$v.fee;
+      _fee = _$v!.fee;
       _$v = null;
     }
     return this;
@@ -113,7 +113,7 @@ class TransactionFeeBuilder
   }
 
   @override
-  void update(void Function(TransactionFeeBuilder) updates) {
+  void update(void Function(TransactionFeeBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

@@ -20,10 +20,10 @@ class _$AssetFreezeTransactionTypeSerializer
   final String wireName = 'AssetFreezeTransactionType';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, AssetFreezeTransactionType object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.acct != null) {
       result
         ..add('acct')
@@ -47,27 +47,27 @@ class _$AssetFreezeTransactionTypeSerializer
 
   @override
   AssetFreezeTransactionType deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = AssetFreezeTransactionTypeBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'acct':
           result.acct = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'freeze':
           result.freeze = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'id':
           result.id = serializers.deserialize(value,
-              specifiedType: const FullType(int)) as int;
+              specifiedType: const FullType(int)) as int?;
           break;
       }
     }
@@ -78,14 +78,14 @@ class _$AssetFreezeTransactionTypeSerializer
 
 class _$AssetFreezeTransactionType extends AssetFreezeTransactionType {
   @override
-  final String acct;
+  final String? acct;
   @override
-  final bool freeze;
+  final bool? freeze;
   @override
-  final int id;
+  final int? id;
 
   factory _$AssetFreezeTransactionType(
-          [void Function(AssetFreezeTransactionTypeBuilder) updates]) =>
+          [void Function(AssetFreezeTransactionTypeBuilder)? updates]) =>
       (AssetFreezeTransactionTypeBuilder()..update(updates)).build();
 
   _$AssetFreezeTransactionType._({this.acct, this.freeze, this.id}) : super._();
@@ -126,34 +126,34 @@ class _$AssetFreezeTransactionType extends AssetFreezeTransactionType {
 class AssetFreezeTransactionTypeBuilder
     implements
         Builder<AssetFreezeTransactionType, AssetFreezeTransactionTypeBuilder> {
-  _$AssetFreezeTransactionType _$v;
+  _$AssetFreezeTransactionType? _$v;
 
-  String _acct;
-  String get acct => _$this._acct;
-  set acct(String acct) => _$this._acct = acct;
+  String? _acct;
+  String? get acct => _$this._acct;
+  set acct(String? acct) => _$this._acct = acct;
 
-  bool _freeze;
-  bool get freeze => _$this._freeze;
-  set freeze(bool freeze) => _$this._freeze = freeze;
+  bool? _freeze;
+  bool? get freeze => _$this._freeze;
+  set freeze(bool? freeze) => _$this._freeze = freeze;
 
-  int _id;
-  int get id => _$this._id;
-  set id(int id) => _$this._id = id;
+  int? _id;
+  int? get id => _$this._id;
+  set id(int? id) => _$this._id = id;
 
   AssetFreezeTransactionTypeBuilder();
 
   AssetFreezeTransactionTypeBuilder get _$this {
     if (_$v != null) {
-      _acct = _$v.acct;
-      _freeze = _$v.freeze;
-      _id = _$v.id;
+      _acct = _$v!.acct;
+      _freeze = _$v!.freeze;
+      _id = _$v!.id;
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(AssetFreezeTransactionType other) {
+  void replace(AssetFreezeTransactionType? other) {
     if (other == null) {
       throw ArgumentError.notNull('other');
     }
@@ -161,7 +161,7 @@ class AssetFreezeTransactionTypeBuilder
   }
 
   @override
-  void update(void Function(AssetFreezeTransactionTypeBuilder) updates) {
+  void update(void Function(AssetFreezeTransactionTypeBuilder)? updates) {
     if (updates != null) updates(this);
   }
 

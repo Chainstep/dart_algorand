@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:dart_algorand/dart_algorand.dart';
 
 import 'params.dart';
@@ -13,7 +15,7 @@ void main() async {
       kmdClient: kcl);
 
   // get the wallet's master derivation key
-  final mdk = await wallet.exportMasterDerivationKey();
+  final mdk = await (wallet.exportMasterDerivationKey() as FutureOr<String>);
   print('Master derivation key: ${mdk}');
 
   // get backup phrase

@@ -20,10 +20,10 @@ class _$APIV1GETWalletsResponseSerializer
   final String wireName = 'APIV1GETWalletsResponse';
 
   @override
-  Iterable<Object> serialize(
+  Iterable<Object?> serialize(
       Serializers serializers, APIV1GETWalletsResponse object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.error != null) {
       result
         ..add('error')
@@ -47,23 +47,23 @@ class _$APIV1GETWalletsResponseSerializer
 
   @override
   APIV1GETWalletsResponse deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = APIV1GETWalletsResponseBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
         case 'error':
           result.error = serializers.deserialize(value,
-              specifiedType: const FullType(bool)) as bool;
+              specifiedType: const FullType(bool)) as bool?;
           break;
         case 'message':
           result.message = serializers.deserialize(value,
-              specifiedType: const FullType(String)) as String;
+              specifiedType: const FullType(String)) as String?;
           break;
         case 'wallets':
           result.wallets.replace(serializers.deserialize(value,
@@ -80,14 +80,14 @@ class _$APIV1GETWalletsResponseSerializer
 
 class _$APIV1GETWalletsResponse extends APIV1GETWalletsResponse {
   @override
-  final bool error;
+  final bool? error;
   @override
-  final String message;
+  final String? message;
   @override
-  final BuiltList<APIV1Wallet> wallets;
+  final BuiltList<APIV1Wallet>? wallets;
 
   factory _$APIV1GETWalletsResponse(
-          [void Function(APIV1GETWalletsResponseBuilder) updates]) =>
+          [void Function(APIV1GETWalletsResponseBuilder)? updates]) =>
       (APIV1GETWalletsResponseBuilder()..update(updates)).build();
 
   _$APIV1GETWalletsResponse._({this.error, this.message, this.wallets})
@@ -130,17 +130,17 @@ class _$APIV1GETWalletsResponse extends APIV1GETWalletsResponse {
 class APIV1GETWalletsResponseBuilder
     implements
         Builder<APIV1GETWalletsResponse, APIV1GETWalletsResponseBuilder> {
-  _$APIV1GETWalletsResponse _$v;
+  _$APIV1GETWalletsResponse? _$v;
 
-  bool _error;
-  bool get error => _$this._error;
-  set error(bool error) => _$this._error = error;
+  bool? _error;
+  bool? get error => _$this._error;
+  set error(bool? error) => _$this._error = error;
 
-  String _message;
-  String get message => _$this._message;
-  set message(String message) => _$this._message = message;
+  String? _message;
+  String? get message => _$this._message;
+  set message(String? message) => _$this._message = message;
 
-  ListBuilder<APIV1Wallet> _wallets;
+  ListBuilder<APIV1Wallet>? _wallets;
   ListBuilder<APIV1Wallet> get wallets =>
       _$this._wallets ??= ListBuilder<APIV1Wallet>();
   set wallets(ListBuilder<APIV1Wallet> wallets) => _$this._wallets = wallets;
@@ -149,9 +149,9 @@ class APIV1GETWalletsResponseBuilder
 
   APIV1GETWalletsResponseBuilder get _$this {
     if (_$v != null) {
-      _error = _$v.error;
-      _message = _$v.message;
-      _wallets = _$v.wallets?.toBuilder();
+      _error = _$v!.error;
+      _message = _$v!.message;
+      _wallets = _$v!.wallets?.toBuilder();
       _$v = null;
     }
     return this;
@@ -166,7 +166,7 @@ class APIV1GETWalletsResponseBuilder
   }
 
   @override
-  void update(void Function(APIV1GETWalletsResponseBuilder) updates) {
+  void update(void Function(APIV1GETWalletsResponseBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -178,7 +178,7 @@ class APIV1GETWalletsResponseBuilder
           _$APIV1GETWalletsResponse._(
               error: error, message: message, wallets: _wallets?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'wallets';
         _wallets?.build();

@@ -10,33 +10,33 @@ abstract class SignProgramMultisigRequest
         Built<SignProgramMultisigRequest, SignProgramMultisigRequestBuilder> {
   @nullable
   @BuiltValueField(wireName: r'address')
-  String get address;
+  String? get address;
 
   @nullable
   @BuiltValueField(wireName: r'data')
-  String get data;
+  String? get data;
 
   @nullable
   @BuiltValueField(wireName: r'partial_multisig')
-  MultisigSig get partialMultisig;
+  MultisigSig? get partialMultisig;
 
   @nullable
   @BuiltValueField(wireName: r'public_key')
-  BuiltList<int> get publicKey;
+  BuiltList<int>? get publicKey;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_handle_token')
-  String get walletHandleToken;
+  String? get walletHandleToken;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_password')
-  String get walletPassword;
+  String? get walletPassword;
 
   // Boilerplate code needed to wire-up generated code
   SignProgramMultisigRequest._();
 
   factory SignProgramMultisigRequest(
-          [updates(SignProgramMultisigRequestBuilder b)]) =
+          [updates(SignProgramMultisigRequestBuilder b)?]) =
       _$SignProgramMultisigRequest;
 
   static Serializer<SignProgramMultisigRequest> get serializer =>

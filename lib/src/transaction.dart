@@ -24,16 +24,16 @@ class Mappable {
 
 /// Superclass for various transaction types.
 class Transaction implements Mappable {
-  String sender;
-  int fee;
-  int first_valid_round;
-  int last_valid_round;
-  Uint8List note;
-  String genesis_id;
-  String genesis_hash;
-  Uint8List lease;
-  String type;
-  Uint8List group;
+  String? sender;
+  int? fee;
+  int? first_valid_round;
+  int? last_valid_round;
+  Uint8List? note;
+  String? genesis_id;
+  String? genesis_hash;
+  Uint8List? lease;
+  String? type;
+  Uint8List? group;
 
   Transaction(
       {this.sender,
@@ -46,14 +46,14 @@ class Transaction implements Mappable {
       this.lease,
       this.type}) {
     if (lease != null) {
-      if (lease.length != LEASE_LENGTH) {
+      if (lease!.length != LEASE_LENGTH) {
         throw WrongLeaseLengthError();
       }
     }
   }
 
   factory Transaction.from(Transaction tx) {
-    return undictify(tx.dictify());
+    return undictify(tx.dictify())!;
   }
 
   @override
@@ -67,10 +67,10 @@ class Transaction implements Mappable {
       m['gen'] = genesis_id;
     }
 
-    m['gh'] = base64.decode(genesis_hash);
+    m['gh'] = base64.decode(genesis_hash!);
     m['lv'] = last_valid_round;
     m['type'] = type;
-    m['snd'] = decode_address(sender);
+    m['snd'] = decode_address(sender!);
 
     if (note != null) {
       m['note'] = note;
@@ -87,7 +87,7 @@ class Transaction implements Mappable {
     return m;
   }
 
-  static Transaction undictify(Map<String, dynamic> m) {
+  static Transaction? undictify(Map<String, dynamic> m) {
     final args = {
       'sender': encode_address(m['snd']),
       'fee': m['fee'],
@@ -100,7 +100,7 @@ class Transaction implements Mappable {
       'grp': m.containsKey('grp') ? m['grp'] : null
     };
 
-    Transaction txn;
+    Transaction? txn;
 
     if (m['type'] == PAYMENT_TXN) {
       args.addAll(PaymentTxn._undictify(m));
@@ -207,7 +207,7 @@ class Transaction implements Mappable {
     }
 
     if (args.containsKey('grp')) {
-      txn.group = args['grp'];
+      txn!.group = args['grp'];
     }
 
     return txn;
@@ -244,16 +244,16 @@ class Transaction implements Mappable {
 
   int estimate_size() {
     final account = generate_account();
-    final stx = sign(account.private_key);
+    final stx = sign(account.private_key!);
     return base64Decode(msgpack_encode(stx)).length;
   }
 }
 
 /// Represents a payment transaction.
 class PaymentTxn extends Transaction {
-  String receiver;
-  int amt;
-  String close_remainder_to;
+  String? receiver;
+  int? amt;
+  String? close_remainder_to;
 
   /// [sender]: address of the sender
   ///
@@ -282,14 +282,14 @@ class PaymentTxn extends Transaction {
   ///       with the same sender and lease can be confirmed in this
   ///       transaction's valid rounds
   PaymentTxn({
-    String sender,
-    int fee,
-    int first_valid_round,
-    int last_valid_round,
-    Uint8List note,
-    String genesis_id,
-    String genesis_hash,
-    Uint8List lease,
+    String? sender,
+    int? fee,
+    int? first_valid_round,
+    int? last_valid_round,
+    Uint8List? note,
+    String? genesis_id,
+    String? genesis_hash,
+    Uint8List? lease,
     this.amt,
     this.receiver,
     this.close_remainder_to,
@@ -305,8 +305,8 @@ class PaymentTxn extends Transaction {
             lease: lease,
             type: PAYMENT_TXN) {
     this.fee = flat_fee
-        ? max(MIN_TXN_FEE, fee)
-        : max(estimate_size() * fee, MIN_TXN_FEE);
+        ? max(MIN_TXN_FEE, fee!)
+        : max(estimate_size() * fee!, MIN_TXN_FEE);
   }
 
   @override
@@ -314,10 +314,10 @@ class PaymentTxn extends Transaction {
     var m = super.dictify();
 
     m['amt'] = amt;
-    m['rcv'] = decode_address(receiver);
+    m['rcv'] = decode_address(receiver!);
 
     if (close_remainder_to != null) {
-      m['close'] = decode_address(close_remainder_to);
+      m['close'] = decode_address(close_remainder_to!);
     }
 
     return m;
@@ -337,12 +337,12 @@ abstract class SignedTransactionBase {}
 
 ///   Represents a signed transaction.
 class SignedTransaction implements Mappable, SignedTransactionBase {
-  String signature;
+  String ?signature;
   Transaction transaction;
 
   /// Creates a SignedTransaction using [transaction] that was signed
   /// and [signature] of a single address
-  SignedTransaction({this.signature, this.transaction});
+  SignedTransaction({this.signature, required this.transaction});
 
   factory SignedTransaction.from(SignedTransaction st) {
     return undictify(st.dictify());
@@ -353,22 +353,22 @@ class SignedTransaction implements Mappable, SignedTransactionBase {
     final d = SplayTreeMap<String, dynamic>();
 
     if (signature != null) {
-      d['sig'] = base64Decode(signature);
+      d['sig'] = base64Decode(signature!);
     }
 
-    d['txn'] = transaction.dictify();
+    d['txn'] = transaction!.dictify();
     return d;
   }
 
   static SignedTransaction undictify(Map<String, dynamic> m) {
     final sig = m.containsKey('sig') ? base64Encode(m['sig']) : null;
     final txn = Transaction.undictify(Map.from(m['txn']));
-    return SignedTransaction(transaction: txn, signature: sig);
+    return SignedTransaction(transaction: txn!, signature: sig!);
   }
 }
 
 class TxGroup {
-  List<Uint8List> txns;
+  List<Uint8List>? txns;
 
   ///  Transactions specifies a list of transactions that must appear
   ///  together, sequentially, in a block in order for the group to be
@@ -376,7 +376,7 @@ class TxGroup {
   ///  the `Group` field omitted.
 
   TxGroup(this.txns) {
-    if (txns.length > TX_GROUP_LIMIT) {
+    if (txns!.length > TX_GROUP_LIMIT) {
       throw TransactionGroupSizeError();
     }
   }
@@ -422,11 +422,11 @@ Uint8List calculate_group_id(List<Transaction> txns) {
 
 /// Represents a key registration transaction
 class KeyregTxn extends Transaction {
-  String votekey;
-  String selkey;
-  int votefst;
-  int votelst;
-  int votekd;
+  String? votekey;
+  String? selkey;
+  int? votefst;
+  int? votelst;
+  int? votekd;
 
   /// KeyregTxn Constructor
   ///
@@ -448,20 +448,20 @@ class KeyregTxn extends Transaction {
   /// transaction's valid rounds
 
   KeyregTxn(
-      {@required String sender,
-      @required int fee,
-      @required int first_valid_round,
-      @required int last_valid_round,
-      Uint8List note,
-      String genesis_id,
-      @required String genesis_hash,
-      Uint8List lease,
+      {required String? sender,
+      required int? fee,
+      required int? first_valid_round,
+      required int? last_valid_round,
+      Uint8List? note,
+      String? genesis_id,
+      required String? genesis_hash,
+      Uint8List? lease,
       bool flat_fee = false,
-      @required this.votekey,
-      @required this.selkey,
-      @required this.votefst,
-      @required this.votelst,
-      @required this.votekd})
+      required this.votekey,
+      required this.selkey,
+      required this.votefst,
+      required this.votelst,
+      required this.votekd})
       : super(
             sender: sender,
             fee: fee,
@@ -473,18 +473,18 @@ class KeyregTxn extends Transaction {
             lease: lease,
             type: KEYREG_TXN) {
     this.fee = flat_fee
-        ? max(MIN_TXN_FEE, fee)
-        : max(estimate_size() * fee, MIN_TXN_FEE);
+        ? max(MIN_TXN_FEE, fee!)
+        : max(estimate_size() * fee!, MIN_TXN_FEE);
   }
 
   @override
   SplayTreeMap<String, dynamic> dictify() {
     final m = super.dictify();
 
-    m['selkey'] = decode_address(selkey);
+    m['selkey'] = decode_address(selkey!);
     m['votefst'] = votefst;
     m['votekd'] = votekd;
-    m['votekey'] = decode_address(votekey);
+    m['votekey'] = decode_address(votekey!);
     m['votelst'] = votelst;
 
     return m;
@@ -507,7 +507,7 @@ class KeyregTxn extends Transaction {
 
 /// Returns list of unsigned transactions with group property set
 List<Transaction> assign_group_id(
-    {@required List<Transaction> txns, String address}) {
+    {required List<Transaction> txns, String? address}) {
   if (txns.length > TX_GROUP_LIMIT) {
     throw TransactionGroupSizeError();
   }

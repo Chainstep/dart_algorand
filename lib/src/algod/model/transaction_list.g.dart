@@ -17,9 +17,9 @@ class _$TransactionListSerializer
   final String wireName = 'TransactionList';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, TransactionList object,
+  Iterable<Object?> serialize(Serializers serializers, TransactionList object,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = <Object>[];
+    final result = <Object?>[];
     if (object.transactions != null) {
       result
         ..add('transactions')
@@ -31,13 +31,13 @@ class _$TransactionListSerializer
 
   @override
   TransactionList deserialize(
-      Serializers serializers, Iterable<Object> serialized,
+      Serializers serializers, Iterable<Object?> serialized,
       {FullType specifiedType = FullType.unspecified}) {
     final result = TransactionListBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
-      final key = iterator.current as String;
+      final key = iterator.current as String?;
       iterator.moveNext();
       final dynamic value = iterator.current;
       switch (key) {
@@ -56,9 +56,9 @@ class _$TransactionListSerializer
 
 class _$TransactionList extends TransactionList {
   @override
-  final BuiltList<Transaction> transactions;
+  final BuiltList<Transaction>? transactions;
 
-  factory _$TransactionList([void Function(TransactionListBuilder) updates]) =>
+  factory _$TransactionList([void Function(TransactionListBuilder)? updates]) =>
       (TransactionListBuilder()..update(updates)).build();
 
   _$TransactionList._({this.transactions}) : super._();
@@ -91,9 +91,9 @@ class _$TransactionList extends TransactionList {
 
 class TransactionListBuilder
     implements Builder<TransactionList, TransactionListBuilder> {
-  _$TransactionList _$v;
+  _$TransactionList? _$v;
 
-  ListBuilder<Transaction> _transactions;
+  ListBuilder<Transaction>? _transactions;
   ListBuilder<Transaction> get transactions =>
       _$this._transactions ??= ListBuilder<Transaction>();
   set transactions(ListBuilder<Transaction> transactions) =>
@@ -103,14 +103,14 @@ class TransactionListBuilder
 
   TransactionListBuilder get _$this {
     if (_$v != null) {
-      _transactions = _$v.transactions?.toBuilder();
+      _transactions = _$v!.transactions?.toBuilder();
       _$v = null;
     }
     return this;
   }
 
   @override
-  void replace(TransactionList other) {
+  void replace(TransactionList? other) {
     if (other == null) {
       throw ArgumentError.notNull('other');
     }
@@ -118,7 +118,7 @@ class TransactionListBuilder
   }
 
   @override
-  void update(void Function(TransactionListBuilder) updates) {
+  void update(void Function(TransactionListBuilder)? updates) {
     if (updates != null) updates(this);
   }
 
@@ -129,7 +129,7 @@ class TransactionListBuilder
       _$result =
           _$v ?? _$TransactionList._(transactions: _transactions?.build());
     } catch (_) {
-      String _$failedField;
+      late String _$failedField;
       try {
         _$failedField = 'transactions';
         _transactions?.build();

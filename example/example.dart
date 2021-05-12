@@ -1,5 +1,10 @@
 // create kmd and algod clients
+import 'dart:async';
+
+import 'package:built_collection/built_collection.dart';
+import 'package:dart_algorand/algod.dart';
 import 'package:dart_algorand/dart_algorand.dart';
+import 'package:dart_algorand/kmd.dart';
 import 'params.dart';
 
 void main() async {
@@ -10,8 +15,8 @@ void main() async {
   final acl = AlgodClient(token: algodToken, url: algodUrl);
 
   // get thw wallet ID
-  final wallets = await kcl.listWallets();
-  String existingWalletId;
+  final wallets = await (kcl.listWallets() as FutureOr<BuiltList<APIV1Wallet>>);
+  String? existingWalletId;
   for (var w in wallets) {
     if (w.name == existingWalletName) {
       existingWalletId = w.id;
@@ -27,7 +32,7 @@ void main() async {
 
   // new wallet to create
   // check if the wallet already exists
-  String walletId;
+  String? walletId;
   for (var w in wallets) {
     if (w.name == newWalletName) {
       walletId = w.id;
@@ -39,7 +44,7 @@ void main() async {
   // if it doesn't exist, create the wallet and get its ID
   if (walletId == null) {
     walletId = (await kcl.createWallet(
-            name: newWalletName, password: newWalletPassword))
+            name: newWalletName, password: newWalletPassword))!
         .id;
     print('Walllet created!');
     print('Wallet ID: ${walletId}');
@@ -63,11 +68,11 @@ void main() async {
   print('Second account: ${address2}');
 
   // get the mnemonic for address1
-  final mn = from_private_key(account1.private_key);
+  final mn = from_private_key(account1.private_key!);
   print('Mnemonic for the first account: ${mn}');
 
   // get suggested params
-  final params = await acl.transactionParams();
+  final params = await (acl.transactionParams() as FutureOr<TransactionParams>);
 
   // get last block info
   final blockInfo = await acl.blockInfo(params.lastRound);
@@ -78,7 +83,7 @@ void main() async {
       sender: existingAccount,
       fee: params.fee,
       first_valid_round: params.lastRound,
-      last_valid_round: params.lastRound + 100,
+      last_valid_round: params.lastRound! + 100,
       genesis_hash: params.genesishashb64,
       receiver: account1.address,
       amt: 100000,
@@ -113,7 +118,7 @@ void main() async {
 
   // wait 2 rounds and then try to see the transaction
   print("Now let's wait a bit for the transaction to process.");
-  await acl.statusAfterBlock(params.lastRound + 2);
+  await acl.statusAfterBlock(params.lastRound! + 2);
 
   final txnInfo = await acl.transactionInfo(
       address: existingAccount, transactionID: transactionID);

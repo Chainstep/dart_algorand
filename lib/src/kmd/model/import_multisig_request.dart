@@ -8,25 +8,25 @@ abstract class ImportMultisigRequest
     implements Built<ImportMultisigRequest, ImportMultisigRequestBuilder> {
   @nullable
   @BuiltValueField(wireName: r'multisig_version')
-  int get multisigVersion;
+  int? get multisigVersion;
 
   @nullable
   @BuiltValueField(wireName: r'pks')
-  BuiltList<String> get pks;
+  BuiltList<String>? get pks;
 
   @nullable
   @BuiltValueField(wireName: r'threshold')
-  int get threshold;
+  int? get threshold;
 
   @nullable
   @BuiltValueField(wireName: r'wallet_handle_token')
-  String get walletHandleToken;
+  String? get walletHandleToken;
 
   // Boilerplate code needed to wire-up generated code
   ImportMultisigRequest._();
 
   factory ImportMultisigRequest(
-          [Function(ImportMultisigRequestBuilder) updates]) =
+          [Function(ImportMultisigRequestBuilder)? updates]) =
       _$ImportMultisigRequest;
 
   static Serializer<ImportMultisigRequest> get serializer =>
